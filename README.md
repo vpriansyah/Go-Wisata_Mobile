@@ -1,3 +1,1 @@
-# Go-Wisata-Mobile
-
-Project Go Wisata Mobile 
+Aplikasi mobile E-Ticketing desa wisata dengan fitur payment gateway (Midtrans)
