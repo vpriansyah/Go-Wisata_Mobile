@@ -31,464 +31,442 @@ class _SignInSignUpState extends State<SignInSignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Color(0xFFFCC050),
-        body: Center(
-          child: GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
+      key: scaffoldKey,
+      backgroundColor: Color(0xFFFCC050),
+      body: Center(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 16, 20, 20),
+                  child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 1,
-                        decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 100.0,
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Image.asset(
+                            'assets/image/logo.png',
+                            width: 20,
+                            fit: BoxFit.cover,
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        child: Text(
+                          'Go-Wisata',
+                          style: GoogleFonts.fugazOne(
+                            fontSize: 50,
+                            color: textColor1,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: DefaultTabController(
+                    length: 2,
+                    initialIndex: 0,
+                    child: Column(
+                      children: [
+                        TabBar(
+                          isScrollable: true,
+                          labelColor: Color(0xFFFFFFFF),
+                          labelPadding:
+                              EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                          labelStyle: GoogleFonts.montserrat(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                          indicatorColor: Color(0xFFFFFFFF),
+                          tabs: [
+                            Tab(
+                              text: 'Sign In',
+                            ),
+                            Tab(
+                              text: 'Sign Up',
+                            ),
+                          ],
+                        ),
+                        Expanded(
+                          child: TabBarView(
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Go-Wisata',
-                                    style: GoogleFonts.fugazOne(
-                                      fontSize: 50,
-                                      color: textColor1,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Expanded(
-                                child: DefaultTabController(
-                                  length: 2,
-                                  initialIndex: 0,
-                                  child: Column(
-                                    children: [
-                                      TabBar(
-                                        isScrollable: true,
-                                        labelColor: Color(0xFFFFFFFF),
-                                        labelPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                24, 0, 24, 0),
-                                        labelStyle: GoogleFonts.montserrat(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w600),
-                                        indicatorColor: Color(0xFFFFFFFF),
-                                        tabs: [
-                                          Tab(
-                                            text: 'Sign In',
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24, 24, 24, 24),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 20, 20, 0),
+                                      child: TextFormField(
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        validator: (value) =>
+                                            validateEmail(value),
+                                        controller: emailAddressController,
+                                        // obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: 'Email Address',
+                                          labelStyle: GoogleFonts.montserrat(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600),
+                                          hintStyle: GoogleFonts.montserrat(
+                                            color: Color(0x98FFFFFF),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.normal,
                                           ),
-                                          Tab(
-                                            text: 'Sign Up',
-                                          ),
-                                        ],
-                                      ),
-                                      Expanded(
-                                        child: TabBarView(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(24, 24, 24, 24),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                20, 20, 20, 0),
-                                                    child: TextFormField(
-                                                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                                                      validator: (value) => validateEmail(value),
-                                                      controller:emailAddressController,
-                                                      // obscureText: false,
-                                                      decoration:InputDecoration(
-                                                        labelText:'Email Address',
-                                                        labelStyle: GoogleFonts.montserrat(
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight
-                                                                  .w600),
-                                                        hintStyle: GoogleFonts
-                                                            .montserrat(
-                                                          color:
-                                                              Color(0x98FFFFFF),
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                                        enabledBorder:OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors.white,
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(8),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors.white,
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(8),
-                                                        ),
-                                                        filled: true,
-                                                        fillColor: Colors.white,
-                                                        contentPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(20,
-                                                                    16, 20, 16),
-                                                      ),
-                                                      style: GoogleFonts
-                                                          .montserrat(
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            Color(0xFF0F1113),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          passwordController,
-                                                      obscureText: true,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText: 'Password',
-                                                        labelStyle: GoogleFonts.montserrat(
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600),
-                                                        hintStyle: GoogleFonts.montserrat(
-                                                          color:Color(0x98FFFFFF),
-                                                          fontSize: 14,
-                                                          fontWeight:FontWeight.normal,
-                                                        ),
-                                                        enabledBorder:OutlineInputBorder(
-                                                          borderSide:BorderSide(
-                                                            color: Colors.white,
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:BorderRadius
-                                                                  .circular(8),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors.white,
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(8),
-                                                        ),
-                                                        filled: true,
-                                                        fillColor: Colors.white,
-                                                        contentPadding:EdgeInsetsDirectional
-                                                                .fromSTEB(20, 16, 20, 16),
-                                                      ),
-                                                      style: GoogleFonts
-                                                          .montserrat(
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            Color(0xFF0F1113),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    height: 50,
-                                                    width: 230,
-                                                    margin: EdgeInsets.only(top: 35),
-                                                    child: TextButton(
-                                                      onPressed: () {
-                                                        if (isLoading) {
-                                                        } else {
-                                                          login();
-                                                          setState(() {
-                                                          isLoading = true;
-                                                          });
-                                                        }
-                                                      },
-                                                      style: TextButton.styleFrom(
-                                                          backgroundColor:
-                                                              textColor1,
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8))),
-                                                      child: isLoading
-                                                          ? Center(
-                                                              child:
-                                                                  CircularProgressIndicator(),
-                                                            )
-                                                          : Text(
-                                                              'Sign In',
-                                                              style: title2
-                                                                  .copyWith(
-                                                                fontSize: 18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                            ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.white,
+                                              width: 1,
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(24, 24, 24, 0),
-                                              child: Form(
-                                                key: _formregKey,
-                                                child: Column(
-                                                  mainAxisSize: MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:EdgeInsetsDirectional.fromSTEB( 20, 20, 20, 0),
-                                                      child: TextFormField(
-                                                        controller:
-                                                            usernameController,
-                                                        obscureText: false,
-                                                        decoration: InputDecoration(
-                                                          labelText: 'User Name',
-                                                          labelStyle: GoogleFonts.montserrat(
-                                                            color: secondaryText1,
-                                                          ),
-                                                          hintText: 'Masukan Nama Anda',
-                                                          hintStyle: GoogleFonts.montserrat(
-                                                            color: Color(0x98FFFFFF),
-                                                            fontSize: 14,
-                                                            fontWeight:FontWeight.normal,
-                                                          ),
-                                                          enabledBorder:OutlineInputBorder(
-                                                            borderSide:BorderSide(
-                                                              color: Colors.white,
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:BorderRadius.circular(8),
-                                                          ),
-                                                          focusedBorder:OutlineInputBorder(
-                                                            borderSide:BorderSide(
-                                                              color: Colors.white,
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:BorderRadius
-                                                                    .circular(8),
-                                                          ),
-                                                          filled: true,
-                                                          fillColor: Colors.white,
-                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(20,16, 20, 16),
-                                                        ),
-                                                        style: GoogleFonts
-                                                            .montserrat(
-                                                          color:
-                                                              Color(0xFF0F1113),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  20, 20, 20, 0),
-                                                      child: TextFormField(
-                                                        controller:
-                                                            phoneNumberController,
-                                                        obscureText: false,
-                                                        decoration:InputDecoration(
-                                                          labelText: 'No. HP',
-                                                          labelStyle: GoogleFonts.montserrat(
-                                                            color: secondaryText1,
-                                                          ),
-                                                          hintText:'Masukan No. HP',
-                                                          hintStyle: GoogleFonts.montserrat(
-                                                            color:Color(0x98FFFFFF),
-                                                            fontSize: 14,
-                                                            fontWeight:FontWeight.normal,
-                                                          ),
-                                                          enabledBorder:OutlineInputBorder(
-                                                            borderSide: BorderSide(
-                                                              color: Colors.white,
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:BorderRadius.circular(8),
-                                                          ),
-                                                          focusedBorder:OutlineInputBorder(
-                                                            borderSide:BorderSide(
-                                                              color: Colors.white,
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:BorderRadius.circular(8),
-                                                          ),
-                                                          filled: true,
-                                                          fillColor: Colors.white,
-                                                          contentPadding:EdgeInsetsDirectional.fromSTEB(20,16, 20, 16),
-                                                        ),
-                                                        style: GoogleFonts.montserrat(
-                                                          color:Color(0xFF0F1113),
-                                                        ),
-                                                        keyboardType:TextInputType.phone,
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
-                                                      child: TextFormField(
-                                                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                                                        validator: (value) => validateEmail(value),
-                                                        controller:emailSignUpController,
-                                                        obscureText: false,
-                                                        decoration: InputDecoration(
-                                                          labelText:'Email Address',
-                                                          labelStyle: GoogleFonts.montserrat(
-                                                            color: secondaryText1,
-                                                          ),
-                                                          hintText:'Enter your email...',
-                                                          hintStyle: GoogleFonts.montserrat(
-                                                            color: Color(0x98FFFFFF),
-                                                            fontSize: 14,
-                                                            fontWeight:FontWeight.normal,
-                                                          ),
-                                                          enabledBorder:OutlineInputBorder(
-                                                            borderSide:BorderSide(
-                                                              color: Colors.white,
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(8),
-                                                          ),
-                                                          focusedBorder:OutlineInputBorder(
-                                                            borderSide:BorderSide(
-                                                              color: Colors.white,
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:BorderRadius.circular(8),
-                                                          ),
-                                                          filled: true,
-                                                          fillColor: Colors.white,
-                                                          contentPadding:EdgeInsetsDirectional.fromSTEB(20,16, 20, 16),
-                                                        ),
-                                                        style: GoogleFonts.montserrat(
-                                                          color:Color(0xFF0F1113),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
-                                                      child: TextFormField(
-                                                        obscureText: true,
-                                                        controller:
-                                                            passwordSignUpController,
-                                                        decoration:
-                                                            InputDecoration(
-                                                          labelText: 'Password',
-                                                          labelStyle: GoogleFonts
-                                                              .montserrat(
-                                                            color: secondaryText1,
-                                                          ),
-                                                          hintText:'Enter your password...',
-                                                          hintStyle: GoogleFonts.montserrat(
-                                                            color:Color(0x98FFFFFF),
-                                                            fontSize: 14,
-                                                            fontWeight:
-                                                                FontWeight.normal,
-                                                          ),
-                                                          enabledBorder:OutlineInputBorder(
-                                                            borderSide:BorderSide(
-                                                              color: Colors.white,
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:BorderRadius
-                                                                    .circular(8),
-                                                          ),
-                                                          focusedBorder:OutlineInputBorder(
-                                                            borderSide:BorderSide(
-                                                              color: Colors.white,
-                                                              width: 1,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(8),
-                                                          ),
-                                                          filled: true,
-                                                          fillColor: Colors.white,
-                                                          contentPadding:EdgeInsetsDirectional
-                                                                  .fromSTEB(20,
-                                                                      16, 20, 16),
-                                                        ),
-                                                        style: GoogleFonts .montserrat(
-                                                          color:Color(0xFF0F1113),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 50,
-                                                      width: 230,
-                                                      margin: EdgeInsets.only(
-                                                          top: 35),
-                                                      child: isLoading
-                                                          ? Center(
-                                                              child:
-                                                                  CircularProgressIndicator(),
-                                                            )
-                                                          : TextButton(
-                                                              onPressed: () {
-                                                                if (emailValidation(emailSignUpController.text)) {
-                                                                  register();
-                                                                  setState(() {
-                                                                  isLoading =
-                                                                      true;
-                                                                  });
-                                                                }
-                                                                else{
-                                                                  const snackBar = SnackBar(
-                                                                    content: Text('format email salah!'),
-                                                                    backgroundColor: Colors.red,
-                                                                  );
-                                                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                                                }
-                                                              },
-                                                              style: TextButton.styleFrom(
-                                                                  backgroundColor:textColor1,
-                                                                  shape: RoundedRectangleBorder(
-                                                                      borderRadius: BorderRadius.circular(
-                                                                              8))),
-                                                              child: Text('Sign Up',
-                                                                style: title2.copyWith(
-                                                                  fontSize: 18,
-                                                                  fontWeight:FontWeight.bold,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                    ),
-                                                  ],
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.white,
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          contentPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20, 16, 20, 16),
+                                        ),
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xFF0F1113),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 12, 20, 0),
+                                      child: TextFormField(
+                                        controller: passwordController,
+                                        obscureText: true,
+                                        decoration: InputDecoration(
+                                          labelText: 'Password',
+                                          labelStyle: GoogleFonts.montserrat(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600),
+                                          hintStyle: GoogleFonts.montserrat(
+                                            color: Color(0x98FFFFFF),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.white,
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.white,
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          contentPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20, 16, 20, 16),
+                                        ),
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xFF0F1113),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 50,
+                                      width: 230,
+                                      margin: EdgeInsets.only(top: 35),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          if (isLoading) {
+                                          } else {
+                                            login();
+                                            setState(() {
+                                              isLoading = true;
+                                            });
+                                          }
+                                        },
+                                        style: TextButton.styleFrom(
+                                            backgroundColor: textColor1,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8))),
+                                        child: isLoading
+                                            ? Center(
+                                                child:
+                                                    CircularProgressIndicator(),
+                                              )
+                                            : Text(
+                                                'Sign In',
+                                                style: title2.copyWith(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
                                                 ),
                                               ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24, 24, 24, 0),
+                                child: Form(
+                                  key: _formregKey,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 20, 20, 0),
+                                        child: TextFormField(
+                                          controller: usernameController,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'User Name',
+                                            labelStyle: GoogleFonts.montserrat(
+                                              color: secondaryText1,
                                             ),
-                                          ],
+                                            hintText: 'Masukan Nama Anda',
+                                            hintStyle: GoogleFonts.montserrat(
+                                              color: Color(0x98FFFFFF),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            filled: true,
+                                            fillColor: Colors.white,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20, 16, 20, 16),
+                                          ),
+                                          style: GoogleFonts.montserrat(
+                                            color: Color(0xFF0F1113),
+                                          ),
                                         ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 20, 20, 0),
+                                        child: TextFormField(
+                                          controller: phoneNumberController,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'No. HP',
+                                            labelStyle: GoogleFonts.montserrat(
+                                              color: secondaryText1,
+                                            ),
+                                            hintText: 'Masukan No. HP',
+                                            hintStyle: GoogleFonts.montserrat(
+                                              color: Color(0x98FFFFFF),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            filled: true,
+                                            fillColor: Colors.white,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20, 16, 20, 16),
+                                          ),
+                                          style: GoogleFonts.montserrat(
+                                            color: Color(0xFF0F1113),
+                                          ),
+                                          keyboardType: TextInputType.phone,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 20, 20, 0),
+                                        child: TextFormField(
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          validator: (value) =>
+                                              validateEmail(value),
+                                          controller: emailSignUpController,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'Email Address',
+                                            labelStyle: GoogleFonts.montserrat(
+                                              color: secondaryText1,
+                                            ),
+                                            hintText: 'Enter your email...',
+                                            hintStyle: GoogleFonts.montserrat(
+                                              color: Color(0x98FFFFFF),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            filled: true,
+                                            fillColor: Colors.white,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20, 16, 20, 16),
+                                          ),
+                                          style: GoogleFonts.montserrat(
+                                            color: Color(0xFF0F1113),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 12, 20, 0),
+                                        child: TextFormField(
+                                          obscureText: true,
+                                          controller: passwordSignUpController,
+                                          decoration: InputDecoration(
+                                            labelText: 'Password',
+                                            labelStyle: GoogleFonts.montserrat(
+                                              color: secondaryText1,
+                                            ),
+                                            hintText: 'Enter your password...',
+                                            hintStyle: GoogleFonts.montserrat(
+                                              color: Color(0x98FFFFFF),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            filled: true,
+                                            fillColor: Colors.white,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20, 16, 20, 16),
+                                          ),
+                                          style: GoogleFonts.montserrat(
+                                            color: Color(0xFF0F1113),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 50,
+                                        width: 230,
+                                        margin: EdgeInsets.only(top: 35),
+                                        child: isLoading
+                                            ? Center(
+                                                child:
+                                                    CircularProgressIndicator(),
+                                              )
+                                            : TextButton(
+                                                onPressed: () {
+                                                  if (emailValidation(
+                                                      emailSignUpController
+                                                          .text)) {
+                                                    register();
+                                                    setState(() {
+                                                      isLoading = true;
+                                                    });
+                                                  } else {
+                                                    const snackBar = SnackBar(
+                                                      content: Text(
+                                                          'format email salah!'),
+                                                      backgroundColor:
+                                                          Colors.red,
+                                                    );
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(snackBar);
+                                                  }
+                                                },
+                                                style: TextButton.styleFrom(
+                                                    backgroundColor: textColor1,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8))),
+                                                child: Text(
+                                                  'Sign Up',
+                                                  style: title2.copyWith(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
                                       ),
                                     ],
                                   ),
@@ -497,20 +475,23 @@ class _SignInSignUpState extends State<SignInSignUp> {
                             ],
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   redirect(String res) {
     // print('res' + res.toString());
     if (isLoading && res == "2") {
-      Navigator.pushNamedAndRemoveUntil(context, '/home-admin', (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/home-admin', (route) => false);
       setState(() {
         isLoading = false;
       });
