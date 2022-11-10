@@ -51,8 +51,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                   children: [
                     Align(
                       alignment: AlignmentDirectional(0.05, -1),
-                      child: Image.network(
-                        'https://wallpaperaccess.com/full/2646423.jpg',
+                      child: Image.asset(
+                        'assets/image/header1.JPG',
                         width: double.infinity,
                         height: 500,
                         fit: BoxFit.cover,
@@ -269,8 +269,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                             topLeft: Radius.circular(12),
                                                             topRight: Radius.circular(12),
                                                           ),
-                                                          child: Image.network(
-                                                            'https://i.pinimg.com/736x/a2/69/73/a2697355664bdba0f2f65316ad92accf.jpg',
+                                                          child: Image.asset(
+                                                            'assets/image/wahana1.JPG',
                                                             width: double.infinity,
                                                             height: 110,
                                                             fit: BoxFit.cover,
@@ -366,8 +366,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                             Radius.circular(
                                                                 12),
                                                           ),
-                                                          child: Image.network(
-                                                            'https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/08/17/1062688587.jpg',
+                                                          child: Image.asset(
+                                                            'assets/image/event1.JPG',
                                                             width:
                                                             double.infinity,
                                                             height: 110,
@@ -502,8 +502,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                             Radius.circular(
                                                                 12),
                                                           ),
-                                                          child: Image.network(
-                                                            'https://www.loveindonesia.com/images/news/3612/web.jpg',
+                                                          child: Image.asset(
+                                                            'assets/image/makanan1.JPG',
                                                             width:
                                                             double.infinity,
                                                             height: 110,
@@ -630,8 +630,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                             Radius.circular(
                                                                 12),
                                                           ),
-                                                          child: Image.network(
-                                                            'https://p4.wallpaperbetter.com/wallpaper/380/315/704/beach-hotel-room-wallpaper-preview.jpg',
+                                                          child: Image.asset(
+                                                            'assets/image/penginapan1.JPG',
                                                             width:
                                                             double.infinity,
                                                             height: 110,
@@ -758,8 +758,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                             Radius.circular(
                                                                 12),
                                                           ),
-                                                          child: Image.network(
-                                                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4DtXiCjDEdaBwhOT_doekZw1Kn1UsOwUQmlpwcYZc6wRU5YrXf4zo8ycC3ORbhetaU9Y&usqp=CAU',
+                                                          child: Image.asset(
+                                                            'assets/image/lainnya1.JPG',
                                                             width:
                                                             double.infinity,
                                                             height: 110,
