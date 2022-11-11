@@ -1,5 +1,6 @@
 import 'package:desa_wisata/data.dart';
 import 'package:desa_wisata/signinsignup.dart';
+import 'package:desa_wisata/signinsignup2.dart';
 import 'package:desa_wisata/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -169,7 +170,8 @@ class _AkunUserState extends State<AkunUser> {
   logOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      prefs.remove("isLogin");
+
+      prefs.remove("isLoggedIn");
       prefs.remove("loginRole");
       prefs.remove("loginId");
       prefs.remove("loginName");
@@ -180,7 +182,7 @@ class _AkunUserState extends State<AkunUser> {
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (BuildContext context) => const SignInSignUp(),
+        builder: (BuildContext context) => const SignInSignUp2(),
       ),
       (route) => false,
     );
