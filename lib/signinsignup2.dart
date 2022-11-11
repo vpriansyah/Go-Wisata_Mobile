@@ -1,9 +1,10 @@
 import 'package:desa_wisata/data.dart';
 import 'package:desa_wisata/theme.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 class SignInSignUp2 extends StatefulWidget {
@@ -26,9 +27,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
   final _formKey = GlobalKey<FormState>();
   // final _formregKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formregKey = GlobalKey<FormState>();
-
   final _passwordVisible = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +44,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: Image.network(
-                'https://images.unsplash.com/photo-1525824236856-8c0a31dfe3be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8d2F0ZXJmYWxsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+                'https://img.freepik.com/free-vector/hand-drawn-abstract-shapes-background_23-2149084635.jpg?w=1380&t=st=1666771548~exp=1666772148~hmac=8a823eb8788a400b53df8f0aa8b26e29e909abe0754bc9538eed3af7ed061487',
               ).image,
             ),
           ),
@@ -53,7 +52,8 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
             width: 100,
             height: 100,
             decoration: BoxDecoration(
-              color: Color(0x990F1113),
+              color: Color(0x000F1113),
+              shape: BoxShape.rectangle,
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 70, 0, 0),
@@ -65,32 +65,28 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Image.asset(
+                              'assets/image/logo.png',
+                              width: 20,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+                        ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(50, 0, 50, 1),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                'assets/images/logo.png',
-                                width: 25,
-                                fit: BoxFit.fill,
-                              ),
-                              Padding(
-                                padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                                child: Text(
-                                  'Go-Wisata',
-                                  style: bodyText1.copyWith(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                    fontSize: 23,
-                                  ),
-                                ),
-                              ),
-                            ],
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                          child: Text(
+                            'Go-Wisata',
+                            style:
+                            bodyText1.copyWith(
+                              fontFamily: 'Poppins',
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],
@@ -104,9 +100,9 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                         children: [
                           TabBar(
                             isScrollable: true,
-                            labelColor: Colors.white,
-                            labelStyle: bodyText1,
-                            indicatorColor: Colors.white,
+                            labelColor: Colors.black,
+                            labelStyle: subtitle1,
+                            indicatorColor: Color(0xFF727272),
                             tabs: [
                               Tab(
                                 text: 'Sign In',
@@ -153,7 +149,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -161,7 +157,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -193,6 +189,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                             style: bodyText2.copyWith(
                                               fontFamily: 'Poppins',
                                               color: Color(0xFF0F1113),
+                                              height: 0.8,
                                             ),
                                           ),
                                         ),
@@ -221,7 +218,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -229,7 +226,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -259,7 +256,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                                   .fromSTEB(20, 24, 20, 24),
                                               suffixIcon: InkWell(
                                                 onTap: () => setState(
-                                                      () => !_passwordVisible
+                                                      () => !_passwordVisible,
                                                 ),
                                                 focusNode: FocusNode(
                                                     skipTraversal: true),
@@ -277,13 +274,14 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                             style: bodyText2.copyWith(
                                               fontFamily: 'Poppins',
                                               color: Color(0xFF0F1113),
+                                              height: 0.8,
                                             ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
                                           EdgeInsetsDirectional.fromSTEB(
-                                              0, 24, 0, 0),
+                                              0, 30, 0, 10),
                                           child: TextButton(
                                             onPressed: () {
                                               if (isLoading) {
@@ -294,51 +292,28 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                                 });
                                               }
                                             },
-                                            style: TextButton.styleFrom(
-                                                backgroundColor: Color(0xFF358FEF),
-                                                elevation: 3,
-                                                side: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1,
-                                                ),
-                                              ),
                                             child: isLoading
                                                 ? Center(
-                                              child: 
+                                              child:
                                               CircularProgressIndicator(),
                                             )
-                                                : Text(
-                                              'Sign In',
-                                              style: bodyText1.copyWith(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: primaryBackground,
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                    FontWeight.normal,
-                                                  ),
+                                                :
+                                            Text('Sign In'),
+                                            style: TextButton.styleFrom(
+                                              backgroundColor: Color(0xFF358FEF),
+                                              textStyle:
+                                              bodyText2.copyWith(
+                                                fontFamily:
+                                                'Lexend Deca',
+                                                color: Colors.white,
+                                              ),
+                                              side: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1,
+                                              ),
+                                              shape: RoundedRectangleBorder(borderRadius:
+                                              BorderRadius.circular(8)),
                                             ),
-                                            // options: FFButtonOptions(
-                                            //   width: 230,
-                                            //   height: 50,
-                                            //   color: Color(0xFF358FEF),
-                                            //   textStyle: FlutterFlowTheme.of(
-                                            //       context)
-                                            //       .subtitle2
-                                            //       .override(
-                                            //     fontFamily: 'Lexend Deca',
-                                            //     color: FlutterFlowTheme.of(
-                                            //         context)
-                                            //         .primaryBtnText,
-                                            //     fontSize: 16,
-                                            //     fontWeight:
-                                            //     FontWeight.normal,
-                                            //   ),
-                                            //   elevation: 3,
-                                            //   borderSide: BorderSide(
-                                            //     color: Colors.transparent,
-                                            //     width: 1,
-                                            //   ),
-                                            // ),
                                           ),
                                         ),
                                         Padding(
@@ -349,20 +324,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
                                             MainAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 12, 0, 0),
-                                                child: Text(
-                                                  'Nikmati liburan bersama kami',
-                                                  style: bodyText2.copyWith(
-                                                    fontFamily: 'Poppins',
-                                                    color:
-                                                    Color(0xC8FFFFFF),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                            children: [],
                                           ),
                                         ),
                                       ],
@@ -385,7 +347,13 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText: 'Username',
-                                              labelStyle: bodyText2,
+                                              labelStyle:
+                                              bodyText2.copyWith(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                Color(0xFF95A1AC),
+                                                fontSize: 14,
+                                              ),
                                               hintStyle: bodyText1.copyWith(
                                                 fontFamily: 'Lexend Deca',
                                                 color: Color(0xFF95A1AC),
@@ -395,7 +363,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -403,7 +371,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -434,9 +402,10 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                             ),
                                             style: bodyText1.copyWith(
                                               fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF14181B),
+                                              color: Color(0xFFBCBCBC),
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
+                                              height: 0.8,
                                             ),
                                           ),
                                         ),
@@ -449,7 +418,13 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText: 'Nomor HP',
-                                              labelStyle: bodyText2,
+                                              labelStyle:
+                                              bodyText2.copyWith(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                Color(0xFF95A1AC),
+                                                fontSize: 14,
+                                              ),
                                               hintStyle: bodyText1.copyWith(
                                                 fontFamily: 'Lexend Deca',
                                                 color: Color(0xFF95A1AC),
@@ -459,7 +434,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -467,7 +442,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -501,8 +476,8 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               color: Color(0xFF14181B),
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
+                                              height: 0.8,
                                             ),
-                                              keyboardType:TextInputType.phone,
                                           ),
                                         ),
                                         Padding(
@@ -510,13 +485,18 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                           EdgeInsetsDirectional.fromSTEB(
                                               0, 12, 0, 0),
                                           child: TextFormField(
-                                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                                            validator: (value) => validateEmail(value),
-                                            controller:emailSignUpController,
+                                            controller:
+                                            emailSignUpController,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText: 'Email',
-                                              labelStyle: bodyText2,
+                                              labelStyle:
+                                              bodyText2.copyWith(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                Color(0xFF95A1AC),
+                                                fontSize: 14,
+                                              ),
                                               hintStyle: bodyText1.copyWith(
                                                 fontFamily: 'Lexend Deca',
                                                 color: Color(0xFF95A1AC),
@@ -526,7 +506,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -534,7 +514,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -568,6 +548,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               color: Color(0xFF14181B),
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
+                                              height: 0.8,
                                             ),
                                           ),
                                         ),
@@ -581,7 +562,13 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                             obscureText: true,
                                             decoration: InputDecoration(
                                               labelText: 'Password',
-                                              labelStyle: bodyText2,
+                                              labelStyle:
+                                              bodyText2.copyWith(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                Color(0xFF95A1AC),
+                                                fontSize: 14,
+                                              ),
                                               hintStyle: bodyText1.copyWith(
                                                 fontFamily: 'Lexend Deca',
                                                 color: Color(0xFF95A1AC),
@@ -591,7 +578,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -599,7 +586,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0x00000000),
+                                                  color: Color(0xFFBCBCBC),
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -649,115 +636,48 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               color: Color(0xFF14181B),
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
+                                              height: 0.8,
                                             ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
                                           EdgeInsetsDirectional.fromSTEB(
-                                              0, 24, 0, 0),
-                                          child: isLoading
-                                          ? Center(
-                                            child: CircularProgressIndicator(),
-                                          )
-                                              : TextButton(
-                                              onPressed: () {
-                                                if (emailValidation(emailSignUpController.text)) {
-                                                  register();
-                                                  setState(() {
-                                                    isLoading =
-                                                    true;
-                                                  });
-                                                }
-                                                else{
-                                                  const snackBar = SnackBar(
-                                                    content: Text('format email salah!'),
-                                                    backgroundColor: Colors.red,
-                                                  );
-                                                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                                }
-                                              },
-                                              style: TextButton.styleFrom(
-                                                    backgroundColor: Color(0xFF358FEF),
-                                                    textStyle: bodyText2.copyWith(
-                                                      fontFamily: 'Lexend Deca',
-                                                      color: primaryBackground,
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                      FontWeight.normal,
-                                                    ),
-                                                    elevation: 3,
-                                                    side: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1,
-                                                    ),
+                                              0, 30, 0, 0),
+                                          child: TextButton(
+                                            onPressed: () {
+                                              if (emailValidation(emailSignUpController.text)) {
+                                                register();
+                                                setState(() {
+                                                  isLoading =
+                                                  true;
+                                                });
+                                              }
+                                              else{
+                                                const snackBar = SnackBar(
+                                                  content: Text('format email salah!'),
+                                                  backgroundColor: Colors.red,
+                                                );
+                                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                              }
+                                            },
+                                            child: Text('Create Account'),
+                                            style: TextButton.styleFrom(
+                                              backgroundColor: Color(0xFF358FEF),
+                                              textStyle:
+                                              bodyText2.copyWith(
+                                                fontFamily:
+                                                'Lexend Deca',
+                                                color: Colors.white,
                                               ),
-                                              child: Text('Create Account',
-                                                style: bodyText2.copyWith(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: primaryBackground,
-                                                  fontSize: 16,
-                                                  fontWeight:
-                                                  FontWeight.normal,
-                                                ),
-                                              )
-                                          )
-
-                                          ,
-                                          // child: FFButtonWidget(
-                                          //   onPressed: () {
-                                          //     GoRouter.of(context)
-                                          //         .prepareAuthEvent();
-                                          //     if (passwordController?.text !=
-                                          //         passwordConfirmController1
-                                          //             ?.text) {
-                                          //       ScaffoldMessenger.of(context)
-                                          //           .showSnackBar(
-                                          //         SnackBar(
-                                          //           content: Text(
-                                          //             'Passwords don\'t match!',
-                                          //           ),
-                                          //         ),
-                                          //       );
-                                          //       return;
-                                          //     }
-                                          //
-                                          //     final user =
-                                          //     await createAccountWithEmail(
-                                          //       context,
-                                          //       emailAddressController!.text,
-                                          //       passwordController!.text,
-                                          //     );
-                                          //     if (user == null) {
-                                          //       return;
-                                          //     }
-                                          //
-                                          //     context.goNamedAuth('', mounted);
-                                          //   },
-                                          //   text: 'Create Account',
-                                          //   options: FFButtonOptions(
-                                          //     width: 230,
-                                          //     height: 50,
-                                          //     color: Color(0xFF358FEF),
-                                          //     textStyle: FlutterFlowTheme.of(
-                                          //         context)
-                                          //         .subtitle2
-                                          //         .override(
-                                          //       fontFamily: 'Lexend Deca',
-                                          //       color: FlutterFlowTheme.of(
-                                          //           context)
-                                          //           .primaryBtnText,
-                                          //       fontSize: 16,
-                                          //       fontWeight:
-                                          //       FontWeight.normal,
-                                          //     ),
-                                          //     elevation: 3,
-                                          //     borderSide: BorderSide(
-                                          //       color: Colors.transparent,
-                                          //       width: 1,
-                                          //     ),
-                                          //   ),
-                                          // ),
+                                              side: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1,
+                                              ),
+                                              shape: RoundedRectangleBorder(borderRadius:
+                                              BorderRadius.circular(8)),
+                                            ),
+                                          ),
                                         ),
                                         Padding(
                                           padding:
@@ -805,10 +725,12 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
       ),
     );
   }
+
   redirect(String res) {
     // print('res' + res.toString());
     if (isLoading && res == "2") {
-      Navigator.pushNamedAndRemoveUntil(context, '/home-admin', (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/home-admin', (route) => false);
       setState(() {
         isLoading = false;
       });
