@@ -42,6 +42,12 @@ TextStyle subtitle1 = GoogleFonts.montserrat(
   fontWeight: FontWeight.w600
 );
 
+TextStyle subtitle2 = GoogleFonts.montserrat(
+    color: secondaryText2   ,
+    fontSize: 18,
+    fontWeight: FontWeight.w600
+);
+
 TextStyle bodyText2 = GoogleFonts.montserrat(
   color: secondaryText1,
   fontSize: 14,

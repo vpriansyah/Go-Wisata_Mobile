@@ -1,6 +1,8 @@
 import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/akun_user.dart';
+import 'package:desa_wisata/user/akun_user_2.dart';
 import 'package:desa_wisata/user/daftar_pesanan_user.dart';
+import 'package:desa_wisata/user/daftar_pesanan_user_2.dart';
 import 'package:desa_wisata/user/homepage_user.dart';
 import 'package:desa_wisata/user/home_user.dart';
 import 'package:flutter/material.dart';
@@ -63,10 +65,10 @@ class _MainPageUserState extends State<MainPageUser> {
           return home_user();
           break;
         case 1:
-          return DaftarPesananUser();
+          return DaftarPesananUser2();
           break;
         case 2:
-          return AkunUser();
+          return AkunUser2();
           break;
 
         default:

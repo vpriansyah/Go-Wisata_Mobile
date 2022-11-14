@@ -4,6 +4,7 @@ import 'package:desa_wisata/signinsignup.dart';
 import 'package:desa_wisata/splash_page.dart';
 import 'package:desa_wisata/user/checkout.dart';
 import 'package:desa_wisata/user/daftar_pesanan_user.dart';
+import 'package:desa_wisata/user/daftar_pesanan_user_2.dart';
 import 'package:desa_wisata/user/main_page_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         '/tambah-tiket': ((context) => TambahTiket()),
         '/home-user': ((context) => MainPageUser()),
         '/checkout': ((context) => CheckOut()),
-        '/DaftarPesananUser': ((context) => DaftarPesananUser()),
+        '/DaftarPesananUser': ((context) => DaftarPesananUser2()),
 
       },
     );
