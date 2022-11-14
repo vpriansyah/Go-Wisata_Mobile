@@ -282,37 +282,47 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                           padding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0, 30, 0, 10),
-                                          child: TextButton(
-                                            onPressed: () {
-                                              if (isLoading) {
-                                              } else {
-                                                login();
-                                                setState(() {
-                                                  isLoading = true;
-                                                });
-                                              }
-                                            },
-                                            child: isLoading
-                                                ? Center(
-                                              child:
-                                              CircularProgressIndicator(),
-                                            )
-                                                :
-                                            Text('Sign In'),
-                                            style: TextButton.styleFrom(
-                                              backgroundColor: Color(0xFF358FEF),
-                                              textStyle:
-                                              bodyText2.copyWith(
-                                                fontFamily:
-                                                'Lexend Deca',
-                                                color: Colors.white,
+                                          child: SizedBox(
+                                            height:50, //height of button
+                                            width:double.infinity,
+                                            child: TextButton(
+                                              onPressed: () {
+                                                if (isLoading) {
+                                                } else {
+                                                  login();
+                                                  setState(() {
+                                                    isLoading = true;
+                                                  });
+                                                }
+                                              },
+                                              child: isLoading
+                                                  ? Center(
+                                                child:
+                                                CircularProgressIndicator(color: Colors.white,),
+                                              )
+                                                  :
+                                              Text('Sign In', style:
+                                                bodyText2.copyWith(
+                                                  fontFamily:
+                                                  'Lexend Deca',
+                                                  color: Colors.white,
+                                                ),
                                               ),
-                                              side: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1,
+                                              style: TextButton.styleFrom(
+                                                backgroundColor: Color(0xFF358FEF),
+                                                textStyle:
+                                                bodyText2.copyWith(
+                                                  fontFamily:
+                                                  'Lexend Deca',
+                                                  color: Colors.white,
+                                                ),
+                                                side: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1,
+                                                ),
+                                                shape: RoundedRectangleBorder(borderRadius:
+                                                BorderRadius.circular(8)),
                                               ),
-                                              shape: RoundedRectangleBorder(borderRadius:
-                                              BorderRadius.circular(8)),
                                             ),
                                           ),
                                         ),
@@ -644,38 +654,48 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                           padding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0, 30, 0, 0),
-                                          child: TextButton(
-                                            onPressed: () {
-                                              if (emailValidation(emailSignUpController.text)) {
-                                                register();
-                                                setState(() {
-                                                  isLoading =
-                                                  true;
-                                                });
-                                              }
-                                              else{
-                                                const snackBar = SnackBar(
-                                                  content: Text('format email salah!'),
-                                                  backgroundColor: Colors.red,
-                                                );
-                                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                              }
-                                            },
-                                            child: Text('Create Account'),
-                                            style: TextButton.styleFrom(
-                                              backgroundColor: Color(0xFF358FEF),
-                                              textStyle:
-                                              bodyText2.copyWith(
-                                                fontFamily:
-                                                'Lexend Deca',
-                                                color: Colors.white,
-                                              ),
-                                              side: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1,
-                                              ),
-                                              shape: RoundedRectangleBorder(borderRadius:
-                                              BorderRadius.circular(8)),
+                                          child: SizedBox(
+                                            height: 50,
+                                            width: double.infinity,
+                                            child: TextButton(
+                                              onPressed: () {
+                                                if (emailValidation(emailSignUpController.text)) {
+                                                  register();
+                                                  setState(() {
+                                                    isLoading =
+                                                    true;
+                                                  });
+                                                }
+                                                else{
+                                                  const snackBar = SnackBar(
+                                                    content: Text('format email salah!'),
+                                                    backgroundColor: Colors.red,
+                                                  );
+                                                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                                }
+                                              },
+                                              child:
+                                                isLoading
+                                                  ? Center(
+                                                  child:
+                                                  CircularProgressIndicator(color: Colors.white,),
+                                                  ) :
+                                                  Text('Create Account',
+                                                      style:
+                                                    bodyText2.copyWith(
+                                                    fontFamily:
+                                                    'Lexend Deca',
+                                                    color: Colors.white,
+                                                  ),),
+                                                  style: TextButton.styleFrom(
+                                                    backgroundColor: Color(0xFF358FEF),
+                                                    side: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1,
+                                                    ),
+                                                    shape: RoundedRectangleBorder(borderRadius:
+                                                    BorderRadius.circular(8)),
+                                                  ),
                                             ),
                                           ),
                                         ),

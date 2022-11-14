@@ -222,7 +222,7 @@ class _SignInSignUpState extends State<SignInSignUp> {
                                               )
                                             : Text(
                                                 'Sign In',
-                                                style: title2.copyWith(
+                                                style: title1.copyWith(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.bold,
                                                 ),
