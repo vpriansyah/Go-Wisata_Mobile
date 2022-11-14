@@ -246,7 +246,7 @@ class _AkunUser2State extends State<AkunUser2> {
                             'Edit Profile',
                             style: bodyText2.copyWith(
                               fontFamily: 'Outfit',
-                              color: secondaryText1,
+                              color: Colors.black,
                               fontSize: 14,
                               fontWeight: FontWeight.normal,
                             ),
