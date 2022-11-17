@@ -4,6 +4,7 @@ import 'package:desa_wisata/user/daftar_kuliner_user.dart';
 import 'package:desa_wisata/user/daftar_lainnya_user%20.dart';
 import 'package:desa_wisata/user/daftar_penginapan_user%20.dart';
 import 'package:desa_wisata/user/wisata_user.dart';
+import 'package:desa_wisata/user/wisata_user_2.dart';
 import 'package:flutter/scheduler.dart';
 import 'dart:ui';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -254,7 +255,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => WisataUser(),
+                                                            builder: (context) => WisataUser2(),
                                                           ),
                                                         );
                                                       },
