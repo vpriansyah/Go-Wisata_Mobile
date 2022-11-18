@@ -4,6 +4,7 @@ import 'package:desa_wisata/user/daftar_kuliner_user.dart';
 import 'package:desa_wisata/user/daftar_lainnya_user%20.dart';
 import 'package:desa_wisata/user/daftar_penginapan_user%20.dart';
 import 'package:desa_wisata/user/wisata_user.dart';
+import 'package:desa_wisata/user/wisata_user_2.dart';
 import 'package:flutter/scheduler.dart';
 import 'dart:ui';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -255,6 +256,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(16, 8, 0, 8),
                                                   child: Container(
+<<<<<<< HEAD
                                                       width: 270,
                                                       height: 100,
                                                       decoration: BoxDecoration(
@@ -330,6 +332,60 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment
                                                                         .spaceBetween,
+=======
+                                                    width: 270,
+                                                    height: 100,
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          blurRadius: 8,
+                                                          color:
+                                                          Color(0x230F1113),
+                                                          offset: Offset(0, 4),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          12),
+                                                    ),
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        await Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) => WisataUser2(),
+                                                          ),
+                                                        );
+                                                      },
+                                                    child: // Generated code for this Column Widget...
+                                                    Column(
+                                                      mainAxisSize: MainAxisSize.max,
+                                                      children: [
+                                                        ClipRRect(
+                                                          borderRadius: BorderRadius.only(
+                                                            bottomLeft: Radius.circular(0),
+                                                            bottomRight: Radius.circular(0),
+                                                            topLeft: Radius.circular(12),
+                                                            topRight: Radius.circular(12),
+                                                          ),
+                                                          child: Image.asset(
+                                                            'assets/image/wahana1.JPG',
+                                                            width: double.infinity,
+                                                            height: 110,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12),
+                                                          child: Row(
+                                                            mainAxisSize: MainAxisSize.max,
+                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                            children: [
+                                                              Column(
+                                                                mainAxisSize: MainAxisSize.max,
+                                                                crossAxisAlignment: CrossAxisAlignment.start,
+>>>>>>> 47d2355f7bcce86bbc81c00ba55bc9c5ae22e40a
                                                                 children: [
                                                                   Column(
                                                                     mainAxisSize:
