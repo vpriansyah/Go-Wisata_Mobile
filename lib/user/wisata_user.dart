@@ -27,7 +27,7 @@ class _WisataUserState extends State<WisataUser> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFFFCC050),
+        backgroundColor: Color(0x10121358),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(

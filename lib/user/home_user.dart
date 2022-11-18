@@ -9,6 +9,12 @@ import 'dart:ui';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
+import 'package:desa_wisata/models/post.dart';
+import 'package:desa_wisata/user/desacart.dart';
+
 class home_user extends StatefulWidget {
   const home_user({Key? key}) : super(key: key);
 
@@ -19,11 +25,27 @@ class home_user extends StatefulWidget {
 class _home_userState extends State<home_user> with TickerProviderStateMixin {
   TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  Future<List<Posts>> fetchPosts() async {
+    final response =
+        await http.get(Uri.parse('http://go-wisata.id/api/desa'));
+
+    print(response.statusCode);
+    print(response.body);
+
+    if (response.statusCode == 200) {
+      var getPostsData = json.decode(response.body) as List;
+      var listPosts = getPostsData.map((i) => Posts.fromJson(i)).toList();
+      return listPosts;
+    } else {
+      throw Exception('Failed to load Posts');
+    }
+  }
+
+  late Future<List<Posts>> futurePosts;
 
   @override
   void initState() {
-    super.initState();
-    textController = TextEditingController();
+    futurePosts = fetchPosts();
   }
 
   @override
@@ -87,7 +109,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                             ),
                             Padding(
                               padding:
-                              EdgeInsetsDirectional.fromSTEB(16, 15, 16, 0),
+                                  EdgeInsetsDirectional.fromSTEB(16, 15, 16, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -109,7 +131,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -117,7 +139,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         errorBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -125,7 +147,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -133,7 +155,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         filled: true,
                                         fillColor: Colors.white,
@@ -156,7 +178,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                             ),
                             Padding(
                               padding:
-                              EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
+                                  EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
                               child: Container(
                                 width: double.infinity,
                                 height: 700,
@@ -176,7 +198,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Divider(
                                           height: 8,
@@ -187,8 +209,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              16, 16, 16, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16, 16, 16, 0),
                                           child: Text(
                                             'Pilihan menu Go-Wisata',
                                             style: title2.copyWith(
@@ -201,8 +223,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              16, 4, 16, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16, 4, 16, 0),
                                           child: Text(
                                             'Beragam menu pilihan yang tersedia',
                                             style: bodyText2.copyWith(
@@ -215,8 +237,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0, 12, 0, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 12, 0, 0),
                                           child: Container(
                                             width: double.infinity,
                                             height: 225,
@@ -233,89 +255,134 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(16, 8, 0, 8),
                                                   child: Container(
-                                                    width: 270,
-                                                    height: 100,
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      boxShadow: [
-                                                        BoxShadow(
-                                                          blurRadius: 8,
-                                                          color:
-                                                          Color(0x230F1113),
-                                                          offset: Offset(0, 4),
-                                                        )
-                                                      ],
-                                                      borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
-                                                    ),
-                                                    child: InkWell(
-                                                      onTap: () async {
-                                                        await Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) => WisataUser(),
-                                                          ),
-                                                        );
-                                                      },
-                                                    child: // Generated code for this Column Widget...
-                                                    Column(
-                                                      mainAxisSize: MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius: BorderRadius.only(
-                                                            bottomLeft: Radius.circular(0),
-                                                            bottomRight: Radius.circular(0),
-                                                            topLeft: Radius.circular(12),
-                                                            topRight: Radius.circular(12),
-                                                          ),
-                                                          child: Image.asset(
-                                                            'assets/image/wahana1.JPG',
-                                                            width: double.infinity,
-                                                            height: 110,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12),
-                                                          child: Row(
-                                                            mainAxisSize: MainAxisSize.max,
-                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize: MainAxisSize.max,
-                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                      width: 270,
+                                                      height: 100,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            blurRadius: 8,
+                                                            color: Color(
+                                                                0x230F1113),
+                                                            offset:
+                                                                Offset(0, 4),
+                                                          )
+                                                        ],
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
+                                                      ),
+                                                      child: InkWell(
+                                                        onTap: () async {
+                                                          await Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  WisataUser(),
+                                                            ),
+                                                          );
+                                                        },
+                                                        child: // Generated code for this Column Widget...
+                                                            Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0),
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        12),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        12),
+                                                              ),
+                                                              child:
+                                                                  Image.asset(
+                                                                'assets/image/wahana1.JPG',
+                                                                width: double
+                                                                    .infinity,
+                                                                height: 110,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16,
+                                                                          12,
+                                                                          16,
+                                                                          12),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
                                                                 children: [
-                                                                  Text(
-                                                                    'Paket Wahana',
-                                                                    style: bodyText1.copyWith(
-                                                                      fontFamily: 'Outfit',
-                                                                      color: Color(0xFF1D2429),
-                                                                      fontSize: 18,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 0),
-                                                                    child: Text(
-                                                                      'Temukan paket wahana menarik disini',
-                                                                      style: bodyText2.copyWith(
-                                                                        fontFamily: 'Outfit',
-                                                                        color: Color(0xFF57636C),
-                                                                        fontSize: 12,
-                                                                        fontWeight: FontWeight.normal,
+                                                                  Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Text(
+                                                                        'Paket Wahana',
+                                                                        style: bodyText1
+                                                                            .copyWith(
+                                                                          fontFamily:
+                                                                              'Outfit',
+                                                                          color:
+                                                                              Color(0xFF1D2429),
+                                                                          fontSize:
+                                                                              18,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
                                                                       ),
-                                                                    ),
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0,
+                                                                            3,
+                                                                            0,
+                                                                            0),
+                                                                        child:
+                                                                            Text(
+                                                                          'Temukan paket wahana menarik disini',
+                                                                          style:
+                                                                              bodyText2.copyWith(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            color:
+                                                                                Color(0xFF57636C),
+                                                                            fontSize:
+                                                                                12,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ],
-                                                          ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
-                                                    ),
-                                                    )
-                                                  ),
+                                                      )),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
@@ -329,127 +396,121 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => WisataUser(),
+                                                            builder: (context) =>
+                                                                WisataUser(),
                                                           ),
                                                         );
                                                       },
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                          BorderRadius.only(
-                                                            bottomLeft:
-                                                            Radius.circular(
-                                                                0),
-                                                            bottomRight:
-                                                            Radius.circular(
-                                                                0),
-                                                            topLeft:
-                                                            Radius.circular(
-                                                                12),
-                                                            topRight:
-                                                            Radius.circular(
-                                                                12),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(12),
+                                                              topRight: Radius
+                                                                  .circular(12),
+                                                            ),
+                                                            child: Image.asset(
+                                                              'assets/image/event1.JPG',
+                                                              width: double
+                                                                  .infinity,
+                                                              height: 110,
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
-                                                          child: Image.asset(
-                                                            'assets/image/event1.JPG',
-                                                            width:
-                                                            double.infinity,
-                                                            height: 110,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                              16,
-                                                              12,
-                                                              16,
-                                                              12),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                            MainAxisSize
-                                                                .max,
-                                                            mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                                crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                                children: [
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                    crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                    children: [
-                                                                      Column(
-                                                                        mainAxisSize:
-                                                                        MainAxisSize.max,
-                                                                        crossAxisAlignment:
-                                                                        CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          Text(
-                                                                            'Event',
-                                                                            style:bodyText1.copyWith(
-                                                                              fontFamily: 'Outfit',
-                                                                              color: Color(0xFF1D2429),
-                                                                              fontSize: 18,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0,
-                                                                                3,
-                                                                                0,
-                                                                                0),
-                                                                            child:
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
+                                                                          children: [
                                                                             Text(
-                                                                              'Temukan event menarik disini',
-                                                                              style: bodyText2.copyWith(
+                                                                              'Event',
+                                                                              style: bodyText1.copyWith(
                                                                                 fontFamily: 'Outfit',
-                                                                                color: Color(0xFF57636C),
-                                                                                fontSize: 12,
-                                                                                fontWeight: FontWeight.normal,
+                                                                                color: Color(0xFF1D2429),
+                                                                                fontSize: 18,
+                                                                                fontWeight: FontWeight.bold,
                                                                               ),
                                                                             ),
-                                                                          ),
-
-                                                                        ],
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 0),
+                                                                              child: Text(
+                                                                                'Temukan event menarik disini',
+                                                                                style: bodyText2.copyWith(
+                                                                                  fontFamily: 'Outfit',
+                                                                                  color: Color(0xFF57636C),
+                                                                                  fontSize: 12,
+                                                                                  fontWeight: FontWeight.normal,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -465,119 +526,124 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => DaftarKulinerUser(),
+                                                            builder: (context) =>
+                                                                DaftarKulinerUser(),
                                                           ),
                                                         );
                                                       },
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                          BorderRadius.only(
-                                                            bottomLeft:
-                                                            Radius.circular(
-                                                                0),
-                                                            bottomRight:
-                                                            Radius.circular(
-                                                                0),
-                                                            topLeft:
-                                                            Radius.circular(
-                                                                12),
-                                                            topRight:
-                                                            Radius.circular(
-                                                                12),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(12),
+                                                              topRight: Radius
+                                                                  .circular(12),
+                                                            ),
+                                                            child: Image.asset(
+                                                              'assets/image/makanan1.JPG',
+                                                              width: double
+                                                                  .infinity,
+                                                              height: 110,
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
-                                                          child: Image.asset(
-                                                            'assets/image/makanan1.JPG',
-                                                            width:
-                                                            double.infinity,
-                                                            height: 110,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                              16,
-                                                              12,
-                                                              16,
-                                                              12),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                            MainAxisSize
-                                                                .max,
-                                                            mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                                crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                                children: [
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                    crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                    children: [
-                                                                      Text(
-                                                                        'Kuliner',
-                                                                        style: bodyText1.copyWith(
-                                                                          fontFamily: 'Outfit',
-                                                                          color: Color(0xFF1D2429),
-                                                                          fontSize: 18,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            3,
-                                                                            0,
-                                                                            0),
-                                                                        child:
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
                                                                         Text(
-                                                                          'Temukan paket kuliner menarik disini',
-                                                                          style: bodyText2.copyWith(
-                                                                            fontFamily: 'Outfit',
-                                                                            color: Color(0xFF57636C),
-                                                                            fontSize: 12,
-                                                                            fontWeight: FontWeight.normal,
+                                                                          'Kuliner',
+                                                                          style:
+                                                                              bodyText1.copyWith(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            color:
+                                                                                Color(0xFF1D2429),
+                                                                            fontSize:
+                                                                                18,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           ),
                                                                         ),
-                                                                      ),
-
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              3,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Temukan paket kuliner menarik disini',
+                                                                            style:
+                                                                                bodyText2.copyWith(
+                                                                              fontFamily: 'Outfit',
+                                                                              color: Color(0xFF57636C),
+                                                                              fontSize: 12,
+                                                                              fontWeight: FontWeight.normal,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -593,119 +659,124 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => DaftarPenginapanUser(),
+                                                            builder: (context) =>
+                                                                DaftarPenginapanUser(),
                                                           ),
                                                         );
                                                       },
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                          BorderRadius.only(
-                                                            bottomLeft:
-                                                            Radius.circular(
-                                                                0),
-                                                            bottomRight:
-                                                            Radius.circular(
-                                                                0),
-                                                            topLeft:
-                                                            Radius.circular(
-                                                                12),
-                                                            topRight:
-                                                            Radius.circular(
-                                                                12),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(12),
+                                                              topRight: Radius
+                                                                  .circular(12),
+                                                            ),
+                                                            child: Image.asset(
+                                                              'assets/image/penginapan1.JPG',
+                                                              width: double
+                                                                  .infinity,
+                                                              height: 110,
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
-                                                          child: Image.asset(
-                                                            'assets/image/penginapan1.JPG',
-                                                            width:
-                                                            double.infinity,
-                                                            height: 110,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                              16,
-                                                              12,
-                                                              16,
-                                                              12),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                            MainAxisSize
-                                                                .max,
-                                                            mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                                crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                                children: [
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                    crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                    children: [
-                                                                      Text(
-                                                                        'Penginapan',
-                                                                        style: bodyText1.copyWith(
-                                                                          fontFamily: 'Outfit',
-                                                                          color: Color(0xFF1D2429),
-                                                                          fontSize: 18,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            3,
-                                                                            0,
-                                                                            0),
-                                                                        child:
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
                                                                         Text(
-                                                                          'Temukan penginapan ternyaman',
-                                                                          style: bodyText2.copyWith(
-                                                                            fontFamily: 'Outfit',
-                                                                            color: Color(0xFF57636C),
-                                                                            fontSize: 12,
-                                                                            fontWeight: FontWeight.normal,
+                                                                          'Penginapan',
+                                                                          style:
+                                                                              bodyText1.copyWith(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            color:
+                                                                                Color(0xFF1D2429),
+                                                                            fontSize:
+                                                                                18,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           ),
                                                                         ),
-                                                                      ),
-
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              3,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Temukan penginapan ternyaman',
+                                                                            style:
+                                                                                bodyText2.copyWith(
+                                                                              fontFamily: 'Outfit',
+                                                                              color: Color(0xFF57636C),
+                                                                              fontSize: 12,
+                                                                              fontWeight: FontWeight.normal,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -721,119 +792,124 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => WisataUser(),
+                                                            builder: (context) =>
+                                                                WisataUser(),
                                                           ),
                                                         );
                                                       },
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                          BorderRadius.only(
-                                                            bottomLeft:
-                                                            Radius.circular(
-                                                                0),
-                                                            bottomRight:
-                                                            Radius.circular(
-                                                                0),
-                                                            topLeft:
-                                                            Radius.circular(
-                                                                12),
-                                                            topRight:
-                                                            Radius.circular(
-                                                                12),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(12),
+                                                              topRight: Radius
+                                                                  .circular(12),
+                                                            ),
+                                                            child: Image.asset(
+                                                              'assets/image/lainnya1.JPG',
+                                                              width: double
+                                                                  .infinity,
+                                                              height: 110,
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
-                                                          child: Image.asset(
-                                                            'assets/image/lainnya1.JPG',
-                                                            width:
-                                                            double.infinity,
-                                                            height: 110,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                              16,
-                                                              12,
-                                                              16,
-                                                              12),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                            MainAxisSize
-                                                                .max,
-                                                            mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                                crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                                children: [
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                    crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                    children: [
-                                                                      Text(
-                                                                        'Lainnya',
-                                                                        style: bodyText1.copyWith(
-                                                                          fontFamily: 'Outfit',
-                                                                          color: Color(0xFF1D2429),
-                                                                          fontSize: 18,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            3,
-                                                                            0,
-                                                                            0),
-                                                                        child:
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
                                                                         Text(
-                                                                          'Lain - lain',
-                                                                          style: bodyText2.copyWith(
-                                                                            fontFamily: 'Outfit',
-                                                                            color: Color(0xFF57636C),
-                                                                            fontSize: 12,
-                                                                            fontWeight: FontWeight.normal,
+                                                                          'Lainnya',
+                                                                          style:
+                                                                              bodyText1.copyWith(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            color:
+                                                                                Color(0xFF1D2429),
+                                                                            fontSize:
+                                                                                18,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           ),
                                                                         ),
-                                                                      ),
-
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              3,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Lain - lain',
+                                                                            style:
+                                                                                bodyText2.copyWith(
+                                                                              fontFamily: 'Outfit',
+                                                                              color: Color(0xFF57636C),
+                                                                              fontSize: 12,
+                                                                              fontWeight: FontWeight.normal,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -843,8 +919,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              20, 16, 16, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20, 16, 16, 0),
                                           child: Text(
                                             'Paket Wisata Desa',
                                             style: title2.copyWith(
@@ -857,8 +933,8 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0, 15, 0, 2),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 15, 0, 2),
                                           child: ListView(
                                             padding: EdgeInsets.zero,
                                             primary: false,
@@ -876,42 +952,42 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                       BoxShadow(
                                                         blurRadius: 8,
                                                         color:
-                                                        Color(0x230F1113),
+                                                            Color(0x230F1113),
                                                         offset: Offset(0, 4),
                                                       )
                                                     ],
                                                     borderRadius:
-                                                    BorderRadius.circular(
-                                                        12),
+                                                        BorderRadius.circular(
+                                                            12),
                                                   ),
                                                   child: Column(
                                                     mainAxisSize:
-                                                    MainAxisSize.max,
+                                                        MainAxisSize.max,
                                                     children: [
                                                       Hero(
                                                         tag: 'italyImage',
                                                         transitionOnUserGestures:
-                                                        true,
+                                                            true,
                                                         child: ClipRRect(
                                                           borderRadius:
-                                                          BorderRadius.only(
+                                                              BorderRadius.only(
                                                             bottomLeft:
-                                                            Radius.circular(
-                                                                0),
+                                                                Radius.circular(
+                                                                    0),
                                                             bottomRight:
-                                                            Radius.circular(
-                                                                0),
+                                                                Radius.circular(
+                                                                    0),
                                                             topLeft:
-                                                            Radius.circular(
-                                                                12),
+                                                                Radius.circular(
+                                                                    12),
                                                             topRight:
-                                                            Radius.circular(
-                                                                12),
+                                                                Radius.circular(
+                                                                    12),
                                                           ),
                                                           child: Image.network(
                                                             'https://static.republika.co.id/uploads/member/images/news/16vux0xd71.jpg',
                                                             width:
-                                                            double.infinity,
+                                                                double.infinity,
                                                             height: 200,
                                                             fit: BoxFit.cover,
                                                           ),
@@ -919,56 +995,63 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(16,
-                                                            12, 16, 12),
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(16,
+                                                                    12, 16, 12),
                                                         child: Row(
                                                           mainAxisSize:
-                                                          MainAxisSize.max,
+                                                              MainAxisSize.max,
                                                           mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
                                                           children: [
                                                             Column(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
+                                                                  CrossAxisAlignment
+                                                                      .start,
                                                               children: [
                                                                 Text(
                                                                   'Desa Wisata Kare',
-                                                                  style: bodyText1.copyWith(
+                                                                  style: bodyText1
+                                                                      .copyWith(
                                                                     fontFamily:
-                                                                    'Outfit',
+                                                                        'Outfit',
                                                                     color: Color(
                                                                         0xFF1D2429),
                                                                     fontSize:
-                                                                    18,
+                                                                        18,
                                                                     fontWeight:
-                                                                    FontWeight.bold,
+                                                                        FontWeight
+                                                                            .bold,
                                                                   ),
                                                                 ),
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                      0,
-                                                                      8,
-                                                                      0,
-                                                                      0),
+                                                                          0,
+                                                                          8,
+                                                                          0,
+                                                                          0),
                                                                   child: Row(
                                                                     mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
+                                                                        MainAxisSize
+                                                                            .max,
                                                                     children: [
                                                                       Text(
                                                                         'Paket Wisata Desa Kare',
-                                                                        style: bodyText2.copyWith(
-                                                                          fontFamily: 'Outfit',
-                                                                          color: Color(0xFF57636C),
-                                                                          fontSize: 14,
-                                                                          fontWeight: FontWeight.normal,
+                                                                        style: bodyText2
+                                                                            .copyWith(
+                                                                          fontFamily:
+                                                                              'Outfit',
+                                                                          color:
+                                                                              Color(0xFF57636C),
+                                                                          fontSize:
+                                                                              14,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
                                                                         ),
                                                                       ),
                                                                     ],
@@ -980,370 +1063,80 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                               width: 70,
                                                               height: 32,
                                                               decoration:
-                                                              BoxDecoration(
+                                                                  BoxDecoration(
                                                                 color: Color(
                                                                     0xFF1D2429),
                                                                 borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                    12),
-                                                              ),
-                                                              alignment:
-                                                              AlignmentDirectional(
-                                                                  0, 0),
-                                                              child:
-                                                              TextButton(
-                                                                onPressed: () {
-                                                                  print(
-                                                                      'Button pressed ...');
-                                                                },
-                                                                child: Text('Pilih',
-                                                                    style: bodyText2.copyWith(
-                                                                  fontFamily:
-                                                                  'Poppins',
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                  9,
-                                                                ),),
-                                                                style:
-                                                                TextButton.styleFrom(
-                                                                  backgroundColor: Color(
-                                                                      0x10121358),
-                                                                  side:
-                                                                  BorderSide(
-                                                                    color: Colors
-                                                                        .transparent,
-                                                                    width: 1,
-                                                                  ),
-                                                                  shape: RoundedRectangleBorder(
-                                                                    borderRadius:
                                                                     BorderRadius
-                                                                      .circular(
-                                                                      8),)
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(16, 8, 16, 8),
-                                                child: Container(
-                                                  width: 270,
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 8,
-                                                        color:
-                                                        Color(0x230F1113),
-                                                        offset: Offset(0, 4),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                        12),
-                                                  ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                    MainAxisSize.max,
-                                                    children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.only(
-                                                          bottomLeft:
-                                                          Radius.circular(
-                                                              0),
-                                                          bottomRight:
-                                                          Radius.circular(
-                                                              0),
-                                                          topLeft:
-                                                          Radius.circular(
-                                                              12),
-                                                          topRight:
-                                                          Radius.circular(
-                                                              12),
-                                                        ),
-                                                        child: Image.network(
-                                                          'https://sarangan.magetan.go.id/media/img/berita/berita_6968633f9c0fdce341.41579476.jpg',
-                                                          width:
-                                                          double.infinity,
-                                                          height: 200,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(16,
-                                                            12, 16, 12),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                          MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                          children: [
-                                                            Column(
-                                                              mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
-                                                              crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                              children: [
-                                                                Text(
-                                                                  'Wisata Sarangan',
-                                                                  style: bodyText1.copyWith(
-                                                                    fontFamily:
-                                                                    'Outfit',
-                                                                    color: Color(
-                                                                        0xFF1D2429),
-                                                                    fontSize:
-                                                                    18,
-                                                                    fontWeight:
-                                                                    FontWeight.bold,
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                      0,
-                                                                      8,
-                                                                      0,
-                                                                      0),
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                    children: [
-                                                                      Text(
-                                                                        'Paket Wisata Sarangan',
-                                                                        style: bodyText2.copyWith(
-                                                                          fontFamily: 'Outfit',
-                                                                          color: Color(0xFF57636C),
-                                                                          fontSize: 14,
-                                                                          fontWeight: FontWeight.normal,
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Container(
-                                                              width: 70,
-                                                              height: 32,
-                                                              decoration:
-                                                              BoxDecoration(
-                                                                color: Color(
-                                                                    0xFF1D2429),
-                                                                borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                    12),
+                                                                        .circular(
+                                                                            12),
                                                               ),
                                                               alignment:
-                                                              AlignmentDirectional(
-                                                                  0, 0),
-                                                              child:
-                                                              TextButton(
+                                                                  AlignmentDirectional(
+                                                                      0, 0),
+                                                              child: TextButton(
                                                                 onPressed: () {
                                                                   print(
                                                                       'Button pressed ...');
                                                                 },
-                                                                child: Text('Pilih'),
-                                                                style:
-                                                                TextButton.styleFrom(
-                                                                  backgroundColor: Color(
-                                                                      0x10121358),
-                                                                  textStyle: bodyText2.copyWith(
-                                                                    fontFamily:
-                                                                    'Poppins',
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                    9,
+                                                                child: Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .symmetric(
+                                                                    horizontal:
+                                                                        20,
                                                                   ),
-                                                                  side:
-                                                                  BorderSide(
-                                                                    color: Colors
-                                                                        .transparent,
-                                                                    width: 1,
-                                                                  ),
-                                                                  shape: RoundedRectangleBorder
-                                                                    (borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                      8),)
+                                                                  child: FutureBuilder<
+                                                                          List<
+                                                                              Posts>>(
+                                                                      future:
+                                                                          futurePosts,
+                                                                      builder:
+                                                                          (context,
+                                                                              snapshot) {
+                                                                        if (snapshot
+                                                                            .hasData) {
+                                                                          return ListView.separated(
+                                                                              itemBuilder: ((context, index) {
+                                                                                var post = (snapshot.data as List<Posts>)[index];
+                                                                                return Column(
+                                                                                  children: [
+                                                                                    PostCard(
+                                                                                      posts: Posts(id: post.id, name: post.name, deskripsi: post.deskripsi),
+                                                                                    ),
+                                                                                    SizedBox(height: 20)
+                                                                                  ],
+                                                                                );
+                                                                              }),
+                                                                              separatorBuilder: (context, index) {
+                                                                                return const Divider();
+                                                                              },
+                                                                              itemCount: (snapshot.data as List<Posts>).length);
+                                                                        } else if (snapshot
+                                                                            .hasError) {
+                                                                          return Text(
+                                                                              '${snapshot.error}');
+                                                                        }
+                                                                        return const CircularProgressIndicator();
+                                                                      }),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(16, 8, 16, 8),
-                                                child: Container(
-                                                  width: 270,
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 8,
-                                                        color:
-                                                        Color(0x230F1113),
-                                                        offset: Offset(0, 4),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                        12),
-                                                  ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                    MainAxisSize.max,
-                                                    children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.only(
-                                                          bottomLeft:
-                                                          Radius.circular(
-                                                              0),
-                                                          bottomRight:
-                                                          Radius.circular(
-                                                              0),
-                                                          topLeft:
-                                                          Radius.circular(
-                                                              12),
-                                                          topRight:
-                                                          Radius.circular(
-                                                              12),
-                                                        ),
-                                                        child: Image.network(
-                                                          'https://images.solopos.com/2022/02/Watu-gambir.jpg',
-                                                          width:
-                                                          double.infinity,
-                                                          height: 200,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(16,
-                                                            12, 16, 12),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                          MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                          children: [
-                                                            Column(
-                                                              mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
-                                                              crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                              children: [
-                                                                Text(
-                                                                  'Wisata Watu Gambir',
-                                                                  style: bodyText1.copyWith(
-                                                                    fontFamily:
-                                                                    'Outfit',
-                                                                    color: Color(
-                                                                        0xFF1D2429),
-                                                                    fontSize:
-                                                                    18,
-                                                                    fontWeight:
-                                                                    FontWeight.bold,
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                      0,
-                                                                      8,
-                                                                      0,
-                                                                      0),
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                    children: [
-                                                                      Text(
-                                                                        'Paket Wisata Watu Gambir',
-                                                                        style: bodyText2.copyWith(
-                                                                          fontFamily: 'Outfit',
-                                                                          color: Color(0xFF57636C),
-                                                                          fontSize: 14,
-                                                                          fontWeight: FontWeight.normal,
+                                                                style: TextButton
+                                                                    .styleFrom(
+                                                                        backgroundColor:
+                                                                            Color(
+                                                                                0x10121358),
+                                                                        side:
+                                                                            BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          width:
+                                                                              1,
                                                                         ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Container(
-                                                              width: 70,
-                                                              height: 32,
-                                                              decoration:
-                                                              BoxDecoration(
-                                                                color: Color(
-                                                                    0xFF1D2429),
-                                                                borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                    12),
-                                                              ),
-                                                              alignment:
-                                                              AlignmentDirectional(
-                                                                  0, 0),
-                                                              child:
-                                                              TextButton(
-                                                                onPressed: () {
-                                                                  print(
-                                                                      'Button pressed ...');
-                                                                },
-                                                                child: Text('Pilih'),
-                                                                style:
-                                                                TextButton.styleFrom(
-                                                                  backgroundColor: Color(
-                                                                      0x10121358),
-                                                                  textStyle: bodyText2.copyWith(
-                                                                    fontFamily:
-                                                                    'Poppins',
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                    9,
-                                                                  ),
-                                                                  side:
-                                                                  BorderSide(
-                                                                    color: Colors
-                                                                        .transparent,
-                                                                    width: 1,
-                                                                  ),
-                                                                  shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                      8),)
-                                                                ),
+                                                                        shape:
+                                                                            RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8),
+                                                                        )),
                                                               ),
                                                             ),
                                                           ],
@@ -1351,20 +1144,6 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                       ),
                                                     ],
                                                   ),
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 100,
-                                                height: 100,
-                                                decoration: BoxDecoration(
-                                                  color: primaryBackground,
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 100,
-                                                height: 100,
-                                                decoration: BoxDecoration(
-                                                  color: primaryBackground,
                                                 ),
                                               ),
                                             ],
