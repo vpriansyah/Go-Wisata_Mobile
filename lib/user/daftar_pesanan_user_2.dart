@@ -1,6 +1,7 @@
 import 'package:desa_wisata/data.dart';
 import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/tiket.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -117,10 +118,9 @@ class _DaftarPesananUser2State extends State<DaftarPesananUser2> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         filled: true,
-                        fillColor:
-                        primaryBackground,
+                        fillColor: primaryBackground,
                         contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                            EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
                         prefixIcon: Icon(
                           Icons.search,
                           color: secondaryText1,
@@ -159,10 +159,8 @@ class _DaftarPesananUser2State extends State<DaftarPesananUser2> {
                   children: [
                     TabBar(
                       labelColor: Colors.blue,
-                      unselectedLabelColor:
-                      secondaryText1,
-                      labelStyle:
-                      subtitle1.copyWith(
+                      unselectedLabelColor: secondaryText1,
+                      labelStyle: subtitle1.copyWith(
                         fontFamily: 'Poppins',
                         fontSize: 14,
                       ),
@@ -179,13 +177,13 @@ class _DaftarPesananUser2State extends State<DaftarPesananUser2> {
                         ),
                       ],
                     ),
-                    ],
-    ),
-    ),
-    ),
-    ],
-    ),
-    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
