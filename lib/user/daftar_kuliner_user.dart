@@ -26,7 +26,7 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFFCC050),
+        backgroundColor: Colors.blue,
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(

@@ -6,6 +6,7 @@ import 'package:desa_wisata/user/daftar_pesanan_user_2.dart';
 import 'package:desa_wisata/user/homepage_user.dart';
 import 'package:desa_wisata/user/home_user.dart';
 import 'package:flutter/material.dart';
+import 'package:desa_wisata/user/backup.dart';
 
 
 class MainPageUser extends StatefulWidget {
@@ -62,7 +63,7 @@ class _MainPageUserState extends State<MainPageUser> {
     Widget body() {
       switch (currentIndex) {
         case 0:
-          return home_user();
+          return backup();
           break;
         case 1:
           return DaftarPesananUser2();
@@ -72,7 +73,7 @@ class _MainPageUserState extends State<MainPageUser> {
           break;
 
         default:
-          return home_user();
+          return backup();
       }
     }
 

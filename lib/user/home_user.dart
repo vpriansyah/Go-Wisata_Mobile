@@ -282,7 +282,7 @@ class _home_userState extends State<home_user> with TickerProviderStateMixin {
                                                             context,
                                                             MaterialPageRoute(
                                                               builder: (context) =>
-                                                                  WisataUser2(),
+                                                                  WisataUser(),
                                                             ),
                                                           );
                                                         },

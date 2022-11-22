@@ -2,7 +2,7 @@ import 'package:desa_wisata/data.dart';
 import 'package:desa_wisata/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-
+import 'package:email_auth/email_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -23,11 +23,13 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordSignUpController = TextEditingController();
+  TextEditingController otpController = TextEditingController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   // final _formregKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formregKey = GlobalKey<FormState>();
   final _passwordVisible = false;
+  EmailAuth emailAuth =  new EmailAuth(sessionName: "Sample session");
 
   @override
   Widget build(BuildContext context) {
@@ -649,6 +651,81 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                               height: 0.8,
                                             ),
                                           ),
+                                        ),Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 12, 0, 0),
+                                          child: TextFormField(
+                                            controller:
+                                            otpController,
+                                            obscureText: true,
+                                            decoration: InputDecoration(
+                                              labelText: 'Submit OTP',
+                                              labelStyle:
+                                              bodyText2.copyWith(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                Color(0xFF95A1AC),
+                                                fontSize: 14,
+                                              ),
+                                              hintStyle: bodyText1.copyWith(
+                                                fontFamily: 'Lexend Deca',
+                                                color: Color(0xFF95A1AC),
+                                                fontSize: 14,
+                                                fontWeight:
+                                                FontWeight.normal,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0xFFBCBCBC),
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                BorderRadius.circular(8),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0xFFBCBCBC),
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                BorderRadius.circular(8),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                BorderRadius.circular(8),
+                                              ),
+                                              focusedErrorBorder:
+                                              OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                BorderRadius.circular(8),
+                                              ),
+                                              filled: true,
+                                              fillColor: Colors.white,
+                                              contentPadding:
+                                              EdgeInsetsDirectional
+                                                  .fromSTEB(20, 24, 20, 24),
+                                              suffixIcon: TextButton(
+                                                child: Text("Send OTP"),
+                                                onPressed: sendOtp,
+                                              )
+                                            ),
+                                            style: bodyText1.copyWith(
+                                              fontFamily: 'Lexend Deca',
+                                              color: Color(0xFF14181B),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.normal,
+                                              height: 0.8,
+                                            ),
+                                          ),
                                         ),
                                         Padding(
                                           padding:
@@ -813,6 +890,24 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
 
     return data;
     // return json.decode(response.body);
+  }
+  void sendOtp() async {
+    emailAuth.sessionName= "Test Session";
+    var res = await emailAuth.sendOtp(recipientMail: emailSignUpController.text, otpLength: 6);
+    if (res) {
+      print("OTP Sent");
+    } else {
+      print("We could not sent OTP");
+    }
+  }
+
+  void verifyOtp() {
+    var res = emailAuth.validateOtp(recipientMail: emailSignUpController.text, userOtp: otpController.text);
+    if (res) {
+      print("OTP Verified");
+    } else {
+      print("OTP not verified");
+    }
   }
 
   Future register() async {
