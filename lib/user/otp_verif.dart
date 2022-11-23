@@ -29,7 +29,7 @@ class _OtpVerifState extends State<OtpVerif> {
   // final _formregKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formregKey = GlobalKey<FormState>();
   final _passwordVisible = false;
-  EmailAuth emailAuth =  new EmailAuth(sessionName: "Sample session");
+  EmailAuth emailAuth = new EmailAuth(sessionName: "Sample session");
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +83,7 @@ class _OtpVerifState extends State<OtpVerif> {
                           padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                           child: Text(
                             'Go-Wisata',
-                            style:
-                            bodyText1.copyWith(
+                            style: bodyText1.copyWith(
                               fontFamily: 'Poppins',
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -98,20 +97,15 @@ class _OtpVerifState extends State<OtpVerif> {
                     margin: const EdgeInsets.all(10.0),
                     color: Color.fromRGBO(0, 255, 0, 130),
                     height: 100,
-                    child:
-                    Center(
+                    child: Center(
                       child: Text(
-                        "Kami akan mengirimkan OTP ke email anda. Silahkan pencet 'Send OTP'.",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.lato(
-                          color: Colors.white,
-                          fontSize: 16,
-                        )
-                      ),
+                          "Kami akan mengirimkan OTP ke email anda. Silahkan pencet 'Send OTP'.",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            color: Colors.white,
+                            fontSize: 16,
+                          )),
                     ),
-                  )
-                  Container(
-
                   )
                 ],
               ),
@@ -190,9 +184,11 @@ class _OtpVerifState extends State<OtpVerif> {
     return data;
     // return json.decode(response.body);
   }
+
   void sendOtp() async {
-    emailAuth.sessionName= "Test Session";
-    var res = await emailAuth.sendOtp(recipientMail: emailSignUpController.text, otpLength: 6);
+    emailAuth.sessionName = "Test Session";
+    var res = await emailAuth.sendOtp(
+        recipientMail: emailSignUpController.text, otpLength: 6);
     if (res) {
       print("OTP Sent");
     } else {
@@ -201,14 +197,14 @@ class _OtpVerifState extends State<OtpVerif> {
   }
 
   void verifyOtp() {
-    var res = emailAuth.validateOtp(recipientMail: emailSignUpController.text, userOtp: otpController.text);
+    var res = emailAuth.validateOtp(
+        recipientMail: emailSignUpController.text, userOtp: otpController.text);
     if (res) {
       print("OTP Verified");
     } else {
       print("OTP not verified");
     }
   }
-
 
   Future register() async {
     http.Response response = await http.post(

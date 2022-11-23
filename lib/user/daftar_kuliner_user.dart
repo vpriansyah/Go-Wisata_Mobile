@@ -226,8 +226,7 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
 
   final String baseUrl = 'http://go-wisata.id/';
 
-  final String apiUrl =
-      'http://go-wisata.id/api/wahana';
+  final String apiUrl = 'http://go-wisata.id/api/kuliner';
 
   Future<List<Map<String, dynamic>>?> fetch() async {
     http.Response response = await http
