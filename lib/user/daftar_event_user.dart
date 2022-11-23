@@ -18,7 +18,6 @@ class DaftarEventUser extends StatefulWidget {
 class _DaftarEventUserState extends State<DaftarEventUser> {
   refresh() {
     setState(() {});
-
   }
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -41,7 +40,7 @@ class _DaftarEventUserState extends State<DaftarEventUser> {
           },
         ),
         title: Text(
-          'Event Tersedia',
+          'Daftar Event',
         ),
         actions: [],
         centerTitle: false,
@@ -49,19 +48,19 @@ class _DaftarEventUserState extends State<DaftarEventUser> {
       ),
       backgroundColor: primaryBackground,
       body: FutureBuilder(
-          future: getEvent(),
+          future: getTempat(),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
                 itemBuilder: (context, index) {
                   return
-                    //Text(snapshot.toString());
-                    dataWidget(
-                      // baseUrl: baseUrl,
-                      snapshot: snapshot,
-                      index: index,
-                      refresh: refresh,
-                    );
+                      //Text(snapshot.toString());
+                      dataWidget(
+                    // baseUrl: baseUrl,
+                    snapshot: snapshot,
+                    index: index,
+                    refresh: refresh,
+                  );
                 },
                 itemCount: snapshot.data.length,
               ); // This trailing comma makes auto-formatting nicer for build methods.
@@ -85,7 +84,7 @@ class _DaftarEventUserState extends State<DaftarEventUser> {
     return List<Map<String, dynamic>>.from(json.decode(response.body)['data']);
   }
 
-  Future getEvent() async {
+  Future getTempat() async {
     var response = await http.get(Uri.parse(apiUrl));
     return json.decode(response.body);
   }
@@ -164,31 +163,31 @@ class _dataWidgetState extends State<dataWidget> {
                             topLeft: Radius.circular(8),
                             topRight: Radius.circular(0),
                           ),
-                          child: Image.network(
-                              baseUrl +
-                                  'images/' +
-                                  widget.snapshot.data[widget.index]['image'],
-                              width: MediaQuery.of(context).size.width * 0.25,
-                              height: MediaQuery.of(context).size.height * 1,
-                              fit: BoxFit.cover, loadingBuilder:
-                              (BuildContext context, Widget child,
-                              ImageChunkEvent? loadingProgress) {
-                            if (loadingProgress == null) return child;
-                            return Center(
-                              child: CircularProgressIndicator(
-                                value: loadingProgress.expectedTotalBytes !=
-                                    null
-                                    ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                                    : null,
-                              ),
-                            );
-                          }),
+                          // child: Image.network(
+                          //     baseUrl +
+                          //         'images/' +
+                          //         widget.snapshot.data[widget.index]['image'],
+                          //     width: MediaQuery.of(context).size.width * 0.25,
+                          //     height: MediaQuery.of(context).size.height * 1,
+                          //     fit: BoxFit.cover, loadingBuilder:
+                          //         (BuildContext context, Widget child,
+                          //             ImageChunkEvent? loadingProgress) {
+                          //   if (loadingProgress == null) return child;
+                          //   return Center(
+                          //     child: CircularProgressIndicator(
+                          //       value: loadingProgress.expectedTotalBytes !=
+                          //               null
+                          //           ? loadingProgress.cumulativeBytesLoaded /
+                          //               loadingProgress.expectedTotalBytes!
+                          //           : null,
+                          //     ),
+                          //   );
+                          // }),
                         ),
                         Expanded(
                           child: Padding(
                             padding:
-                            EdgeInsetsDirectional.fromSTEB(12, 0, 5, 0),
+                                EdgeInsetsDirectional.fromSTEB(12, 0, 5, 0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -200,7 +199,7 @@ class _dataWidgetState extends State<dataWidget> {
                                   child: Text(
                                     // 'Watu Gambir',
                                     widget.snapshot.data[widget.index]
-                                    ['name'] ??
+                                            ['nama'] ??
                                         '-',
                                     style: title3,
                                   ),
@@ -212,7 +211,7 @@ class _dataWidgetState extends State<dataWidget> {
                                     child: Text(
                                       // 'Desa wisata dengan beragam akomodasi yang tersedia. Setiap wahana dapat dimainkan oleh segala usia',
                                       widget.snapshot.data[widget.index]
-                                      ['deskripsi'] ??
+                                              ['deskripsi'] ??
                                           '-',
                                       maxLines: 4,
                                       style: bodyText1.copyWith(

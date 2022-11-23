@@ -23,11 +23,11 @@ class backup extends StatefulWidget {
   _backupState createState() => _backupState();
 }
 
-class _backupState extends State<backup>{
+class _backupState extends State<backup> {
   refresh() {
     setState(() {});
-
   }
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -85,7 +85,7 @@ class _backupState extends State<backup>{
                             ),
                             Padding(
                               padding:
-                              EdgeInsetsDirectional.fromSTEB(16, 15, 16, 0),
+                                  EdgeInsetsDirectional.fromSTEB(16, 15, 16, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -107,7 +107,7 @@ class _backupState extends State<backup>{
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -115,7 +115,7 @@ class _backupState extends State<backup>{
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         errorBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -123,7 +123,7 @@ class _backupState extends State<backup>{
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -131,7 +131,7 @@ class _backupState extends State<backup>{
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         filled: true,
                                         fillColor: Colors.white,
@@ -154,7 +154,7 @@ class _backupState extends State<backup>{
                             ),
                             Padding(
                               padding:
-                              EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
+                                  EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
                               child: Container(
                                 width: double.infinity,
                                 height: 700,
@@ -174,7 +174,7 @@ class _backupState extends State<backup>{
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Divider(
                                           height: 8,
@@ -185,8 +185,8 @@ class _backupState extends State<backup>{
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              16, 16, 16, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16, 16, 16, 0),
                                           child: Text(
                                             'Pilihan menu Go-Wisata',
                                             style: title2.copyWith(
@@ -199,8 +199,8 @@ class _backupState extends State<backup>{
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              16, 4, 16, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16, 4, 16, 0),
                                           child: Text(
                                             'Beragam menu pilihan yang tersedia',
                                             style: bodyText2.copyWith(
@@ -213,8 +213,8 @@ class _backupState extends State<backup>{
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0, 12, 0, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 12, 0, 0),
                                           child: Container(
                                             width: double.infinity,
                                             height: 225,
@@ -238,70 +238,116 @@ class _backupState extends State<backup>{
                                                         boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 8,
-                                                            color:
-                                                            Color(0x230F1113),
-                                                            offset: Offset(0, 4),
+                                                            color: Color(
+                                                                0x230F1113),
+                                                            offset:
+                                                                Offset(0, 4),
                                                           )
                                                         ],
                                                         borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
+                                                            BorderRadius
+                                                                .circular(12),
                                                       ),
                                                       child: InkWell(
                                                         onTap: () async {
                                                           await Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
-                                                              builder: (context) => WisataUser2(),
+                                                              builder: (context) =>
+                                                                  WisataUser(),
                                                             ),
                                                           );
                                                         },
                                                         child: // Generated code for this Column Widget...
-                                                        Column(
-                                                          mainAxisSize: MainAxisSize.max,
+                                                            Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
                                                           children: [
                                                             ClipRRect(
-                                                              borderRadius: BorderRadius.only(
-                                                                bottomLeft: Radius.circular(0),
-                                                                bottomRight: Radius.circular(0),
-                                                                topLeft: Radius.circular(12),
-                                                                topRight: Radius.circular(12),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0),
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        12),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        12),
                                                               ),
-                                                              child: Image.asset(
+                                                              child:
+                                                                  Image.asset(
                                                                 'assets/image/wahana1.JPG',
-                                                                width: double.infinity,
+                                                                width: double
+                                                                    .infinity,
                                                                 height: 110,
-                                                                fit: BoxFit.cover,
+                                                                fit: BoxFit
+                                                                    .cover,
                                                               ),
                                                             ),
                                                             Padding(
-                                                              padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12),
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16,
+                                                                          12,
+                                                                          16,
+                                                                          12),
                                                               child: Row(
-                                                                mainAxisSize: MainAxisSize.max,
-                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
                                                                 children: [
                                                                   Column(
-                                                                    mainAxisSize: MainAxisSize.max,
-                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
                                                                     children: [
                                                                       Text(
                                                                         'Paket Wahana',
-                                                                        style: bodyText1.copyWith(
-                                                                          fontFamily: 'Outfit',
-                                                                          color: Color(0xFF1D2429),
-                                                                          fontSize: 18,
-                                                                          fontWeight: FontWeight.bold,
+                                                                        style: bodyText1
+                                                                            .copyWith(
+                                                                          fontFamily:
+                                                                              'Outfit',
+                                                                          color:
+                                                                              Color(0xFF1D2429),
+                                                                          fontSize:
+                                                                              18,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 0),
-                                                                        child: Text(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0,
+                                                                            3,
+                                                                            0,
+                                                                            0),
+                                                                        child:
+                                                                            Text(
                                                                           'Temukan paket wahana menarik disini',
-                                                                          style: bodyText2.copyWith(
-                                                                            fontFamily: 'Outfit',
-                                                                            color: Color(0xFF57636C),
-                                                                            fontSize: 12,
-                                                                            fontWeight: FontWeight.normal,
+                                                                          style:
+                                                                              bodyText2.copyWith(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            color:
+                                                                                Color(0xFF57636C),
+                                                                            fontSize:
+                                                                                12,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -312,8 +358,7 @@ class _backupState extends State<backup>{
                                                             ),
                                                           ],
                                                         ),
-                                                      )
-                                                  ),
+                                                      )),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
@@ -327,92 +372,92 @@ class _backupState extends State<backup>{
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => DaftarEventUser(),
+                                                            builder: (context) =>
+                                                                DaftarEventUser(),
                                                           ),
                                                         );
                                                       },
                                                       child: Column(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           ClipRRect(
                                                             borderRadius:
-                                                            BorderRadius.only(
-                                                              bottomLeft:
-                                                              Radius.circular(
-                                                                  0),
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
                                                               bottomRight:
-                                                              Radius.circular(
-                                                                  0),
-                                                              topLeft:
-                                                              Radius.circular(
-                                                                  12),
-                                                              topRight:
-                                                              Radius.circular(
-                                                                  12),
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(12),
+                                                              topRight: Radius
+                                                                  .circular(12),
                                                             ),
                                                             child: Image.asset(
                                                               'assets/image/event1.JPG',
-                                                              width:
-                                                              double.infinity,
+                                                              width: double
+                                                                  .infinity,
                                                               height: 110,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
                                                           Padding(
                                                             padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                16,
-                                                                12,
-                                                                16,
-                                                                12),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
                                                             child: Row(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: [
                                                                 Column(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
+                                                                      MainAxisSize
+                                                                          .max,
                                                                   crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                                      CrossAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     Column(
                                                                       mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
+                                                                          MainAxisSize
+                                                                              .max,
                                                                       crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Column(
                                                                           mainAxisSize:
-                                                                          MainAxisSize.max,
+                                                                              MainAxisSize.max,
                                                                           crossAxisAlignment:
-                                                                          CrossAxisAlignment.start,
+                                                                              CrossAxisAlignment.start,
                                                                           children: [
                                                                             Text(
                                                                               'Event',
-                                                                              style:bodyText1.copyWith(
+                                                                              style: bodyText1.copyWith(
                                                                                 fontFamily: 'Outfit',
                                                                                 color: Color(0xFF1D2429),
                                                                                 fontSize: 18,
@@ -420,13 +465,8 @@ class _backupState extends State<backup>{
                                                                               ),
                                                                             ),
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                  0,
-                                                                                  3,
-                                                                                  0,
-                                                                                  0),
-                                                                              child:
-                                                                              Text(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 0),
+                                                                              child: Text(
                                                                                 'Temukan event menarik disini',
                                                                                 style: bodyText2.copyWith(
                                                                                   fontFamily: 'Outfit',
@@ -436,7 +476,6 @@ class _backupState extends State<backup>{
                                                                                 ),
                                                                               ),
                                                                             ),
-
                                                                           ],
                                                                         ),
                                                                       ],
@@ -463,90 +502,95 @@ class _backupState extends State<backup>{
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => DaftarKulinerUser(),
+                                                            builder: (context) =>
+                                                                DaftarKulinerUser(),
                                                           ),
                                                         );
                                                       },
                                                       child: Column(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           ClipRRect(
                                                             borderRadius:
-                                                            BorderRadius.only(
-                                                              bottomLeft:
-                                                              Radius.circular(
-                                                                  0),
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
                                                               bottomRight:
-                                                              Radius.circular(
-                                                                  0),
-                                                              topLeft:
-                                                              Radius.circular(
-                                                                  12),
-                                                              topRight:
-                                                              Radius.circular(
-                                                                  12),
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(12),
+                                                              topRight: Radius
+                                                                  .circular(12),
                                                             ),
                                                             child: Image.asset(
                                                               'assets/image/makanan1.JPG',
-                                                              width:
-                                                              double.infinity,
+                                                              width: double
+                                                                  .infinity,
                                                               height: 110,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
                                                           Padding(
                                                             padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                16,
-                                                                12,
-                                                                16,
-                                                                12),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
                                                             child: Row(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: [
                                                                 Column(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
+                                                                      MainAxisSize
+                                                                          .max,
                                                                   crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                                      CrossAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     Column(
                                                                       mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
+                                                                          MainAxisSize
+                                                                              .max,
                                                                       crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Text(
                                                                           'Kuliner',
-                                                                          style: bodyText1.copyWith(
-                                                                            fontFamily: 'Outfit',
-                                                                            color: Color(0xFF1D2429),
-                                                                            fontSize: 18,
-                                                                            fontWeight: FontWeight.bold,
+                                                                          style:
+                                                                              bodyText1.copyWith(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            color:
+                                                                                Color(0xFF1D2429),
+                                                                            fontSize:
+                                                                                18,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           ),
                                                                         ),
                                                                         Padding(
@@ -556,9 +600,10 @@ class _backupState extends State<backup>{
                                                                               0,
                                                                               0),
                                                                           child:
-                                                                          Text(
+                                                                              Text(
                                                                             'Temukan paket kuliner menarik disini',
-                                                                            style: bodyText2.copyWith(
+                                                                            style:
+                                                                                bodyText2.copyWith(
                                                                               fontFamily: 'Outfit',
                                                                               color: Color(0xFF57636C),
                                                                               fontSize: 12,
@@ -566,7 +611,6 @@ class _backupState extends State<backup>{
                                                                             ),
                                                                           ),
                                                                         ),
-
                                                                       ],
                                                                     ),
                                                                   ],
@@ -591,90 +635,95 @@ class _backupState extends State<backup>{
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => DaftarPenginapanUser(),
+                                                            builder: (context) =>
+                                                                DaftarPenginapanUser(),
                                                           ),
                                                         );
                                                       },
                                                       child: Column(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           ClipRRect(
                                                             borderRadius:
-                                                            BorderRadius.only(
-                                                              bottomLeft:
-                                                              Radius.circular(
-                                                                  0),
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
                                                               bottomRight:
-                                                              Radius.circular(
-                                                                  0),
-                                                              topLeft:
-                                                              Radius.circular(
-                                                                  12),
-                                                              topRight:
-                                                              Radius.circular(
-                                                                  12),
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(12),
+                                                              topRight: Radius
+                                                                  .circular(12),
                                                             ),
                                                             child: Image.asset(
                                                               'assets/image/penginapan1.JPG',
-                                                              width:
-                                                              double.infinity,
+                                                              width: double
+                                                                  .infinity,
                                                               height: 110,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
                                                           Padding(
                                                             padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                16,
-                                                                12,
-                                                                16,
-                                                                12),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
                                                             child: Row(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: [
                                                                 Column(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
+                                                                      MainAxisSize
+                                                                          .max,
                                                                   crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                                      CrossAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     Column(
                                                                       mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
+                                                                          MainAxisSize
+                                                                              .max,
                                                                       crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Text(
                                                                           'Penginapan',
-                                                                          style: bodyText1.copyWith(
-                                                                            fontFamily: 'Outfit',
-                                                                            color: Color(0xFF1D2429),
-                                                                            fontSize: 18,
-                                                                            fontWeight: FontWeight.bold,
+                                                                          style:
+                                                                              bodyText1.copyWith(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            color:
+                                                                                Color(0xFF1D2429),
+                                                                            fontSize:
+                                                                                18,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           ),
                                                                         ),
                                                                         Padding(
@@ -684,9 +733,10 @@ class _backupState extends State<backup>{
                                                                               0,
                                                                               0),
                                                                           child:
-                                                                          Text(
+                                                                              Text(
                                                                             'Temukan penginapan ternyaman',
-                                                                            style: bodyText2.copyWith(
+                                                                            style:
+                                                                                bodyText2.copyWith(
                                                                               fontFamily: 'Outfit',
                                                                               color: Color(0xFF57636C),
                                                                               fontSize: 12,
@@ -694,7 +744,6 @@ class _backupState extends State<backup>{
                                                                             ),
                                                                           ),
                                                                         ),
-
                                                                       ],
                                                                     ),
                                                                   ],
@@ -719,90 +768,95 @@ class _backupState extends State<backup>{
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => WisataUser(),
+                                                            builder: (context) =>
+                                                                WisataUser(),
                                                           ),
                                                         );
                                                       },
                                                       child: Column(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           ClipRRect(
                                                             borderRadius:
-                                                            BorderRadius.only(
-                                                              bottomLeft:
-                                                              Radius.circular(
-                                                                  0),
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
                                                               bottomRight:
-                                                              Radius.circular(
-                                                                  0),
-                                                              topLeft:
-                                                              Radius.circular(
-                                                                  12),
-                                                              topRight:
-                                                              Radius.circular(
-                                                                  12),
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(12),
+                                                              topRight: Radius
+                                                                  .circular(12),
                                                             ),
                                                             child: Image.asset(
                                                               'assets/image/lainnya1.JPG',
-                                                              width:
-                                                              double.infinity,
+                                                              width: double
+                                                                  .infinity,
                                                               height: 110,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
                                                           Padding(
                                                             padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                16,
-                                                                12,
-                                                                16,
-                                                                12),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
                                                             child: Row(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: [
                                                                 Column(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
+                                                                      MainAxisSize
+                                                                          .max,
                                                                   crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                                      CrossAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     Column(
                                                                       mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
+                                                                          MainAxisSize
+                                                                              .max,
                                                                       crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Text(
                                                                           'Lainnya',
-                                                                          style: bodyText1.copyWith(
-                                                                            fontFamily: 'Outfit',
-                                                                            color: Color(0xFF1D2429),
-                                                                            fontSize: 18,
-                                                                            fontWeight: FontWeight.bold,
+                                                                          style:
+                                                                              bodyText1.copyWith(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            color:
+                                                                                Color(0xFF1D2429),
+                                                                            fontSize:
+                                                                                18,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           ),
                                                                         ),
                                                                         Padding(
@@ -812,9 +866,10 @@ class _backupState extends State<backup>{
                                                                               0,
                                                                               0),
                                                                           child:
-                                                                          Text(
+                                                                              Text(
                                                                             'Lain - lain',
-                                                                            style: bodyText2.copyWith(
+                                                                            style:
+                                                                                bodyText2.copyWith(
                                                                               fontFamily: 'Outfit',
                                                                               color: Color(0xFF57636C),
                                                                               fontSize: 12,
@@ -822,7 +877,6 @@ class _backupState extends State<backup>{
                                                                             ),
                                                                           ),
                                                                         ),
-
                                                                       ],
                                                                     ),
                                                                   ],
@@ -841,8 +895,8 @@ class _backupState extends State<backup>{
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              20, 16, 16, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20, 16, 16, 0),
                                           child: Text(
                                             'Paket Wisata Desa',
                                             style: title2.copyWith(
@@ -1370,27 +1424,32 @@ class _backupState extends State<backup>{
                                         // ),
                                         FutureBuilder(
                                             future: getTempat(),
-                                            builder: (context, AsyncSnapshot snapshot) {
+                                            builder: (context,
+                                                AsyncSnapshot snapshot) {
                                               if (snapshot.hasData) {
                                                 return ListView.builder(
-                                                  scrollDirection: Axis.vertical,
+                                                  scrollDirection:
+                                                      Axis.vertical,
                                                   shrinkWrap: true,
-                                                  itemBuilder: (context, index) {
+                                                  itemBuilder:
+                                                      (context, index) {
                                                     return
-                                                      //Text(snapshot.toString());
-                                                      dataWidget(
-                                                        // baseUrl: baseUrl,
-                                                        snapshot: snapshot,
-                                                        index: index,
-                                                        refresh: refresh,
-                                                      );
+                                                        //Text(snapshot.toString());
+                                                        dataWidget(
+                                                      // baseUrl: baseUrl,
+                                                      snapshot: snapshot,
+                                                      index: index,
+                                                      refresh: refresh,
+                                                    );
                                                   },
-                                                  itemCount: snapshot.data.length,
+                                                  itemCount:
+                                                      snapshot.data.length,
                                                 ); // This trailing comma makes auto-formatting nicer for build methods.
 
                                               } else {
                                                 return Center(
-                                                  child: CircularProgressIndicator(),
+                                                  child:
+                                                      CircularProgressIndicator(),
                                                 );
                                               }
 
@@ -1415,6 +1474,7 @@ class _backupState extends State<backup>{
       ),
     );
   }
+
   final String apiUrl = 'http://go-wisata.id/api/desa';
 
   Future<List<Map<String, dynamic>>?> fetch() async {
@@ -1457,122 +1517,123 @@ class _dataWidgetState extends State<dataWidget> {
       children: [
         SizedBox(
           height: 200,
-         child: Padding(
-           padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-           child: ListView(
-             padding: EdgeInsets.zero,
-             shrinkWrap: true,
-             scrollDirection: Axis.vertical,
-             children: [
-               Padding(
-                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                 child: InkWell(
-                   onTap: () async {
-                     // print(widget.snapshot.data[widget.index]['id']);
-                     await Navigator.push(
-                       context,
-                       MaterialPageRoute(
-                         builder: (context) => DaftarWahanaUser(
-                           idWahana: widget.snapshot.data[widget.index]['id']
-                               .toString(),
-                           indexWahana: widget.index,
-                         ),
-                       ),
-                     );
-                   },
-                   child: Container(
-                     width: double.infinity,
-                     height: 150,
-                     decoration: BoxDecoration(
-                       color: Colors.white,
-                       boxShadow: [
-                         BoxShadow(
-                           blurRadius: 3,
-                           color: Color(0x32000000),
-                           offset: Offset(0, 1),
-                         )
-                       ],
-                       borderRadius: BorderRadius.circular(8),
-                     ),
-                     child: Row(
-                       mainAxisSize: MainAxisSize.max,
-                       children: [
-                         ClipRRect(
-                           borderRadius: BorderRadius.only(
-                             bottomLeft: Radius.circular(8),
-                             bottomRight: Radius.circular(0),
-                             topLeft: Radius.circular(8),
-                             topRight: Radius.circular(0),
-                           ),
-                           child: Image.network(
-                               baseUrl +
-                                   'images/' +
-                                   widget.snapshot.data[widget.index]['image'],
-                               width: MediaQuery.of(context).size.width * 0.25,
-                               height: MediaQuery.of(context).size.height * 1,
-                               fit: BoxFit.cover, loadingBuilder:
-                               (BuildContext context, Widget child,
-                               ImageChunkEvent? loadingProgress) {
-                             if (loadingProgress == null) return child;
-                             return Center(
-                               child: CircularProgressIndicator(
-                                 value: loadingProgress.expectedTotalBytes !=
-                                     null
-                                     ? loadingProgress.cumulativeBytesLoaded /
-                                     loadingProgress.expectedTotalBytes!
-                                     : null,
-                               ),
-                             );
-                           }),
-                         ),
-                         Expanded(
-                           child: Padding(
-                             padding:
-                             EdgeInsetsDirectional.fromSTEB(12, 0, 5, 0),
-                             child: Column(
-                               mainAxisSize: MainAxisSize.max,
-                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                               crossAxisAlignment: CrossAxisAlignment.start,
-                               children: [
-                                 Padding(
-                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                       0, 10, 0, 10),
-                                   child: Text(
-                                     // 'Watu Gambir',
-                                     widget.snapshot.data[widget.index]
-                                     ['name'] ??
-                                         '-',
-                                     style: title3,
-                                   ),
-                                 ),
-                                 Expanded(
-                                   child: Padding(
-                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                         0, 0, 0, 10),
-                                     child: Text(
-                                       // 'Desa wisata dengan beragam akomodasi yang tersedia. Setiap wahana dapat dimainkan oleh segala usia',
-                                       widget.snapshot.data[widget.index]
-                                       ['deskripsi'] ??
-                                           '-',
-                                       maxLines: 4,
-                                       style: bodyText1.copyWith(
-                                         fontWeight: FontWeight.normal,
-                                       ),
-                                     ),
-                                   ),
-                                 ),
-                               ],
-                             ),
-                           ),
-                         ),
-                       ],
-                     ),
-                   ),
-                 ),
-               ),
-             ],
-           ),
-         ),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+            child: ListView(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: InkWell(
+                    onTap: () async {
+                      // print(widget.snapshot.data[widget.index]['id']);
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DaftarWahanaUser(
+                            idWahana: widget.snapshot.data[widget.index]['id']
+                                .toString(),
+                            indexWahana: widget.index,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 3,
+                            color: Color(0x32000000),
+                            offset: Offset(0, 1),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(8),
+                              bottomRight: Radius.circular(0),
+                              topLeft: Radius.circular(8),
+                              topRight: Radius.circular(0),
+                            ),
+                            child: Image.network(
+                                baseUrl +
+                                    'images/' +
+                                    widget.snapshot.data[widget.index]['image'],
+                                width: MediaQuery.of(context).size.width * 0.25,
+                                height: MediaQuery.of(context).size.height * 1,
+                                fit: BoxFit.cover, loadingBuilder:
+                                    (BuildContext context, Widget child,
+                                        ImageChunkEvent? loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              );
+                            }),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(12, 0, 5, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 10, 0, 10),
+                                    child: Text(
+                                      // 'Watu Gambir',
+                                      widget.snapshot.data[widget.index]
+                                              ['name'] ??
+                                          '-',
+                                      style: title3,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 10),
+                                      child: Text(
+                                        // 'Desa wisata dengan beragam akomodasi yang tersedia. Setiap wahana dapat dimainkan oleh segala usia',
+                                        widget.snapshot.data[widget.index]
+                                                ['deskripsi'] ??
+                                            '-',
+                                        maxLines: 4,
+                                        style: bodyText1.copyWith(
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         )
       ],
     );
