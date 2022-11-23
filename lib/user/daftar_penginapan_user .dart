@@ -26,7 +26,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFFCC050),
+        backgroundColor: Colors.blue,
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
@@ -65,7 +65,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                           Cart c1 = Cart(
                             id: snapshot.data[index]['id'],
                             idtempat: snapshot.data[index]['id'],
-                            nama: snapshot.data[index]['name'],
+                            nama: snapshot.data[index]['nama'],
                             kategori: 'penginapan',
                             qty: 1,
                             harga: int.parse(snapshot.data[index]['harga']),
@@ -86,29 +86,29 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                               borderRadius: BorderRadius.circular(24),
                               child: SizedBox.fromSize(
                                 size: Size.fromRadius(38), // Image radius
-                                child: Image.network(
-                                  baseUrl +
-                                      'images/' +
-                                      snapshot.data[index]['image'],
-                                  fit: BoxFit.cover,
-                                  loadingBuilder: (BuildContext context,
-                                      Widget child,
-                                      ImageChunkEvent? loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        value: loadingProgress
-                                                    .expectedTotalBytes !=
-                                                null
-                                            ? loadingProgress
-                                                    .cumulativeBytesLoaded /
-                                                loadingProgress
-                                                    .expectedTotalBytes!
-                                            : null,
-                                      ),
-                                    );
-                                  },
-                                ),
+                                // child: Image.network(
+                                //   baseUrl +
+                                //       'images/' +
+                                //       snapshot.data[index]['image'],
+                                //   fit: BoxFit.cover,
+                                //   loadingBuilder: (BuildContext context,
+                                //       Widget child,
+                                //       ImageChunkEvent? loadingProgress) {
+                                //     if (loadingProgress == null) return child;
+                                //     return Center(
+                                //       child: CircularProgressIndicator(
+                                //         value: loadingProgress
+                                //                     .expectedTotalBytes !=
+                                //                 null
+                                //             ? loadingProgress
+                                //                     .cumulativeBytesLoaded /
+                                //                 loadingProgress
+                                //                     .expectedTotalBytes!
+                                //             : null,
+                                //       ),
+                                //     );
+                                //   },
+                                // ),
                               ),
                             ),
                           ),
@@ -121,7 +121,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   Text(
-                                    snapshot.data[index]['name'],
+                                    snapshot.data[index]['nama'],
                                     style: title3.copyWith(
                                       color: Color(0xFF101213),
                                     ),
@@ -132,17 +132,17 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                                       fontWeight: FontWeight.normal,
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 3),
-                                    child: Text(
-                                      snapshot.data[index]['harga'],
-                                      style: GoogleFonts.montserrat(
-                                        color: Color(0xFFFCC050),
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
+                                  // Padding(
+                                  //   padding: EdgeInsetsDirectional.fromSTEB(
+                                  //       0, 0, 0, 3),
+                                  //   child: Text(
+                                  //     snapshot.data[index]['harga'],
+                                  //     style: GoogleFonts.montserrat(
+                                  //       color: Color(0xFFFCC050),
+                                  //       fontSize: 16,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 0, 3),
@@ -229,7 +229,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
   final String baseUrl = 'http://go-wisata.id/';
 
   final String apiUrl =
-      'http://go-wisata.id/api/wahana';
+      'http://go-wisata.id/api/hotel';
 
   Future<List<Map<String, dynamic>>?> fetch() async {
     http.Response response = await http.get(Uri.parse(apiUrl));
