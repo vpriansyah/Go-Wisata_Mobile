@@ -1,4 +1,5 @@
 import 'package:desa_wisata/theme.dart';
+import 'package:desa_wisata/user/daftar_event_user.dart';
 import 'package:flutter/material.dart';
 import 'package:desa_wisata/user/daftar_kuliner_user.dart';
 import 'package:desa_wisata/user/daftar_lainnya_user%20.dart';
@@ -339,7 +340,7 @@ class _backupState extends State<backup>{
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) => WisataUser(),
+                                                            builder: (context) => DaftarEventUser(),
                                                           ),
                                                         );
                                                       },
