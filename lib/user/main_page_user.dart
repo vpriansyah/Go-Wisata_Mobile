@@ -63,7 +63,7 @@ class _MainPageUserState extends State<MainPageUser> {
     Widget body() {
       switch (currentIndex) {
         case 0:
-          return backup();
+          return HomeUser();
           break;
         case 1:
           return DaftarPesananUser();
@@ -73,7 +73,7 @@ class _MainPageUserState extends State<MainPageUser> {
           break;
 
         default:
-          return backup();
+          return HomeUser();
       }
     }
 
