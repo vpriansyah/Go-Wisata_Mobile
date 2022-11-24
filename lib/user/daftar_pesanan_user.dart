@@ -44,7 +44,7 @@ class _DaftarPesananUserState extends State<DaftarPesananUser> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: background2,
+        backgroundColor: Colors.blue,
         automaticallyImplyLeading: false,
         title: Text(
           'Riwayat Pembelian',
@@ -73,7 +73,7 @@ class _DaftarPesananUserState extends State<DaftarPesananUser> {
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),
-                  indicatorColor: primaryColor,
+                  indicatorColor: Colors.blue,
                   tabs: [
                     Tab(
                       text: 'Tiket',

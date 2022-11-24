@@ -157,7 +157,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
         width: MediaQuery.of(context).size.width * 0.9,
         height: 100,
         child: Card(
-          color: Color(0xFFFFF8EC),
+          color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
           ),
@@ -171,7 +171,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                     Text(
                       "Total",
                       style: bodyText1.copyWith(
-                        color: Color(0xFFFCC050),
+                        color: Colors.red,
                         fontSize: 20,
                       ),
                     ),
@@ -190,7 +190,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                     Navigator.pushNamed(context, '/checkout');
                   },
                   label: Text('Cart'),
-                  backgroundColor: Color(0xFFFCC050),
+                  backgroundColor: Colors.blue,
                   icon: const Icon(Icons.shopping_cart),
                   // child: const Icon(Icons.shopping_cart),
                 ),
@@ -207,6 +207,8 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
   final String apiUrl =
       'http://go-wisata.id/api/hotel';
 
+  final String api2url = 'http://go-wisata.id/api/villa';
+
   Future<List<Map<String, dynamic>>?> fetch() async {
     http.Response response = await http.get(Uri.parse(apiUrl));
     if (response.statusCode != 200) return null;
@@ -218,4 +220,17 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
     // print(json.decode(response.body));
     return json.decode(response.body);
   }
+
+  Future<List<Map<String, dynamic>>?> fetch2() async {
+    http.Response response = await http.get(Uri.parse(api2url));
+    if (response.statusCode != 200) return null;
+    return List<Map<String, dynamic>>.from(json.decode(response.body)['data']);
+  }
+
+  Future getWisata2() async {
+    var response = await http.get(Uri.parse(api2url));
+    // print(json.decode(response.body));
+    return json.decode(response.body);
+  }
+
 }

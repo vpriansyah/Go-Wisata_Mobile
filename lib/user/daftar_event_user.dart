@@ -156,34 +156,36 @@ class _dataWidgetState extends State<dataWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(8),
-                            bottomRight: Radius.circular(0),
-                            topLeft: Radius.circular(8),
-                            topRight: Radius.circular(0),
-                          ),
-                          // child: Image.network(
-                          //     baseUrl +
-                          //         'images/' +
-                          //         widget.snapshot.data[widget.index]['image'],
-                          //     width: MediaQuery.of(context).size.width * 0.25,
-                          //     height: MediaQuery.of(context).size.height * 1,
-                          //     fit: BoxFit.cover, loadingBuilder:
-                          //         (BuildContext context, Widget child,
-                          //             ImageChunkEvent? loadingProgress) {
-                          //   if (loadingProgress == null) return child;
-                          //   return Center(
-                          //     child: CircularProgressIndicator(
-                          //       value: loadingProgress.expectedTotalBytes !=
-                          //               null
-                          //           ? loadingProgress.cumulativeBytesLoaded /
-                          //               loadingProgress.expectedTotalBytes!
-                          //           : null,
-                          //     ),
-                          //   );
-                          // }),
+                        Container(
+                          width: 100,
+                          // borderRadius: BorderRadius.only(
+                          //   bottomLeft: Radius.circular(8),
+                          //   bottomRight: Radius.circular(0),
+                          //   topLeft: Radius.circular(8),
+                          //   topRight: Radius.circular(0),
+
+                          child: Image.network(
+                              baseUrl +
+                                  'images/' +
+                                  widget.snapshot.data[widget.index]['foto'],
+                              width: MediaQuery.of(context).size.width * 0.25,
+                              height: MediaQuery.of(context).size.height * 1,
+                              fit: BoxFit.cover, loadingBuilder:
+                                  (BuildContext context, Widget child,
+                                      ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                    : null,
+                              ),
+                            );
+                          }),
                         ),
+
                         Expanded(
                           child: Padding(
                             padding:

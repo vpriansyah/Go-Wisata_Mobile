@@ -134,9 +134,10 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 0, 3),
                                     child: Text(
+                                      'Rp ' +
                                       snapshot.data[index]['harga'],
                                       style: GoogleFonts.montserrat(
-                                        color: Color(0xFFFCC050),
+                                        color: Colors.red,
                                         fontSize: 16,
                                       ),
                                     ),
@@ -148,7 +149,7 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
                                       'per porsi',
                                       // snapshot.data[index]['deskripsi_harga'],
                                       style: GoogleFonts.montserrat(
-                                        color: Color(0xFFFCC050),
+                                        color: Colors.red,
                                         fontSize: 16,
                                       ),
                                     ),
@@ -179,7 +180,7 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
         width: MediaQuery.of(context).size.width * 0.9,
         height: 100,
         child: Card(
-          color: Color(0xFFFFF8EC),
+          color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
           ),
@@ -193,7 +194,7 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
                     Text(
                       "Total",
                       style: bodyText1.copyWith(
-                        color: Color(0xFFFCC050),
+                        color: Colors.red,
                         fontSize: 20,
                       ),
                     ),
@@ -212,7 +213,7 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
                     Navigator.pushNamed(context, '/checkout');
                   },
                   label: Text('Cart'),
-                  backgroundColor: Color(0xFFFCC050),
+                  backgroundColor: Colors.blue,
                   icon: const Icon(Icons.shopping_cart),
                   // child: const Icon(Icons.shopping_cart),
                 ),
