@@ -145,7 +145,7 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 0, 3),
                                     child: Text(
-                                      'per orang',
+                                      'per porsi',
                                       // snapshot.data[index]['deskripsi_harga'],
                                       style: GoogleFonts.montserrat(
                                         color: Color(0xFFFCC050),

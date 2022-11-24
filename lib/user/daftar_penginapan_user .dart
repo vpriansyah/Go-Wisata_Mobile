@@ -1,4 +1,4 @@
-import 'package:desa_wisata/models/cart.dart';
+import 'package:desa_wisata/models/cart2.dart';
 import 'package:desa_wisata/theme.dart';
 import 'dart:collection';
 import 'dart:convert';
@@ -68,8 +68,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                             nama: snapshot.data[index]['nama'],
                             kategori: 'penginapan',
                             qty: 1,
-                            harga: int.parse(snapshot.data[index]['harga']),
-                            image: snapshot.data[index]['image'],
+                            foto: snapshot.data[index]['foto'],
                           );
                           cartList.add(c1);
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -86,29 +85,29 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                               borderRadius: BorderRadius.circular(24),
                               child: SizedBox.fromSize(
                                 size: Size.fromRadius(38), // Image radius
-                                // child: Image.network(
-                                //   baseUrl +
-                                //       'images/' +
-                                //       snapshot.data[index]['image'],
-                                //   fit: BoxFit.cover,
-                                //   loadingBuilder: (BuildContext context,
-                                //       Widget child,
-                                //       ImageChunkEvent? loadingProgress) {
-                                //     if (loadingProgress == null) return child;
-                                //     return Center(
-                                //       child: CircularProgressIndicator(
-                                //         value: loadingProgress
-                                //                     .expectedTotalBytes !=
-                                //                 null
-                                //             ? loadingProgress
-                                //                     .cumulativeBytesLoaded /
-                                //                 loadingProgress
-                                //                     .expectedTotalBytes!
-                                //             : null,
-                                //       ),
-                                //     );
-                                //   },
-                                // ),
+                                child: Image.network(
+                                  baseUrl +
+                                      'images/' +
+                                      snapshot.data[index]['foto'],
+                                  fit: BoxFit.cover,
+                                  loadingBuilder: (BuildContext context,
+                                      Widget child,
+                                      ImageChunkEvent? loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress
+                                                    .expectedTotalBytes !=
+                                                null
+                                            ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                loadingProgress
+                                                    .expectedTotalBytes!
+                                            : null,
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -130,29 +129,6 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                                     snapshot.data[index]['deskripsi'],
                                     style: GoogleFonts.montserrat(
                                       fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                  // Padding(
-                                  //   padding: EdgeInsetsDirectional.fromSTEB(
-                                  //       0, 0, 0, 3),
-                                  //   child: Text(
-                                  //     snapshot.data[index]['harga'],
-                                  //     style: GoogleFonts.montserrat(
-                                  //       color: Color(0xFFFCC050),
-                                  //       fontSize: 16,
-                                  //     ),
-                                  //   ),
-                                  // ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 3),
-                                    child: Text(
-                                      'per orang',
-                                      // snapshot.data[index]['deskripsi_harga'],
-                                      style: GoogleFonts.montserrat(
-                                        color: Color(0xFFFCC050),
-                                        fontSize: 16,
-                                      ),
                                     ),
                                   ),
                                 ],
