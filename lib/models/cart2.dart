@@ -5,6 +5,7 @@ class Cart {
   int qty;
   String kategori;
   String foto;
+  String lokasi;
 
   Cart({
     required this.id,
@@ -13,6 +14,7 @@ class Cart {
     required this.qty,
     required this.kategori,
     required this.foto,
+    required this.lokasi,
   });
 }
 

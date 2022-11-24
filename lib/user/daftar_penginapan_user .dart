@@ -66,6 +66,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                             id: snapshot.data[index]['id'],
                             idtempat: snapshot.data[index]['id'],
                             nama: snapshot.data[index]['nama'],
+                            lokasi: snapshot.data[index]['lokasi'],
                             kategori: 'penginapan',
                             qty: 1,
                             foto: snapshot.data[index]['foto'],
@@ -125,8 +126,9 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                                       color: Color(0xFF101213),
                                     ),
                                   ),
+                                  Icon(Icons.location_on_outlined),
                                   AutoSizeText(
-                                    snapshot.data[index]['deskripsi'],
+                                    snapshot.data[index]['lokasi'],
                                     style: GoogleFonts.montserrat(
                                       fontWeight: FontWeight.normal,
                                     ),
