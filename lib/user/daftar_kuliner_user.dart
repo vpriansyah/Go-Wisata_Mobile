@@ -130,18 +130,18 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
                                       fontWeight: FontWeight.normal,
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 3),
-                                    child: Text(
-                                      'Rp ' +
-                                      snapshot.data[index]['harga'],
-                                      style: GoogleFonts.montserrat(
-                                        color: Colors.red,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
+                                  // Padding(
+                                  //   padding: EdgeInsetsDirectional.fromSTEB(
+                                  //       0, 0, 0, 3),
+                                  //   child: Text(
+                                  //     'Rp ' +
+                                  //     snapshot.data[index]['harga'],
+                                  //     style: GoogleFonts.montserrat(
+                                  //       color: Colors.red,
+                                  //       fontSize: 16,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 0, 3),
