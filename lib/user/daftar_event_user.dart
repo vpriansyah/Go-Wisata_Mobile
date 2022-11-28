@@ -1,5 +1,5 @@
 import 'package:desa_wisata/theme.dart';
-import 'package:desa_wisata/user/daftar_wahana_user.dart';
+import 'package:desa_wisata/user/event_user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:collection';
@@ -131,10 +131,10 @@ class _dataWidgetState extends State<dataWidget> {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DaftarWahanaUser(
-                          idWahana: widget.snapshot.data[widget.index]['id']
+                        builder: (context) => EventUser(
+                          idEvent: widget.snapshot.data[widget.index]['id']
                               .toString(),
-                          indexWahana: widget.index,
+                          indexEvent: widget.index,
                         ),
                       ),
                     );
