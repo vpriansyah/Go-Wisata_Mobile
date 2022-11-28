@@ -124,12 +124,12 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
                                       color: Color(0xFF101213),
                                     ),
                                   ),
-                                  AutoSizeText(
-                                    snapshot.data[index]['deskripsi'],
-                                    style: GoogleFonts.montserrat(
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
+                                  // AutoSizeText(
+                                  //   snapshot.data[index]['alamat'],
+                                  //   style: GoogleFonts.montserrat(
+                                  //     fontWeight: FontWeight.normal,
+                                  //   ),
+                                  // ),
                                   // Padding(
                                   //   padding: EdgeInsetsDirectional.fromSTEB(
                                   //       0, 0, 0, 3),
@@ -145,14 +145,14 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 0, 3),
-                                    child: Text(
-                                      'per porsi',
-                                      // snapshot.data[index]['deskripsi_harga'],
-                                      style: GoogleFonts.montserrat(
-                                        color: Colors.red,
-                                        fontSize: 16,
-                                      ),
-                                    ),
+                                    // child: Text(
+                                    //   'per porsi',
+                                    //   // snapshot.data[index]['deskripsi_harga'],
+                                    //   style: GoogleFonts.montserrat(
+                                    //     color: Colors.red,
+                                    //     fontSize: 16,
+                                    //   ),
+                                    // ),
                                   ),
                                 ],
                               ),
@@ -176,52 +176,7 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
 
             // return Text('Data Error');
           }),
-      floatingActionButton: Container(
-        width: MediaQuery.of(context).size.width * 0.9,
-        height: 100,
-        child: Card(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Total",
-                      style: bodyText1.copyWith(
-                        color: Colors.red,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      "Rp. " + getTotal().toString(),
-                    ),
-                  ],
-                ),
-              ),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: FloatingActionButton.extended(
-                  onPressed: () {
-                    // Add your onPressed code here!
-                    Navigator.pushNamed(context, '/checkout');
-                  },
-                  label: Text('Cart'),
-                  backgroundColor: Colors.blue,
-                  icon: const Icon(Icons.shopping_cart),
-                  // child: const Icon(Icons.shopping_cart),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      //
     );
   }
 
