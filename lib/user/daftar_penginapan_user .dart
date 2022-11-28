@@ -119,21 +119,35 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text(
-                                    snapshot.data[index]['nama'],
-                                    style: title3.copyWith(
-                                      color: Color(0xFF101213),
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(4, 0, 3, 4),
+                                    child: Text(
+                                      snapshot.data[index]['nama'],
+                                      style: title3.copyWith(
+                                        color: Color(0xFF101213),
+                                      ),
                                     ),
                                   ),
-                                  Icon(Icons.location_on_outlined),
-                                  AutoSizeText(
-                                    snapshot.data[index]['lokasi'],
-                                    style: GoogleFonts.montserrat(
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                                  Row(
+                                    mainAxisSize:
+                                    MainAxisSize
+                                        .max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 3, 0),
+                                        child: Icon(Icons.location_on_outlined),
+                                      ),
+
+                                      AutoSizeText(
+                                        snapshot.data[index]['lokasi'],
+                                        style: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ]
                               ),
                             ),
                           ),
