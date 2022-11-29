@@ -2,6 +2,7 @@ import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/daftar_event_user.dart';
 import 'package:flutter/material.dart';
 import 'package:desa_wisata/user/daftar_kuliner_user.dart';
+import 'package:desa_wisata/user/backup.dart';
 import 'package:desa_wisata/user/daftar_lainnya_user%20.dart';
 import 'package:desa_wisata/user/daftar_penginapan_user%20.dart';
 import 'package:desa_wisata/user/wisata_user.dart';
@@ -517,7 +518,7 @@ class _HomeUserState extends State<HomeUser> {
                                                           context,
                                                           MaterialPageRoute(
                                                             builder: (context) =>
-                                                                DaftarKulinerUser(),
+                                                                TempatKulinerUser(),
                                                           ),
                                                         );
                                                       },

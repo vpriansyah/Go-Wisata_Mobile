@@ -16,6 +16,27 @@ class Cart {
     required this.kategori,
     required this.image,
   });
+
+}class CartKuliner {
+  int id;
+  int idtempat;
+  String nama;
+  int qty;
+  int harga;
+  String kategori;
+  String image;
+  String alamat;
+
+  CartKuliner({
+    required this.id,
+    required this.idtempat,
+    required this.nama,
+    required this.qty,
+    required this.harga,
+    required this.kategori,
+    required this.image,
+    required this.alamat,
+  });
 }
 
 var cartList = [

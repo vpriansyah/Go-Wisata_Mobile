@@ -124,12 +124,12 @@ class _DaftarKulinerUserState extends State<DaftarKulinerUser> {
                                       color: Color(0xFF101213),
                                     ),
                                   ),
-                                  // AutoSizeText(
-                                  //   snapshot.data[index]['alamat'],
-                                  //   style: GoogleFonts.montserrat(
-                                  //     fontWeight: FontWeight.normal,
-                                  //   ),
-                                  // ),
+                                  AutoSizeText(
+                                    snapshot.data[index]['alamat'],
+                                    style: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
                                   // Padding(
                                   //   padding: EdgeInsetsDirectional.fromSTEB(
                                   //       0, 0, 0, 3),
