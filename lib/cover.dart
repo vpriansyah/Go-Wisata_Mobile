@@ -366,7 +366,7 @@ class _CoverWidgetState extends State<CoverWidget> {
                                                           190, 0),
                                                       child: TextButton(
                                                         onPressed: () {
-                                                          Navigator.pushNamed(context, '/signinsignup');
+                                                          Navigator.pushNamed(context, '/home-user');
                                                           print(
                                                               'Button pressed ...');
                                                         },

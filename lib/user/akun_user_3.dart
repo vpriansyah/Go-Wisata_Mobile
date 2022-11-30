@@ -6,34 +6,32 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AkunUser extends StatefulWidget {
-  const AkunUser({Key? key}) : super(key: key);
+class AkunUser3 extends StatefulWidget {
+  const AkunUser3({Key? key}) : super(key: key);
 
   @override
-  _AkunUserState createState() => _AkunUserState();
+  _AkunUser3State createState() => _AkunUser3State();
 }
 
-class _AkunUserState extends State<AkunUser> {
+class _AkunUser3State extends State<AkunUser3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // key: scaffoldKey,
+      backgroundColor: primaryBackground,
       appBar: AppBar(
-        backgroundColor: Color(0xFFFCC050),
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Text(
-          'Akun',
-          style: GoogleFonts.montserrat(
-            color: Colors.white,
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
+          'Profile',
+          style: title1.copyWith(
+              color: Colors.black
           ),
         ),
         actions: [],
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFFF1F4F8),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -48,7 +46,7 @@ class _AkunUserState extends State<AkunUser> {
                   boxShadow: [
                     BoxShadow(
                       blurRadius: 1,
-                      color: Color(0xFFF1F4F8),
+                      color: primaryBackground,
                       offset: Offset(0, 0),
                     )
                   ],
@@ -59,27 +57,35 @@ class _AkunUserState extends State<AkunUser> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
-                        width: 76,
-                        height: 76,
-                        clipBehavior: Clip.antiAlias,
+                        width: 80,
                         decoration: BoxDecoration(
-                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Image.asset(
-                          'assets/image/profil-admin.jpg',
+                        child:Container(
+                          width: 120,
+                          height: 120,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.asset(
+                            'assets/image/profil-admin.jpg',
+                          ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                              child: Text(
-                                dataList.last.nama,
+                              EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                              child:
+                              Text(
+                                'Hello Guest',
                                 style: GoogleFonts.montserrat(
                                   color: Color(0xFF090F13),
                                   fontSize: 20,
@@ -87,18 +93,7 @@ class _AkunUserState extends State<AkunUser> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                              child: Text(
-                                dataList.last.email,
-                                style: GoogleFonts.montserrat(
-                                  color: Color(0xFFFCC050),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ),
+
                           ],
                         ),
                       ),
@@ -111,54 +106,41 @@ class _AkunUserState extends State<AkunUser> {
           Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(24, 12, 0, 12),
-                    child: Text(
-                      'Account Settings',
-                      style: GoogleFonts.montserrat(
-                        color: Color(0xFF090F13),
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
+
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 80,
+                      height: 40,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/signinsignup');
+                        },
+                        child: Text('Log In',
+                          style: bodyText2.copyWith(
+                            fontFamily: 'Lexend Deca',
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),),
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          elevation: 1,
+                          side: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
-          ),
-          Container(
-            width: 100,
-            height: 40,
-            margin: EdgeInsets.only(right: 20, left: 20, top: 20),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    // var session = SessionManager();
-
-                    // SessionManager().destroy();
-                    logOut();
-                    print('logged out');
-                  },
-                  style: TextButton.styleFrom(
-                      backgroundColor: primaryColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8))),
-                  child: Text(
-                    'Log Out',
-                    style: title1.copyWith(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ),
         ],
       ),
@@ -166,6 +148,7 @@ class _AkunUserState extends State<AkunUser> {
   }
 
   String email = "";
+
 
   logOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -184,15 +167,15 @@ class _AkunUserState extends State<AkunUser> {
       MaterialPageRoute(
         builder: (BuildContext context) => const SignInSignUp2(),
       ),
-      (route) => false,
+          (route) => false,
     );
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
           content: Text(
-        "Berhasil logout",
-        style: TextStyle(fontSize: 16),
-      )),
+            "Berhasil logout",
+            style: TextStyle(fontSize: 16),
+          )),
     );
   }
 

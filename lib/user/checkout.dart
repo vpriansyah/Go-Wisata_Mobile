@@ -462,7 +462,7 @@ class _CheckOutState extends State<CheckOut> {
     for (var x in dataList) {
       var user = {
         'user_id': x.id,
-        'name': x.name,
+        'name': x.nama,
         'email': x.email,
         'telp': x.telp,
       };

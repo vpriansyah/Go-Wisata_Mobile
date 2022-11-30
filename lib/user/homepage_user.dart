@@ -26,7 +26,7 @@ class _HomePageUserState extends State<HomePageUser> {
         backgroundColor: Color(0xFFFCC050),
         automaticallyImplyLeading: false,
         title: Text(
-          'Hai, ' + dataList.last.name + '!',
+          'Hai, ' + dataList.last.nama + '!',
           style: title2.copyWith(
             fontFamily: 'Montserrat',
             color: Colors.white,

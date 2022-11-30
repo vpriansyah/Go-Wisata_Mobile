@@ -1,3 +1,4 @@
+import 'package:desa_wisata/data.dart';
 import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/akun_user.dart';
 import 'package:desa_wisata/user/akun_user_2.dart';
@@ -7,6 +8,8 @@ import 'package:desa_wisata/user/homepage_user.dart';
 import 'package:desa_wisata/user/home_user.dart';
 import 'package:flutter/material.dart';
 import 'package:desa_wisata/user/backup.dart';
+import 'package:desa_wisata/signinsignup2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class MainPageUser extends StatefulWidget {
@@ -83,4 +86,5 @@ class _MainPageUserState extends State<MainPageUser> {
       body: body(),
     );
   }
+
 }
