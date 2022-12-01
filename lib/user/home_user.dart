@@ -364,7 +364,7 @@ class _HomeUserState extends State<HomeUser> {
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(16, 8, 16, 8),
+                                                      .fromSTEB(16, 8, 0, 8),
                                                   child: Container(
                                                     width: 270,
                                                     height: 100,
@@ -425,7 +425,7 @@ class _HomeUserState extends State<HomeUser> {
                                                                 .fromSTEB(
                                                                 16,
                                                                 12,
-                                                                16,
+                                                                0,
                                                                 12),
                                                             child: Row(
                                                               mainAxisSize:
@@ -494,7 +494,7 @@ class _HomeUserState extends State<HomeUser> {
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(16, 8, 16, 8),
+                                                      .fromSTEB(16, 8, 0, 8),
                                                   child: Container(
                                                     width: 270,
                                                     height: 100,
@@ -627,7 +627,7 @@ class _HomeUserState extends State<HomeUser> {
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(16, 8, 16, 8),
+                                                      .fromSTEB(16, 8, 0, 8),
                                                   child: Container(
                                                     width: 270,
                                                     height: 100,
