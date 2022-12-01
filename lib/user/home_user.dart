@@ -318,7 +318,7 @@ class _HomeUserState extends State<HomeUser> {
                                                                         .start,
                                                                     children: [
                                                                       Text(
-                                                                        'Paket Wahana',
+                                                                        'Paket Wisata',
                                                                         style: bodyText1
                                                                             .copyWith(
                                                                           fontFamily:

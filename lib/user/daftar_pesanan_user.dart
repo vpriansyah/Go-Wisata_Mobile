@@ -1,4 +1,5 @@
 import 'package:desa_wisata/data.dart';
+import 'package:desa_wisata/helper/helpersharedprefs.dart';
 import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/tiket.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,12 @@ class _DaftarPesananUserState extends State<DaftarPesananUser> {
   String token = "kosong";
   bool isLoadid = true;
   String id = '';
+  bool status = false;
+
   @override
   void initState() {
     setState(() {});
+    ceklogin();
     // TODO: implement initState
     gettoken().then((value) {
       token = value;
@@ -101,7 +105,7 @@ class _DaftarPesananUserState extends State<DaftarPesananUser> {
                             } else if (snapshot.hasData) {
                               // print(snapshot.data);
                               return RefreshIndicator(
-                                onRefresh: () { 
+                                onRefresh: () {
                                   setState(() {
                                     getPesanan();
                                   });
@@ -269,6 +273,22 @@ class _DaftarPesananUserState extends State<DaftarPesananUser> {
         ),
       ),
     );
+  }
+
+  HelperSharedPrefs prefs = HelperSharedPrefs();
+  ceklogin() async {
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // String isLoggedIn = prefs.getBool('isLoggedIn').toString();
+    bool isLogin = await prefs.getIsLogin();
+    if(isLogin){
+      setState(() {
+        status = true;
+      });
+    } else {
+      setState(() {
+        status = false;
+      });
+    }
   }
 
 // TODO change backend API
