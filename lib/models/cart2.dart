@@ -20,19 +20,21 @@ class Cart {
 
 class CartEvent{
   int id;
-  int idtempat;
   String nama;
   int qty;
   int harga;
-  String image;
+  String foto;
+  String kategori;
+  String lokasi;
 
   CartEvent({
     required this.id,
-    required this.idtempat,
     required this.nama,
     required this.qty,
     required this.harga,
-    required this.image,
+    required this.foto,
+    required this.lokasi,
+    required this.kategori,
   });
 
 }

@@ -1,100 +1,36 @@
 import 'package:desa_wisata/models/cart2.dart';
+import 'package:desa_wisata/models/event_model.dart';
 import 'package:desa_wisata/theme.dart';
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../main.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EventUser extends StatefulWidget {
-  const EventUser({Key? key, required this.idEvent, required this.indexEvent}) : super(key: key);
+import 'checkout.dart';
+
+class Daftar_EventUser extends StatefulWidget {
+  const Daftar_EventUser({Key? key, required this.idEvent, required this.indexEvent,}) : super(key: key);
 
   final String idEvent;
   final int indexEvent;
 
   @override
-  State<EventUser> createState() => _EventUserState();
+  State<Daftar_EventUser> createState() => _Daftar_EventUserState();
 }
 
-class _EventUserState extends State<EventUser> {
-  refresh() {
-    setState(() {});
-  }
-
+class _Daftar_EventUserState extends State<Daftar_EventUser> {
   @override
   Widget build(BuildContext context) {
-    Widget customBottomNav() {
-      return Container(
-        height: 150,
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Subtotal',
-                    style: subtitle1,
-                  ),
-                  Text("Rp. ${getTotal()}", style: title2),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Divider(
-              thickness: 0.75,
-              color: primaryColor,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              height: 50,
-              margin: EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/checkout');
-                },
-                style: TextButton.styleFrom(
-                  backgroundColor: primaryColor,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Keranjang',
-                        style: title2.copyWith(
-                          color: textColor1,
-                        )),
-                    Icon(
-                      Icons.arrow_forward,
-                      color: secondaryColor,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: background2,
+        backgroundColor: Colors.blue,
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
@@ -107,665 +43,177 @@ class _EventUserState extends State<EventUser> {
           },
         ),
         title: Text(
-          'Event',
-          style: GoogleFonts.montserrat(
-            color: Colors.white,
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
+          'Daftar Event',
         ),
         actions: [],
         centerTitle: false,
-        elevation: 0,
+        elevation: 2,
       ),
-      backgroundColor: primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: DefaultTabController(
-            length: 2,
-            initialIndex: 0,
-            child: Column(
-              children: [
-                TabBar(
-                  labelColor: Color(0xFF090F13),
-                  labelStyle: GoogleFonts.montserrat(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  indicatorColor: primaryColor,
-                  tabs: [
-                    Tab(
-                      text: 'Tiket Masuk',
-                    ),
-                    Tab(
-                      text: 'Tiket Event',
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: TabBarView(
-                    children: [
-                      FutureBuilder(
-                          future: getTiketMasuk(),
-                          builder: (context, AsyncSnapshot snapshot) {
-                            if (snapshot.hasData) {
-                              return Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        bottom: 5.0,
-                                        left: 10.0,
-                                        right: 10.0),
-                                    child:
-                                    TiketMasuk(
-                                      harga: snapshot.data[widget.indexEvent]['harga'],
-                                      nama: snapshot.data[widget.indexEvent]['nama'],
-                                      id:snapshot.data[widget.indexEvent]['id'],
-                                      refresh: refresh,),
-                                  ),
-                                ],
-                              );
-                            } else {
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                            // return Text('Data Error');
-                          }),
-                      FutureBuilder(
-                          future: getWisata(widget.idEvent),
-                          builder: (context, AsyncSnapshot snapshot) {
-                            if (snapshot.hasData) {
-                              // return Text(snapshot.data.toString());
-                              return
-                                ListView.builder(
-                                  itemBuilder: (context, index) {
-                                    return Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: 5.0,
-                                              left: 10.0,
-                                              right: 10.0),
-                                          child:
-                                          //Text(snapshot.data[index].toString()),
-                                          dataWidget(
-                                            snapshot: snapshot,
-                                            index: index,
-                                            refresh: refresh,
-                                          ),
+      body: FutureBuilder<List<EventModel>>(
+          future: getEvent(widget.idEvent),
+          builder: (context, AsyncSnapshot<List<EventModel>> snapshot) {
+            if (snapshot.hasData) {
+              // print('snapshot:' + snapshot.data.length.toString());
+              print(snapshot.data!.first.nama);
+              try{
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    // final List place = fetch();
+                    return InkWell(
+                      onTap: () {
+                        var get = fetch();
+                        get.then((value) {});
+                        final snackBar = SnackBar(
+                          content: Text(
+                              snapshot.data![index].nama + ' added to cart'),
+                        );
+                        setState(() {
+                          CartEvent c1 = CartEvent(
+                              id: snapshot.data![index].id ?? 0,
+                              nama: snapshot.data![index].nama,
+                              kategori: 'kuliner',
+                              lokasi: snapshot.data![index].lokasi ?? "null",
+                              qty: 1,
+                              // harga: int.parse(snapshot.data![index].harga ),
+                              harga: snapshot.data![index].harga ?? 0,
+                              foto: snapshot.data![index].foto);
+                          cartList.add(c1);
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        });
+                      },
+                      child: Card(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(24),
+                                child: SizedBox.fromSize(
+                                  size: Size.fromRadius(38), // Image radius
+                                  child: Image.network(
+                                    baseUrl +
+                                        'images/' +
+                                        snapshot.data![index].foto,
+                                    fit: BoxFit.cover,
+                                    loadingBuilder: (BuildContext context,
+                                        Widget child,
+                                        ImageChunkEvent? loadingProgress) {
+                                      if (loadingProgress == null) return child;
+                                      return Center(
+                                        child: CircularProgressIndicator(
+                                          value: loadingProgress
+                                              .expectedTotalBytes !=
+                                              null
+                                              ? loadingProgress
+                                              .cumulativeBytesLoaded /
+                                              loadingProgress
+                                                  .expectedTotalBytes!
+                                              : null,
                                         ),
-                                      ],
-                                    );
-                                  },
-                                  itemCount: snapshot.data.length,
-                                );
-                            }
-                            else {
-                              return Center(
-                                child:
-                                //Text('data tidak tersedia')
-                                CircularProgressIndicator(),
-                              );
-                            }
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Text(
+                                      snapshot.data![index].nama,
+                                      style: title3.copyWith(
+                                        color: Color(0xFF101213),
+                                      ),
+                                    ),
+                                    AutoSizeText(
+                                      snapshot.data![index].lokasi,
+                                      style: GoogleFonts.montserrat(
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                     ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 3),
+                                      child: Text(
+                                        'Rp ${snapshot.data![index].harga}'
+                                        ,
+                                        style: GoogleFonts.montserrat(
+                                          color: Colors.red,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 3),
+                                      // child: Text(
+                                      //   'per porsi',
+                                      //   // snapshot.data[index]['deskripsi_harga'],
+                                      //   style: GoogleFonts.montserrat(
+                                      //     color: Colors.red,
+                                      //     fontSize: 16,
+                                      //   ),
+                                      // ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        elevation: 3,
+                        margin: EdgeInsets.all(10),
+                      ),
+                    );
+                    ///---
+                  },
+                  itemCount: snapshot.data!.length,
+                );
+              } catch(e){
+                return Text(e.toString());
+              }
+              // This trailing comma makes auto-formatting nicer for build methods.
 
-                            // return Text('Data Error');
-                          }),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-      bottomNavigationBar: customBottomNav(),
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            // return Text('Data Error');
+          }),
+      //
     );
   }
+
+  final String baseUrl = 'http://go-wisata.id/';
 
   final String apiUrl = 'http://go-wisata.id/api/listevent/';
 
   Future<List<Map<String, dynamic>>?> fetch() async {
-    http.Response response = await http.get(Uri.parse(apiUrl));
-    // if (response.statusCode != 200) return null;
-    if (response.statusCode != 200){
-      SnackBar snackBar = SnackBar(
-        content: Text(json.decode(response.body)['data']['message']),
-        backgroundColor: Colors.red,
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      return null;
-    }
+    http.Response response = await http
+        .get(Uri.parse("https://backend-dompetku.herokuapp.com/api/history"));
+    if (response.statusCode != 200) return null;
     return List<Map<String, dynamic>>.from(json.decode(response.body)['data']);
   }
 
-  Future getWisata(String idTempat) async {
-    String fullUrl = apiUrl+idTempat.toString();
-    var response = await http.get(Uri.parse(fullUrl));
-    if (response.statusCode != 200) return null;
-    return json.decode(response.body);
-  }
-
-  Future getTiketMasuk() async {
-    var response = await http.get(Uri.parse('http://go-wisata.id/api/listevent'));
-    return json.decode(response.body);
-  }
-}
-
-class TiketMasuk extends StatefulWidget {
-  const TiketMasuk({ Key? key, required this.harga, required this.nama,  required this.id, required this.refresh }) : super(key: key);
-
-  final int harga;
-  final String nama;
-  final int id;
-  final Function() refresh;
-
-  @override
-  _TiketMasukState createState() => _TiketMasukState();
-}
-
-class _TiketMasukState extends State<TiketMasuk> {
-  int total = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      elevation: 4,
-      margin: const EdgeInsets.all(5.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
-                              child: Text(
-                                "${widget.nama}",
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
-                              child: Text(
-                                'Tiket masuk event untuk perorang',
-                                // "Get all the features at a discount for yearly membership.",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
-                              child: Text(
-                                //Harga Tempat Tiket Wahana
-                                "Rp. ${widget.harga}",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFCC050),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
-                              child: Text(
-                                'per orang',
-                                // widget.snapshot.data[widget.index]
-                                //         ['deskripsi_harga'] ??
-                                //     '-',
-                                // "Get all the features at a discount for yearly membership.",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            Row(
-                              //add to cart
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Row(children: [
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        if (total > 1) {
-                                          setState(() {
-                                            total--;
-                                            widget.refresh();
-                                          });
-                                        }
-                                        minusCart(
-                                          widget.id,
-                                          widget.id,
-                                          "Tiket Masuk ${widget.nama}",
-                                          'tiket masuk',
-                                          widget.harga,
-                                          'image',
-                                        );
-                                      },
-                                      child: Text("-"),
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color(0xFFFCC050)),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                  BorderRadius.circular(
-                                                      10.0),
-                                                  side: BorderSide(
-                                                      color: Color(
-                                                          0xFFFCC050)))))),
-                                  ElevatedButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        getQty(
-                                            widget.id,
-                                            widget.id,
-                                            "Tiket Masuk ${widget.nama}",
-                                            'tiket masuk',
-                                            widget.harga).toString(),
-                                        //total.toString(),
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color(0xFFFFF8EC)),
-                                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(10.0),
-                                              )
-                                          )
-                                      )
-                                  ),
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        // deleteWahana(widget.id);
-                                        setState(() {
-                                          total += 1;
-                                          widget.refresh();
-                                        });
-                                        addCart(
-                                          widget.id,
-                                          widget.id,
-                                          "Tiket Masuk ${widget.nama}",
-                                          'tiket masuk',
-                                          widget.harga,
-                                          'image',
-                                        );
-                                      },
-                                      child: Text("+"),
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color(0xFFFCC050)),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(RoundedRectangleBorder(
-                                            borderRadius:
-                                            BorderRadius.circular(10.0),
-                                          )
-                                          )
-                                      )
-                                  )
-                                ]),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-final String baseUrl = 'http://go-wisata.id/';
-
-class dataWidget extends StatefulWidget {
-  const dataWidget({
-    Key? key,
-    required this.snapshot,
-    required this.index,
-    required this.refresh,
-  }) : super(key: key);
-
-  final AsyncSnapshot snapshot;
-  final int index;
-  final Function() refresh;
-
-  @override
-  State<dataWidget> createState() => _dataWidgetState();
-}
-
-class _dataWidgetState extends State<dataWidget> {
-  int total = 0;
-  @override
-  Widget build(BuildContext context) {
-    // print(widget.snapshot);
-    return Card(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      elevation: 4,
-      margin: const EdgeInsets.all(5.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
-                      baseUrl +
-                          'images/' +
-                          widget.snapshot.data[widget.index]['image'],
-                      width: MediaQuery.of(context).size.width * 0.25,
-                      // height: MediaQuery.of(context).size.height * 1,
-                      fit: BoxFit.cover, loadingBuilder:
-                      (BuildContext context, Widget child,
-                      ImageChunkEvent? loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
-                            : null,
-                      ),
-                    );
-                  }),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
-                              child: Text(
-                                //Nama Tempat Tiket Wahana
-                                widget.snapshot.data[widget.index]
-                                ['nama']??
-                                    '-',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
-                              child: Text(
-                                //Deskripsi Tempat Tiket Wahana
-                                widget.snapshot.data[widget.index]
-                                ['deskripsi']??
-                                    '-',
-                                // "Get all the features at a discount for yearly membership.",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
-                              child: Text(
-                                //Harga Tempat Tiket Wahana
-                                "Rp. " +
-                                    widget.snapshot.data[widget.index]['harga'],
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFCC050),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
-                              child: Text(
-                                // 'Deskripsi Harga Tiket Wahana',
-                                widget.snapshot.data[widget.index]
-                                ['deskripsi_harga'] ??
-                                    '-',
-                                // "Get all the features at a discount for yearly membership.",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            Row(
-                              //add to cart
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Row(children: [
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        if (total > 1) {
-                                          setState(() {
-                                            total--;
-                                            widget.refresh();
-                                          });
-                                        }
-                                        minusCart(
-                                          widget.snapshot.data[widget.index]['id'],
-                                          widget.snapshot.data[widget.index]['tempat_id'],
-                                          widget.snapshot.data[widget.index]['nama'],
-                                          'tiket',
-                                          int.parse(widget.snapshot.data[widget.index]['harga']),
-                                          widget.snapshot.data[widget.index]['image'].toString(),
-                                        );
-                                      },
-                                      child: Text("-"),
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color(0xFFFCC050)),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                  BorderRadius.circular(
-                                                      10.0),
-                                                  side: BorderSide(
-                                                      color: Color(
-                                                          0xFFFCC050)))))),
-                                  ElevatedButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        getQty(
-                                            widget.snapshot.data[widget.index]['id'],
-                                            widget.snapshot.data[widget.index]['tempat_id'],
-                                            widget.snapshot.data[widget.index]['nama'],
-                                            'tiket',
-                                            int.parse(widget.snapshot
-                                                .data[widget.index]['harga'])).toString(),
-                                        // total.toString(),
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color(0xFFFFF8EC)),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(10.0),
-                                              )))),
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                        // deleteWahana(widget.id);
-                                        setState(() {
-                                          total += 1;
-                                          widget.refresh();
-                                        });
-                                        addCart(
-                                          widget.snapshot.data[widget.index]['id'],
-                                          widget.snapshot.data[widget.index]['tempat_id'],
-                                          widget.snapshot.data[widget.index]['nama'],
-                                          'tiket',
-                                          int.parse(widget.snapshot.data[widget.index]['harga']),
-                                            widget.snapshot.data[widget.index]['image'].toString(),
-                                        );
-                                      },
-                                      child: Text("+"),
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color(0xFFFCC050)),
-                                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(10.0),
-                                              )
-                                          )
-                                      )
-                                  )
-                                ]),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-void addCart(int id ,int idtempat , String nama, String kategori, int harga, String image) {
-  var found = false;
-  cartList.forEach((element) {
-    if (element.nama == nama &&
-        element.kategori == kategori &&
-        element.id == id) {
-      found = true;
-      element.qty += 1;
+  Future<List<EventModel>> getEvent(String idTempat) async {
+    try{
+      String fullUrl = apiUrl+idTempat.toString();
+      var response = await http.get(Uri.parse(fullUrl));
+      if (response.statusCode != 200) return [];
+      List<EventModel> result = eventModelFromJson(response.body);
+      // return json.decode(response.body);
+      return result;
+    } catch (e) {
+      return [];
     }
-  });
-  if (found) {
-    found = false;
-  } else {
-    CartEvent cart = CartEvent(
-      id: id,
-      idtempat: idtempat,
-      nama: nama,
-      qty: 1,
-      harga: harga,
-      image : image,
-    );
-    cartList.add(cart);
-  }
-}
 
-void minusCart(int id ,int idtempat ,String nama ,String kategori ,int harga, String image) {
-  if(cartList.isNotEmpty){
-    var found = false;
-    for (var element in cartList) {
-      if (element.nama == nama &&
-          element.kategori == kategori &&
-          element.id == id) {
-        found = true;
-        if (element.qty >= 1) {
-          element.qty -= 1;
-
-          if (element.qty < 1) {
-            cartList.remove(element);
-          }
-        }
-      }
-    }
-    if (found) {
-      found = false;
-    } else {
-      CartEvent cart = CartEvent(
-          id: id,
-          idtempat: idtempat,
-          nama: nama,
-          qty: 1,
-          harga: harga,
-          image : image,
-      );
-    }
   }
-}
-
-int getQty(int id, int idtempat, String nama ,String kategori ,int harga) {
-  int tmp = 0;
-  for (var element in cartList) {
-    if (element.nama == nama &&
-        element.kategori == kategori &&
-        element.id == id &&
-        element.idtempat == idtempat) {
-      tmp = element.qty;
-    }
-  }
-  return tmp;
-}
-
-int getTotal() {
-  int total = 0;
-  if (cartList.isEmpty) {
-    total = 0;
-  }
-  else{
-    for (var x in cartList) {
-      int y = x.qty * x.harga;
-      total += y;
-    }
-  }
-  return total;
 }

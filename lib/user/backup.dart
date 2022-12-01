@@ -2,7 +2,6 @@ import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/backup2.dart';
 import 'package:desa_wisata/user/daftar_kuliner_user.dart';
 import 'package:desa_wisata/user/daftar_wahana_user.dart';
-// import 'package:desa_wisata/user/daftar_wahana_user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:collection';

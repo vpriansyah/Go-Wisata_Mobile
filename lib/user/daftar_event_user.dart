@@ -128,16 +128,16 @@ class _dataWidgetState extends State<dataWidget> {
                 child: InkWell(
                   onTap: () async {
                     // print(widget.snapshot.data[widget.index]['id']);
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EventUser(
-                          idEvent: widget.snapshot.data[widget.index]['id']
-                              .toString(),
-                          indexEvent: widget.index,
-                        ),
-                      ),
-                    );
+                    // await Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => Daftar_EventUser(
+                    //       idEvent: widget.snapshot.data[widget.index]['id']
+                    //           .toString(),
+                    //       indexEvent: widget.index,
+                    //     ),
+                    //   ),
+                    // );
                   },
                   child: Container(
                     width: double.infinity,
