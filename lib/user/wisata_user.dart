@@ -1,3 +1,5 @@
+import 'package:desa_wisata/helper/helpersharedprefs.dart';
+import 'package:desa_wisata/signinsignup2.dart';
 import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/daftar_wahana_user.dart';
 import 'package:flutter/material.dart';
@@ -111,7 +113,12 @@ class dataWidget extends StatefulWidget {
 
 class _dataWidgetState extends State<dataWidget> {
   int total = 0;
-
+  bool status = false;
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ceklogin();
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -128,17 +135,27 @@ class _dataWidgetState extends State<dataWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                 child: InkWell(
                   onTap: () async {
-                    // print(widget.snapshot.data[widget.index]['id']);
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DaftarWahanaUser(
-                          idWahana: widget.snapshot.data[widget.index]['id']
-                              .toString(),
-                          indexWahana: widget.index,
+                    if(status) {
+                      // print(widget.snapshot.data[widget.index]['id']);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              DaftarWahanaUser(
+                                idWahana: widget.snapshot.data[widget
+                                    .index]['id']
+                                    .toString(),
+                                indexWahana: widget.index,
+                              ),
                         ),
-                      ),
-                    );
+                      );
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignInSignUp2()
+                          ));
+                    }
                   },
                   child: Container(
                     width: double.infinity,
@@ -235,5 +252,21 @@ class _dataWidgetState extends State<dataWidget> {
         ),
       ],
     );
+  }
+  HelperSharedPrefs prefs = HelperSharedPrefs();
+
+  ceklogin() async {
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // String isLoggedIn = prefs.getBool('isLoggedIn').toString();
+    bool isLogin = await prefs.getIsLogin();
+    if(isLogin){
+      setState(() {
+        status = true;
+      });
+    } else {
+      setState(() {
+        status = false;
+      });
+    }
   }
 }
