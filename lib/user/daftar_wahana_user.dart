@@ -49,7 +49,7 @@ class _DaftarWahanaUserState extends State<DaftarWahanaUser> {
             ),
             Divider(
               thickness: 0.75,
-              color: primaryColor,
+              color: Colors.grey,
             ),
             SizedBox(
               height: 20,
@@ -64,7 +64,7 @@ class _DaftarWahanaUserState extends State<DaftarWahanaUser> {
                   Navigator.pushNamed(context, '/checkout');
                 },
                 style: TextButton.styleFrom(
-                  backgroundColor: primaryColor,
+                  backgroundColor: Colors.blue,
                   padding: EdgeInsets.symmetric(
                     horizontal: 20,
                   ),
@@ -94,7 +94,7 @@ class _DaftarWahanaUserState extends State<DaftarWahanaUser> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: background2,
+        backgroundColor: Colors.blue,
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
@@ -133,7 +133,7 @@ class _DaftarWahanaUserState extends State<DaftarWahanaUser> {
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),
-                  indicatorColor: primaryColor,
+                  indicatorColor: Colors.blue,
                   tabs: [
                     Tab(
                       text: 'Tiket Masuk',
@@ -154,6 +154,7 @@ class _DaftarWahanaUserState extends State<DaftarWahanaUser> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(
+                                        top: 3.0,
                                         bottom: 5.0,
                                         left: 10.0,
                                         right: 10.0),
@@ -297,7 +298,7 @@ class _TiketMasukState extends State<TiketMasuk> {
                           children: [
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
+                                  10, 10, 10, 0),
                               child: Text(
                                 "${widget.nama}",
                                 style: TextStyle(
@@ -308,7 +309,7 @@ class _TiketMasukState extends State<TiketMasuk> {
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
+                                  10, 10, 10, 0),
                               child: Text(
                                 'Tiket masuk wisata untuk perorang',
                                 // "Get all the features at a discount for yearly membership.",
@@ -320,7 +321,7 @@ class _TiketMasukState extends State<TiketMasuk> {
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
+                                  10, 5, 0, 0),
                               child: Text(
                                 //Harga Tempat Tiket Wahana
                                 "Rp. ${widget.htm}",
@@ -333,7 +334,7 @@ class _TiketMasukState extends State<TiketMasuk> {
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 5),
+                                  10, 5, 0, 0),
                               child: Text(
                                 'per orang',
                                 // widget.snapshot.data[widget.index]
@@ -346,97 +347,113 @@ class _TiketMasukState extends State<TiketMasuk> {
                                 ),
                               ),
                             ),
-                            Row(
-                              //add to cart
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Row(children: [
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        if (total > 1) {
-                                          setState(() {
-                                            total--;
-                                            widget.refresh();
-                                          });
-                                        }
-                                        minusCart(
-                                          widget.id,
-                                          widget.id,
-                                          "Tiket Masuk ${widget.nama}",
-                                          'tiket masuk',
-                                          widget.htm,
-                                          'image',
-                                        );
-                                      },
-                                      child: Text("-"),
-                                      style: ButtonStyle(
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  10, 5, 10, 10),
+                              child: Row(
+                                //add to cart
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Row(children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          10, 5, 5, 0),
+                                      child: ElevatedButton(
+                                          onPressed: () {
+                                            if (total > 1) {
+                                              setState(() {
+                                                total--;
+                                                widget.refresh();
+                                              });
+                                            }
+                                            minusCart(
+                                              widget.id,
+                                              widget.id,
+                                              "Tiket Masuk ${widget.nama}",
+                                              'tiket masuk',
+                                              widget.htm,
+                                              'image',
+                                            );
+                                          },
+                                          child: Text("-"),
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all<Color>(
+                                                      Color(0xFF10A2FD)),
+                                              shape: MaterialStateProperty.all<
+                                                      RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                      side: BorderSide(
+                                                          color: Color(
+                                                              0xFF10A2FD)))))),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0, 5, 5, 0),
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          getQty(
+                                            widget.id,
+                                            widget.id,
+                                            "Tiket Masuk ${widget.nama}",
+                                            'tiket masuk',
+                                            widget.htm).toString(),
+                                          //total.toString(),
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
-                                                  Color(0xFFFCC050)),
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
-                                                  side: BorderSide(
-                                                      color: Color(
-                                                          0xFFFCC050)))))),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      getQty( 
-                                        widget.id,
-                                        widget.id,
-                                        "Tiket Masuk ${widget.nama}",
-                                        'tiket masuk',
-                                        widget.htm).toString(),
-                                      //total.toString(),
-                                      style: TextStyle(color: Colors.black),
-                                    ),
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color(0xFFFFF8EC)),
-                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                          borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        )
-                                      )
-                                    )
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      // deleteWahana(widget.id);
-                                      setState(() {
-                                        total += 1;
-                                        widget.refresh();
-                                      });
-                                      addCart(
-                                        widget.id,
-                                        widget.id,
-                                        "Tiket Masuk ${widget.nama}",
-                                        'tiket masuk',
-                                        widget.htm,
-                                        'image',
-                                      );
-                                    },
-                                    child: Text("+"),
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color(0xFFFCC050)),
-                                      shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(RoundedRectangleBorder(
-                                          borderRadius:
-                                            BorderRadius.circular(10.0),
+                                                  Color(0xFFFFF8EC)),
+                                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            )
                                           )
                                         )
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0, 5, 0, 0),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          // deleteWahana(widget.id);
+                                          setState(() {
+                                            total += 1;
+                                            widget.refresh();
+                                          });
+                                          addCart(
+                                            widget.id,
+                                            widget.id,
+                                            "Tiket Masuk ${widget.nama}",
+                                            'tiket masuk',
+                                            widget.htm,
+                                            'image',
+                                          );
+                                        },
+                                        child: Text("+"),
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color(0xFF10A2FD)),
+                                          shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(RoundedRectangleBorder(
+                                              borderRadius:
+                                                BorderRadius.circular(10.0),
+                                              )
+                                            )
+                                        )
+                                      ),
                                     )
-                                  )
-                                ]),
-                              ],
+                                  ]),
+                                ],
+                              ),
                             ),
                           ],
                         ),
