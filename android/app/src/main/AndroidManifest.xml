@@ -5,7 +5,6 @@
    <application
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:label="Go-Wisata"
         tools:replace="android:theme"
         android:theme="@style/AppTheme"
         >
