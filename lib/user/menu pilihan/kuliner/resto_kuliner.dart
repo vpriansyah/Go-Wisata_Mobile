@@ -119,11 +119,12 @@ class _dataWidgetState extends State<dataWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+          padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
           child: ListView(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
+            physics: NeverScrollableScrollPhysics(),
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
