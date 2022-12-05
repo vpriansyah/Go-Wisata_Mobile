@@ -6,13 +6,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../main.dart';
+import '../../../main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'checkout.dart';
+import '../../checkout.dart';
 
 class DaftarPenginapanUser extends StatefulWidget {
   const DaftarPenginapanUser({Key? key}) : super(key: key);
@@ -117,38 +117,38 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(4, 0, 3, 4),
-                                    child: Text(
-                                      snapshot.data[index]['nama'],
-                                      style: title3.copyWith(
-                                        color: Color(0xFF101213),
-                                      ),
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisSize:
-                                    MainAxisSize
-                                        .max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 3, 0),
-                                        child: Icon(Icons.location_on_outlined),
-                                      ),
-
-                                      AutoSizeText(
-                                        snapshot.data[index]['lokasi'],
-                                        style: GoogleFonts.montserrat(
-                                          fontWeight: FontWeight.normal,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          4, 0, 3, 4),
+                                      child: Text(
+                                        snapshot.data[index]['nama'],
+                                        style: title3.copyWith(
+                                          color: Color(0xFF101213),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ]
-                              ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 3, 0),
+                                          child:
+                                              Icon(Icons.location_on_outlined),
+                                        ),
+                                        AutoSizeText(
+                                          snapshot.data[index]['lokasi'],
+                                          style: GoogleFonts.montserrat(
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ]),
                             ),
                           ),
                         ],
@@ -220,8 +220,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
 
   final String baseUrl = 'http://go-wisata.id/';
 
-  final String apiUrl =
-      'http://go-wisata.id/api/hotel';
+  final String apiUrl = 'http://go-wisata.id/api/hotel';
 
   final String api2url = 'http://go-wisata.id/api/villa';
 
@@ -248,5 +247,4 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
     // print(json.decode(response.body));
     return json.decode(response.body);
   }
-
 }

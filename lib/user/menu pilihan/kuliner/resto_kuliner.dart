@@ -1,7 +1,7 @@
-import 'package:desa_wisata/helper/helpersharedprefs.dart';
-import 'package:desa_wisata/signinsignup2.dart';
 import 'package:desa_wisata/theme.dart';
-import 'package:desa_wisata/user/daftar_wahana_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/kuliner/daftar_kuliner_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/kuliner/daftar_kuliner_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/wisata/daftar_wahana_user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:collection';
@@ -10,17 +10,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class WisataUser extends StatefulWidget {
-  const WisataUser({Key? key}) : super(key: key);
+class TempatKulinerUser extends StatefulWidget {
+  const TempatKulinerUser({Key? key}) : super(key: key);
 
   @override
-  _WisataUserState createState() => _WisataUserState();
+  _TempatKulinerUserState createState() => _TempatKulinerUserState();
 }
 
-class _WisataUserState extends State<WisataUser> {
+class _TempatKulinerUserState extends State<TempatKulinerUser> {
   refresh() {
     setState(() {});
-    
   }
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -43,7 +42,7 @@ class _WisataUserState extends State<WisataUser> {
           },
         ),
         title: Text(
-          'Tempat Wisata',
+          'Pilihan Kuliner',
         ),
         actions: [],
         centerTitle: false,
@@ -79,7 +78,7 @@ class _WisataUserState extends State<WisataUser> {
     );
   }
 
-  final String apiUrl = 'http://go-wisata.id/api/tempat';
+  final String apiUrl = 'http://go-wisata.id/api/kuliner';
 
   Future<List<Map<String, dynamic>>?> fetch() async {
     http.Response response = await http.get(Uri.parse(apiUrl));
@@ -113,12 +112,7 @@ class dataWidget extends StatefulWidget {
 
 class _dataWidgetState extends State<dataWidget> {
   int total = 0;
-  bool status = false;
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    ceklogin();
-  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -135,27 +129,17 @@ class _dataWidgetState extends State<dataWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                 child: InkWell(
                   onTap: () async {
-                    if(status) {
-                      // print(widget.snapshot.data[widget.index]['id']);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              DaftarWahanaUser(
-                                idWahana: widget.snapshot.data[widget
-                                    .index]['id']
-                                    .toString(),
-                                indexWahana: widget.index,
-                              ),
+                    // print(widget.snapshot.data[widget.index]['id']);
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Daftar_KulinerUser(
+                          idMenu: widget.snapshot.data[widget.index]['id']
+                              .toString(),
+                          indexMenu: widget.index,
                         ),
-                      );
-                    } else {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignInSignUp2()
-                          ));
-                    }
+                      ),
+                    );
                   },
                   child: Container(
                     width: double.infinity,
@@ -229,7 +213,7 @@ class _dataWidgetState extends State<dataWidget> {
                                     child: Text(
                                       // 'Desa wisata dengan beragam akomodasi yang tersedia. Setiap wahana dapat dimainkan oleh segala usia',
                                       widget.snapshot.data[widget.index]
-                                              ['deskripsi'] ??
+                                              ['alamat'] ??
                                           '-',
                                       maxLines: 4,
                                       style: bodyText1.copyWith(
@@ -252,21 +236,5 @@ class _dataWidgetState extends State<dataWidget> {
         ),
       ],
     );
-  }
-  HelperSharedPrefs prefs = HelperSharedPrefs();
-
-  ceklogin() async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // String isLoggedIn = prefs.getBool('isLoggedIn').toString();
-    bool isLogin = await prefs.getIsLogin();
-    if(isLogin){
-      setState(() {
-        status = true;
-      });
-    } else {
-      setState(() {
-        status = false;
-      });
-    }
   }
 }

@@ -2,11 +2,10 @@ import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/daftar_event_user.dart';
 import 'package:flutter/material.dart';
 import 'package:desa_wisata/user/daftar_kuliner_user.dart';
-import 'package:desa_wisata/user/backup.dart';
+import 'package:desa_wisata/user/resto_kuliner.dart';
 import 'package:desa_wisata/user/daftar_lainnya_user%20.dart';
 import 'package:desa_wisata/user/daftar_penginapan_user%20.dart';
 import 'package:desa_wisata/user/wisata_user.dart';
-import 'package:desa_wisata/user/wisata_user_2.dart';
 import 'dart:convert';
 import 'package:desa_wisata/user/daftar_wahana_user.dart';
 
@@ -28,7 +27,6 @@ class _HomeUserState extends State<HomeUser> {
   refresh() {
     setState(() {});
   }
-
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -87,7 +85,7 @@ class _HomeUserState extends State<HomeUser> {
                             ),
                             Padding(
                               padding:
-                              EdgeInsetsDirectional.fromSTEB(16, 15, 16, 0),
+                                  EdgeInsetsDirectional.fromSTEB(16, 15, 16, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -109,7 +107,7 @@ class _HomeUserState extends State<HomeUser> {
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -117,7 +115,7 @@ class _HomeUserState extends State<HomeUser> {
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         errorBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -125,7 +123,7 @@ class _HomeUserState extends State<HomeUser> {
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -133,7 +131,7 @@ class _HomeUserState extends State<HomeUser> {
                                             width: 1,
                                           ),
                                           borderRadius:
-                                          BorderRadius.circular(16),
+                                              BorderRadius.circular(16),
                                         ),
                                         filled: true,
                                         fillColor: Colors.white,
@@ -156,7 +154,7 @@ class _HomeUserState extends State<HomeUser> {
                             ),
                             Padding(
                               padding:
-                              EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
+                                  EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
                               child: Container(
                                 width: double.infinity,
                                 height: 700,
@@ -176,7 +174,7 @@ class _HomeUserState extends State<HomeUser> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Divider(
                                           height: 8,
@@ -187,8 +185,8 @@ class _HomeUserState extends State<HomeUser> {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              16, 16, 16, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16, 16, 16, 0),
                                           child: Text(
                                             'Pilihan menu Go-Wisata',
                                             style: title2.copyWith(
@@ -201,8 +199,8 @@ class _HomeUserState extends State<HomeUser> {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              16, 4, 16, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16, 4, 16, 0),
                                           child: Text(
                                             'Beragam menu pilihan yang tersedia',
                                             style: bodyText2.copyWith(
@@ -215,8 +213,8 @@ class _HomeUserState extends State<HomeUser> {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0, 12, 0, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 12, 0, 0),
                                           child: Container(
                                             width: double.infinity,
                                             height: 225,
@@ -243,12 +241,12 @@ class _HomeUserState extends State<HomeUser> {
                                                             color: Color(
                                                                 0x230F1113),
                                                             offset:
-                                                            Offset(0, 4),
+                                                                Offset(0, 4),
                                                           )
                                                         ],
                                                         borderRadius:
-                                                        BorderRadius
-                                                            .circular(12),
+                                                            BorderRadius
+                                                                .circular(12),
                                                       ),
                                                       child: InkWell(
                                                         onTap: () async {
@@ -261,30 +259,30 @@ class _HomeUserState extends State<HomeUser> {
                                                           );
                                                         },
                                                         child: // Generated code for this Column Widget...
-                                                        Column(
+                                                            Column(
                                                           mainAxisSize:
-                                                          MainAxisSize.max,
+                                                              MainAxisSize.max,
                                                           children: [
                                                             ClipRRect(
                                                               borderRadius:
-                                                              BorderRadius
-                                                                  .only(
+                                                                  BorderRadius
+                                                                      .only(
                                                                 bottomLeft: Radius
                                                                     .circular(
-                                                                    0),
+                                                                        0),
                                                                 bottomRight:
-                                                                Radius
-                                                                    .circular(
-                                                                    0),
+                                                                    Radius
+                                                                        .circular(
+                                                                            0),
                                                                 topLeft: Radius
                                                                     .circular(
-                                                                    12),
+                                                                        12),
                                                                 topRight: Radius
                                                                     .circular(
-                                                                    12),
+                                                                        12),
                                                               ),
                                                               child:
-                                                              Image.asset(
+                                                                  Image.asset(
                                                                 'assets/image/wahana1.JPG',
                                                                 width: double
                                                                     .infinity,
@@ -295,40 +293,40 @@ class _HomeUserState extends State<HomeUser> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                  16,
-                                                                  12,
-                                                                  16,
-                                                                  12),
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16,
+                                                                          12,
+                                                                          16,
+                                                                          12),
                                                               child: Row(
                                                                 mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
+                                                                    MainAxisSize
+                                                                        .max,
                                                                 mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
                                                                 children: [
                                                                   Column(
                                                                     mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
+                                                                        MainAxisSize
+                                                                            .max,
                                                                     crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
+                                                                        CrossAxisAlignment
+                                                                            .start,
                                                                     children: [
                                                                       Text(
                                                                         'Paket Wisata',
                                                                         style: bodyText1
                                                                             .copyWith(
                                                                           fontFamily:
-                                                                          'Outfit',
+                                                                              'Outfit',
                                                                           color:
-                                                                          Color(0xFF1D2429),
+                                                                              Color(0xFF1D2429),
                                                                           fontSize:
-                                                                          18,
+                                                                              18,
                                                                           fontWeight:
-                                                                          FontWeight.bold,
+                                                                              FontWeight.bold,
                                                                         ),
                                                                       ),
                                                                       Padding(
@@ -338,18 +336,18 @@ class _HomeUserState extends State<HomeUser> {
                                                                             0,
                                                                             0),
                                                                         child:
-                                                                        Text(
+                                                                            Text(
                                                                           'Temukan paket wahana menarik disini',
                                                                           style:
-                                                                          bodyText2.copyWith(
+                                                                              bodyText2.copyWith(
                                                                             fontFamily:
-                                                                            'Outfit',
+                                                                                'Outfit',
                                                                             color:
-                                                                            Color(0xFF57636C),
+                                                                                Color(0xFF57636C),
                                                                             fontSize:
-                                                                            12,
+                                                                                12,
                                                                             fontWeight:
-                                                                            FontWeight.normal,
+                                                                                FontWeight.normal,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -374,13 +372,13 @@ class _HomeUserState extends State<HomeUser> {
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
@@ -394,18 +392,18 @@ class _HomeUserState extends State<HomeUser> {
                                                       },
                                                       child: Column(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           ClipRRect(
                                                             borderRadius:
-                                                            BorderRadius
-                                                                .only(
+                                                                BorderRadius
+                                                                    .only(
                                                               bottomLeft: Radius
                                                                   .circular(0),
                                                               bottomRight:
-                                                              Radius
-                                                                  .circular(
-                                                                  0),
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
                                                               topLeft: Radius
                                                                   .circular(12),
                                                               topRight: Radius
@@ -421,41 +419,41 @@ class _HomeUserState extends State<HomeUser> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                16,
-                                                                12,
-                                                                0,
-                                                                12),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        0,
+                                                                        12),
                                                             child: Row(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: [
                                                                 Column(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
+                                                                      MainAxisSize
+                                                                          .max,
                                                                   crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                                      CrossAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     Column(
                                                                       mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
+                                                                          MainAxisSize
+                                                                              .max,
                                                                       crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Column(
                                                                           mainAxisSize:
-                                                                          MainAxisSize.max,
+                                                                              MainAxisSize.max,
                                                                           crossAxisAlignment:
-                                                                          CrossAxisAlignment.start,
+                                                                              CrossAxisAlignment.start,
                                                                           children: [
                                                                             Text(
                                                                               'Event',
@@ -504,13 +502,13 @@ class _HomeUserState extends State<HomeUser> {
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
@@ -524,18 +522,18 @@ class _HomeUserState extends State<HomeUser> {
                                                       },
                                                       child: Column(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           ClipRRect(
                                                             borderRadius:
-                                                            BorderRadius
-                                                                .only(
+                                                                BorderRadius
+                                                                    .only(
                                                               bottomLeft: Radius
                                                                   .circular(0),
                                                               bottomRight:
-                                                              Radius
-                                                                  .circular(
-                                                                  0),
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
                                                               topLeft: Radius
                                                                   .circular(12),
                                                               topRight: Radius
@@ -551,48 +549,48 @@ class _HomeUserState extends State<HomeUser> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                16,
-                                                                12,
-                                                                16,
-                                                                12),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
                                                             child: Row(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: [
                                                                 Column(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
+                                                                      MainAxisSize
+                                                                          .max,
                                                                   crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                                      CrossAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     Column(
                                                                       mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
+                                                                          MainAxisSize
+                                                                              .max,
                                                                       crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Text(
                                                                           'Kuliner',
                                                                           style:
-                                                                          bodyText1.copyWith(
+                                                                              bodyText1.copyWith(
                                                                             fontFamily:
-                                                                            'Outfit',
+                                                                                'Outfit',
                                                                             color:
-                                                                            Color(0xFF1D2429),
+                                                                                Color(0xFF1D2429),
                                                                             fontSize:
-                                                                            18,
+                                                                                18,
                                                                             fontWeight:
-                                                                            FontWeight.bold,
+                                                                                FontWeight.bold,
                                                                           ),
                                                                         ),
                                                                         Padding(
@@ -602,10 +600,10 @@ class _HomeUserState extends State<HomeUser> {
                                                                               0,
                                                                               0),
                                                                           child:
-                                                                          Text(
+                                                                              Text(
                                                                             'Temukan paket kuliner menarik disini',
                                                                             style:
-                                                                            bodyText2.copyWith(
+                                                                                bodyText2.copyWith(
                                                                               fontFamily: 'Outfit',
                                                                               color: Color(0xFF57636C),
                                                                               fontSize: 12,
@@ -637,13 +635,13 @@ class _HomeUserState extends State<HomeUser> {
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
@@ -657,18 +655,18 @@ class _HomeUserState extends State<HomeUser> {
                                                       },
                                                       child: Column(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           ClipRRect(
                                                             borderRadius:
-                                                            BorderRadius
-                                                                .only(
+                                                                BorderRadius
+                                                                    .only(
                                                               bottomLeft: Radius
                                                                   .circular(0),
                                                               bottomRight:
-                                                              Radius
-                                                                  .circular(
-                                                                  0),
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
                                                               topLeft: Radius
                                                                   .circular(12),
                                                               topRight: Radius
@@ -684,48 +682,48 @@ class _HomeUserState extends State<HomeUser> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                16,
-                                                                12,
-                                                                16,
-                                                                12),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
                                                             child: Row(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: [
                                                                 Column(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
+                                                                      MainAxisSize
+                                                                          .max,
                                                                   crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                                      CrossAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     Column(
                                                                       mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
+                                                                          MainAxisSize
+                                                                              .max,
                                                                       crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Text(
                                                                           'Penginapan',
                                                                           style:
-                                                                          bodyText1.copyWith(
+                                                                              bodyText1.copyWith(
                                                                             fontFamily:
-                                                                            'Outfit',
+                                                                                'Outfit',
                                                                             color:
-                                                                            Color(0xFF1D2429),
+                                                                                Color(0xFF1D2429),
                                                                             fontSize:
-                                                                            18,
+                                                                                18,
                                                                             fontWeight:
-                                                                            FontWeight.bold,
+                                                                                FontWeight.bold,
                                                                           ),
                                                                         ),
                                                                         Padding(
@@ -735,10 +733,10 @@ class _HomeUserState extends State<HomeUser> {
                                                                               0,
                                                                               0),
                                                                           child:
-                                                                          Text(
+                                                                              Text(
                                                                             'Temukan penginapan ternyaman',
                                                                             style:
-                                                                            bodyText2.copyWith(
+                                                                                bodyText2.copyWith(
                                                                               fontFamily: 'Outfit',
                                                                               color: Color(0xFF57636C),
                                                                               fontSize: 12,
@@ -770,13 +768,13 @@ class _HomeUserState extends State<HomeUser> {
                                                         BoxShadow(
                                                           blurRadius: 8,
                                                           color:
-                                                          Color(0x230F1113),
+                                                              Color(0x230F1113),
                                                           offset: Offset(0, 4),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                      BorderRadius.circular(
-                                                          12),
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
                                                     child: InkWell(
                                                       onTap: () async {
@@ -790,18 +788,18 @@ class _HomeUserState extends State<HomeUser> {
                                                       },
                                                       child: Column(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           ClipRRect(
                                                             borderRadius:
-                                                            BorderRadius
-                                                                .only(
+                                                                BorderRadius
+                                                                    .only(
                                                               bottomLeft: Radius
                                                                   .circular(0),
                                                               bottomRight:
-                                                              Radius
-                                                                  .circular(
-                                                                  0),
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
                                                               topLeft: Radius
                                                                   .circular(12),
                                                               topRight: Radius
@@ -817,48 +815,48 @@ class _HomeUserState extends State<HomeUser> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                16,
-                                                                12,
-                                                                16,
-                                                                12),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16,
+                                                                        12,
+                                                                        16,
+                                                                        12),
                                                             child: Row(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: [
                                                                 Column(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
+                                                                      MainAxisSize
+                                                                          .max,
                                                                   crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                                      CrossAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     Column(
                                                                       mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
+                                                                          MainAxisSize
+                                                                              .max,
                                                                       crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Text(
                                                                           'Lainnya',
                                                                           style:
-                                                                          bodyText1.copyWith(
+                                                                              bodyText1.copyWith(
                                                                             fontFamily:
-                                                                            'Outfit',
+                                                                                'Outfit',
                                                                             color:
-                                                                            Color(0xFF1D2429),
+                                                                                Color(0xFF1D2429),
                                                                             fontSize:
-                                                                            18,
+                                                                                18,
                                                                             fontWeight:
-                                                                            FontWeight.bold,
+                                                                                FontWeight.bold,
                                                                           ),
                                                                         ),
                                                                         Padding(
@@ -868,10 +866,10 @@ class _HomeUserState extends State<HomeUser> {
                                                                               0,
                                                                               0),
                                                                           child:
-                                                                          Text(
+                                                                              Text(
                                                                             'Lain - lain',
                                                                             style:
-                                                                            bodyText2.copyWith(
+                                                                                bodyText2.copyWith(
                                                                               fontFamily: 'Outfit',
                                                                               color: Color(0xFF57636C),
                                                                               fontSize: 12,
@@ -897,8 +895,8 @@ class _HomeUserState extends State<HomeUser> {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              20, 16, 16, 0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20, 16, 16, 0),
                                           child: Text(
                                             'Paket Wisata Desa',
                                             style: title2.copyWith(
@@ -916,29 +914,30 @@ class _HomeUserState extends State<HomeUser> {
                                               if (snapshot.hasData) {
                                                 return ListView.builder(
                                                   scrollDirection:
-                                                  Axis.vertical,
+                                                      Axis.vertical,
                                                   shrinkWrap: true,
-                                                  physics: NeverScrollableScrollPhysics(),
+                                                  physics:
+                                                      NeverScrollableScrollPhysics(),
                                                   itemBuilder:
                                                       (context, index) {
                                                     return
-                                                      //Text(snapshot.toString());
-                                                      dataWidget(
-                                                        // baseUrl: baseUrl,
-                                                        snapshot: snapshot,
-                                                        index: index,
-                                                        refresh: refresh,
-                                                      );
+                                                        //Text(snapshot.toString());
+                                                        dataWidget(
+                                                      // baseUrl: baseUrl,
+                                                      snapshot: snapshot,
+                                                      index: index,
+                                                      refresh: refresh,
+                                                    );
                                                   },
                                                   itemCount:
-                                                  snapshot.data.length,
+                                                      snapshot.data.length,
                                                 );
                                                 // This trailing comma makes auto-formatting nicer for build methods.
 
                                               } else {
                                                 return Center(
                                                   child:
-                                                  CircularProgressIndicator(),
+                                                      CircularProgressIndicator(),
                                                 );
                                               }
 
@@ -1023,8 +1022,7 @@ class _dataWidgetState extends State<dataWidget> {
               physics: NeverScrollableScrollPhysics(),
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional
-                      .fromSTEB(16, 8, 16, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                   child: Container(
                     width: 270,
                     decoration: BoxDecoration(
@@ -1032,102 +1030,74 @@ class _dataWidgetState extends State<dataWidget> {
                       boxShadow: [
                         BoxShadow(
                           blurRadius: 8,
-                          color:
-                          Color(0x230F1113),
+                          color: Color(0x230F1113),
                           offset: Offset(0, 4),
                         )
                       ],
-                      borderRadius:
-                      BorderRadius.circular(
-                          12),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
-                      mainAxisSize:
-                      MainAxisSize.max,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         ClipRRect(
-                          borderRadius:
-                          BorderRadius.only(
-                            bottomLeft:
-                            Radius.circular(
-                                0),
-                            bottomRight:
-                            Radius.circular(
-                                0),
-                            topLeft:
-                            Radius.circular(
-                                12),
-                            topRight:
-                            Radius.circular(
-                                12),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0),
+                            bottomRight: Radius.circular(0),
+                            topLeft: Radius.circular(12),
+                            topRight: Radius.circular(12),
                           ),
                           child: Image.network(
                             baseUrl +
                                 'images/' +
                                 widget.snapshot.data[widget.index]['image'],
-                            width:
-                            double.infinity,
+                            width: double.infinity,
                             height: 200,
                             fit: BoxFit.cover,
                           ),
                         ),
                         Padding(
                           padding:
-                          EdgeInsetsDirectional
-                              .fromSTEB(16,
-                              12, 16, 12),
+                              EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12),
                           child: Row(
-                            mainAxisSize:
-                            MainAxisSize.max,
-                            mainAxisAlignment:
-                            MainAxisAlignment
-                                .spaceBetween,
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
-                                mainAxisSize:
-                                MainAxisSize
-                                    .max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment
-                                    .start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(3, 0, 3, 0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        3, 0, 3, 0),
                                     child: Text(
                                       widget.snapshot.data[widget.index]
-                                      ['name'] ??
+                                              ['name'] ??
                                           '-',
                                       style: bodyText1.copyWith(
-                                        fontFamily:
-                                        'Outfit',
-                                        color: Color(
-                                            0xFF1D2429),
-                                        fontSize:
-                                        18,
-                                        fontWeight:
-                                        FontWeight.bold,
+                                        fontFamily: 'Outfit',
+                                        color: Color(0xFF1D2429),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional
-                                        .fromSTEB(
-                                        0,
-                                        8,
-                                        0,
-                                        0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 8, 0, 0),
                                     child: Row(
-                                      mainAxisSize:
-                                      MainAxisSize
-                                          .max,
+                                      mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 3, 0),
-                                          child: Icon(Icons.location_on_outlined),
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 3, 0),
+                                          child:
+                                              Icon(Icons.location_on_outlined),
                                         ),
                                         Text(
                                           widget.snapshot.data[widget.index]
-                                          ['alamat'] ?? '-',
+                                                  ['alamat'] ??
+                                              '-',
                                           style: bodyText2.copyWith(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF57636C),
@@ -1143,20 +1113,12 @@ class _dataWidgetState extends State<dataWidget> {
                               Container(
                                 width: 70,
                                 height: 32,
-                                decoration:
-                                BoxDecoration(
-                                  color: Color(
-                                      0xFF1D2429),
-                                  borderRadius:
-                                  BorderRadius
-                                      .circular(
-                                      12),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF1D2429),
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
-                                alignment:
-                                AlignmentDirectional(
-                                    0, 0),
-                                child:
-                                TextButton(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: TextButton(
                                   onPressed: () async {
                                     // print(widget.snapshot.data[widget.index]['id']);
                                     // await Navigator.push(
@@ -1170,31 +1132,23 @@ class _dataWidgetState extends State<dataWidget> {
                                     //   ),
                                     // );
                                   },
-                                  child: Text('Pilih',
+                                  child: Text(
+                                    'Pilih',
                                     style: bodyText2.copyWith(
-                                      fontFamily:
-                                      'Poppins',
-                                      color: Colors
-                                          .white,
-                                      fontSize:
-                                      13,),
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 13,
+                                    ),
                                   ),
-                                  style:
-                                  TextButton.styleFrom(
-                                      backgroundColor: Color(
-                                          0x10121358),
-                                      side:
-                                      BorderSide(
-                                        color: Colors
-                                            .transparent,
+                                  style: TextButton.styleFrom(
+                                      backgroundColor: Color(0x10121358),
+                                      side: BorderSide(
+                                        color: Colors.transparent,
                                         width: 1,
                                       ),
                                       shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius
-                                            .circular(
-                                            8),)
-                                  ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      )),
                                 ),
                               ),
                             ],

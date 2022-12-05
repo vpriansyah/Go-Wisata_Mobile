@@ -7,16 +7,20 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../main.dart';
+import '../../../main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'checkout.dart';
+import '../../checkout.dart';
 
 class Daftar_EventUser extends StatefulWidget {
-  const Daftar_EventUser({Key? key, required this.idEvent, required this.indexEvent,}) : super(key: key);
+  const Daftar_EventUser({
+    Key? key,
+    required this.idEvent,
+    required this.indexEvent,
+  }) : super(key: key);
 
   final String idEvent;
   final int indexEvent;
@@ -55,7 +59,7 @@ class _Daftar_EventUserState extends State<Daftar_EventUser> {
             if (snapshot.hasData) {
               // print('snapshot:' + snapshot.data.length.toString());
               print(snapshot.data!.first.nama);
-              try{
+              try {
                 return ListView.builder(
                   itemBuilder: (context, index) {
                     // final List place = fetch();
@@ -103,12 +107,12 @@ class _Daftar_EventUserState extends State<Daftar_EventUser> {
                                       return Center(
                                         child: CircularProgressIndicator(
                                           value: loadingProgress
-                                              .expectedTotalBytes !=
-                                              null
+                                                      .expectedTotalBytes !=
+                                                  null
                                               ? loadingProgress
-                                              .cumulativeBytesLoaded /
-                                              loadingProgress
-                                                  .expectedTotalBytes!
+                                                      .cumulativeBytesLoaded /
+                                                  loadingProgress
+                                                      .expectedTotalBytes!
                                               : null,
                                         ),
                                       );
@@ -136,13 +140,12 @@ class _Daftar_EventUserState extends State<Daftar_EventUser> {
                                       style: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.normal,
                                       ),
-                                     ),
+                                    ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 3),
                                       child: Text(
-                                        'Rp ${snapshot.data![index].harga}'
-                                        ,
+                                        'Rp ${snapshot.data![index].harga}',
                                         style: GoogleFonts.montserrat(
                                           color: Colors.red,
                                           fontSize: 16,
@@ -171,11 +174,12 @@ class _Daftar_EventUserState extends State<Daftar_EventUser> {
                         margin: EdgeInsets.all(10),
                       ),
                     );
+
                     ///---
                   },
                   itemCount: snapshot.data!.length,
                 );
-              } catch(e){
+              } catch (e) {
                 return Text(e.toString());
               }
               // This trailing comma makes auto-formatting nicer for build methods.
@@ -204,8 +208,8 @@ class _Daftar_EventUserState extends State<Daftar_EventUser> {
   }
 
   Future<List<EventModel>> getEvent(String idTempat) async {
-    try{
-      String fullUrl = apiUrl+idTempat.toString();
+    try {
+      String fullUrl = apiUrl + idTempat.toString();
       var response = await http.get(Uri.parse(fullUrl));
       if (response.statusCode != 200) return [];
       List<EventModel> result = eventModelFromJson(response.body);
@@ -214,6 +218,5 @@ class _Daftar_EventUserState extends State<Daftar_EventUser> {
     } catch (e) {
       return [];
     }
-
   }
 }

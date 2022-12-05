@@ -4,14 +4,13 @@ import 'package:desa_wisata/signinsignup.dart';
 import 'package:desa_wisata/splash_page.dart';
 import 'package:desa_wisata/user/checkout.dart';
 import 'package:desa_wisata/user/daftar_pesanan_user.dart';
-import 'package:desa_wisata/user/daftar_pesanan_user_2.dart';
-import 'package:desa_wisata/user/main_page_user.dart';
+import 'package:desa_wisata/user/dashboard/main_page_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:desa_wisata/cover.dart';
 import 'package:desa_wisata/splashPage.dart';
 import 'package:desa_wisata/signinsignup2.dart';
-import 'package:desa_wisata/user/daftar_wahana_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/wisata/daftar_wahana_user.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,18 +32,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': ((context) => SplashWidget()),
-        '/cover' : ((context) => CoverWidget()),
+        '/cover': ((context) => CoverWidget()),
         '/signinsignup': ((context) => SignInSignUp2()),
         '/home-admin': ((context) => MainPageAdmin()),
         '/tambah-tiket': ((context) => TambahTiket()),
         '/home-user': ((context) => MainPageUser()),
         '/checkout': ((context) => CheckOut()),
-        '/DaftarPesananUser': ((context) => DaftarPesananUser2()),
-
+        '/DaftarPesananUser': ((context) => DaftarPesananUser()),
       },
     );
   }
 }
-
-  
-

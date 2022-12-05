@@ -1,7 +1,5 @@
 import 'package:desa_wisata/theme.dart';
-import 'package:desa_wisata/user/backup2.dart';
-import 'package:desa_wisata/user/daftar_kuliner_user.dart';
-import 'package:desa_wisata/user/daftar_wahana_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/event/event_user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:collection';
@@ -10,17 +8,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class TempatKulinerUser extends StatefulWidget {
-  const TempatKulinerUser({Key? key}) : super(key: key);
+class DaftarEventUser extends StatefulWidget {
+  const DaftarEventUser({Key? key}) : super(key: key);
 
   @override
-  _TempatKulinerUserState createState() => _TempatKulinerUserState();
+  _DaftarEventUserState createState() => _DaftarEventUserState();
 }
 
-class _TempatKulinerUserState extends State<TempatKulinerUser> {
+class _DaftarEventUserState extends State<DaftarEventUser> {
   refresh() {
     setState(() {});
-
   }
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -43,7 +40,7 @@ class _TempatKulinerUserState extends State<TempatKulinerUser> {
           },
         ),
         title: Text(
-          'Pilihan Kuliner',
+          'Daftar Event',
         ),
         actions: [],
         centerTitle: false,
@@ -57,13 +54,13 @@ class _TempatKulinerUserState extends State<TempatKulinerUser> {
               return ListView.builder(
                 itemBuilder: (context, index) {
                   return
-                    //Text(snapshot.toString());
-                    dataWidget(
-                      // baseUrl: baseUrl,
-                      snapshot: snapshot,
-                      index: index,
-                      refresh: refresh,
-                    );
+                      //Text(snapshot.toString());
+                      dataWidget(
+                    // baseUrl: baseUrl,
+                    snapshot: snapshot,
+                    index: index,
+                    refresh: refresh,
+                  );
                 },
                 itemCount: snapshot.data.length,
               ); // This trailing comma makes auto-formatting nicer for build methods.
@@ -79,7 +76,7 @@ class _TempatKulinerUserState extends State<TempatKulinerUser> {
     );
   }
 
-  final String apiUrl = 'http://go-wisata.id/api/kuliner';
+  final String apiUrl = 'http://go-wisata.id/api/listevent';
 
   Future<List<Map<String, dynamic>>?> fetch() async {
     http.Response response = await http.get(Uri.parse(apiUrl));
@@ -131,16 +128,16 @@ class _dataWidgetState extends State<dataWidget> {
                 child: InkWell(
                   onTap: () async {
                     // print(widget.snapshot.data[widget.index]['id']);
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Daftar_KulinerUser(
-                          idMenu: widget.snapshot.data[widget.index]['id']
-                              .toString(),
-                          indexMenu: widget.index,
-                        ),
-                      ),
-                    );
+                    // await Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => Daftar_EventUser(
+                    //       idEvent: widget.snapshot.data[widget.index]['id']
+                    //           .toString(),
+                    //       indexEvent: widget.index,
+                    //     ),
+                    //   ),
+                    // );
                   },
                   child: Container(
                     width: double.infinity,
@@ -159,29 +156,30 @@ class _dataWidgetState extends State<dataWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(8),
-                            bottomRight: Radius.circular(0),
-                            topLeft: Radius.circular(8),
-                            topRight: Radius.circular(0),
-                          ),
+                        Container(
+                          width: 100,
+                          // borderRadius: BorderRadius.only(
+                          //   bottomLeft: Radius.circular(8),
+                          //   bottomRight: Radius.circular(0),
+                          //   topLeft: Radius.circular(8),
+                          //   topRight: Radius.circular(0),
+
                           child: Image.network(
                               baseUrl +
                                   'images/' +
-                                  widget.snapshot.data[widget.index]['image'],
+                                  widget.snapshot.data[widget.index]['foto'],
                               width: MediaQuery.of(context).size.width * 0.25,
                               height: MediaQuery.of(context).size.height * 1,
                               fit: BoxFit.cover, loadingBuilder:
-                              (BuildContext context, Widget child,
-                              ImageChunkEvent? loadingProgress) {
+                                  (BuildContext context, Widget child,
+                                      ImageChunkEvent? loadingProgress) {
                             if (loadingProgress == null) return child;
                             return Center(
                               child: CircularProgressIndicator(
                                 value: loadingProgress.expectedTotalBytes !=
-                                    null
+                                        null
                                     ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
+                                        loadingProgress.expectedTotalBytes!
                                     : null,
                               ),
                             );
@@ -190,7 +188,7 @@ class _dataWidgetState extends State<dataWidget> {
                         Expanded(
                           child: Padding(
                             padding:
-                            EdgeInsetsDirectional.fromSTEB(12, 0, 5, 0),
+                                EdgeInsetsDirectional.fromSTEB(12, 0, 5, 0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,7 +200,7 @@ class _dataWidgetState extends State<dataWidget> {
                                   child: Text(
                                     // 'Watu Gambir',
                                     widget.snapshot.data[widget.index]
-                                    ['name'] ??
+                                            ['nama'] ??
                                         '-',
                                     style: title3,
                                   ),
@@ -214,7 +212,7 @@ class _dataWidgetState extends State<dataWidget> {
                                     child: Text(
                                       // 'Desa wisata dengan beragam akomodasi yang tersedia. Setiap wahana dapat dimainkan oleh segala usia',
                                       widget.snapshot.data[widget.index]
-                                      ['alamat'] ??
+                                              ['deskripsi'] ??
                                           '-',
                                       maxLines: 4,
                                       style: bodyText1.copyWith(

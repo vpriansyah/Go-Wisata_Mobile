@@ -1,5 +1,7 @@
+import 'package:desa_wisata/helper/helpersharedprefs.dart';
+import 'package:desa_wisata/signinsignup2.dart';
 import 'package:desa_wisata/theme.dart';
-import 'package:desa_wisata/user/event_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/wisata/daftar_wahana_user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:collection';
@@ -8,14 +10,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class DaftarEventUser extends StatefulWidget {
-  const DaftarEventUser({Key? key}) : super(key: key);
+class WisataUser extends StatefulWidget {
+  const WisataUser({Key? key}) : super(key: key);
 
   @override
-  _DaftarEventUserState createState() => _DaftarEventUserState();
+  _WisataUserState createState() => _WisataUserState();
 }
 
-class _DaftarEventUserState extends State<DaftarEventUser> {
+class _WisataUserState extends State<WisataUser> {
   refresh() {
     setState(() {});
   }
@@ -40,7 +42,7 @@ class _DaftarEventUserState extends State<DaftarEventUser> {
           },
         ),
         title: Text(
-          'Daftar Event',
+          'Tempat Wisata',
         ),
         actions: [],
         centerTitle: false,
@@ -76,7 +78,7 @@ class _DaftarEventUserState extends State<DaftarEventUser> {
     );
   }
 
-  final String apiUrl = 'http://go-wisata.id/api/listevent';
+  final String apiUrl = 'http://go-wisata.id/api/tempat';
 
   Future<List<Map<String, dynamic>>?> fetch() async {
     http.Response response = await http.get(Uri.parse(apiUrl));
@@ -110,6 +112,12 @@ class dataWidget extends StatefulWidget {
 
 class _dataWidgetState extends State<dataWidget> {
   int total = 0;
+  bool status = false;
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ceklogin();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,17 +135,24 @@ class _dataWidgetState extends State<dataWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                 child: InkWell(
                   onTap: () async {
-                    // print(widget.snapshot.data[widget.index]['id']);
-                    // await Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => Daftar_EventUser(
-                    //       idEvent: widget.snapshot.data[widget.index]['id']
-                    //           .toString(),
-                    //       indexEvent: widget.index,
-                    //     ),
-                    //   ),
-                    // );
+                    if (status) {
+                      // print(widget.snapshot.data[widget.index]['id']);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DaftarWahanaUser(
+                            idWahana: widget.snapshot.data[widget.index]['id']
+                                .toString(),
+                            indexWahana: widget.index,
+                          ),
+                        ),
+                      );
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignInSignUp2()));
+                    }
                   },
                   child: Container(
                     width: double.infinity,
@@ -156,18 +171,17 @@ class _dataWidgetState extends State<dataWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Container(
-                          width: 100,
-                          // borderRadius: BorderRadius.only(
-                          //   bottomLeft: Radius.circular(8),
-                          //   bottomRight: Radius.circular(0),
-                          //   topLeft: Radius.circular(8),
-                          //   topRight: Radius.circular(0),
-
+                        ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(8),
+                            bottomRight: Radius.circular(0),
+                            topLeft: Radius.circular(8),
+                            topRight: Radius.circular(0),
+                          ),
                           child: Image.network(
                               baseUrl +
                                   'images/' +
-                                  widget.snapshot.data[widget.index]['foto'],
+                                  widget.snapshot.data[widget.index]['image'],
                               width: MediaQuery.of(context).size.width * 0.25,
                               height: MediaQuery.of(context).size.height * 1,
                               fit: BoxFit.cover, loadingBuilder:
@@ -185,7 +199,6 @@ class _dataWidgetState extends State<dataWidget> {
                             );
                           }),
                         ),
-
                         Expanded(
                           child: Padding(
                             padding:
@@ -201,7 +214,7 @@ class _dataWidgetState extends State<dataWidget> {
                                   child: Text(
                                     // 'Watu Gambir',
                                     widget.snapshot.data[widget.index]
-                                            ['nama'] ??
+                                            ['name'] ??
                                         '-',
                                     style: title3,
                                   ),
@@ -236,5 +249,22 @@ class _dataWidgetState extends State<dataWidget> {
         ),
       ],
     );
+  }
+
+  HelperSharedPrefs prefs = HelperSharedPrefs();
+
+  ceklogin() async {
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // String isLoggedIn = prefs.getBool('isLoggedIn').toString();
+    bool isLogin = await prefs.getIsLogin();
+    if (isLogin) {
+      setState(() {
+        status = true;
+      });
+    } else {
+      setState(() {
+        status = false;
+      });
+    }
   }
 }

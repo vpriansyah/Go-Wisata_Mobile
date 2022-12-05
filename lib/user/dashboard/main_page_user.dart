@@ -3,14 +3,12 @@ import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/akun_user.dart';
 import 'package:desa_wisata/user/akun_user_2.dart';
 import 'package:desa_wisata/user/daftar_pesanan_user.dart';
-import 'package:desa_wisata/user/daftar_pesanan_user_2.dart';
-import 'package:desa_wisata/user/homepage_user.dart';
-import 'package:desa_wisata/user/home_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/kuliner/daftar_kuliner_user.dart';
+import 'package:desa_wisata/user/dashboard/home_user.dart';
 import 'package:flutter/material.dart';
-import 'package:desa_wisata/user/backup.dart';
+import 'package:desa_wisata/user/menu%20pilihan/kuliner/resto_kuliner.dart';
 import 'package:desa_wisata/signinsignup2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 class MainPageUser extends StatefulWidget {
   const MainPageUser({Key? key}) : super(key: key);
@@ -86,5 +84,4 @@ class _MainPageUserState extends State<MainPageUser> {
       body: body(),
     );
   }
-
 }
