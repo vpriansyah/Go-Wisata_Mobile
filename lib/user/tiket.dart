@@ -43,7 +43,7 @@ class _TiketState extends State<Tiket> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFFFCC050),
+        backgroundColor: Colors.blue,
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
@@ -345,11 +345,11 @@ class tiketWidget extends StatelessWidget {
                     child: Text('Bayar Tiket'),
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Color(0xFFFCC050)),
+                            MaterialStateProperty.all<Color>(Color(0xFF107FFD)),
                         shape: MaterialStateProperty
                             .all<RoundedRectangleBorder>(RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
-                                side: BorderSide(color: Color(0xFFFCC050)))))),
+                                side: BorderSide(color: Color(0xFF107FFD)))))),
               ],
             ),
           )

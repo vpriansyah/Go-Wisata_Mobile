@@ -938,7 +938,10 @@ class _HomeUserState extends State<HomeUser> {
                                               } else {
                                                 return Center(
                                                   child:
-                                                  CircularProgressIndicator(),
+                                                    Padding(
+                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                                                      child: CircularProgressIndicator(),
+                                                    )
                                                 );
                                               }
 

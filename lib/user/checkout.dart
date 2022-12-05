@@ -59,6 +59,8 @@ class _CheckOutState extends State<CheckOut> {
                         'Kembali',
                         style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.normal,
+                          fontSize: 20,
+                          // color: Colors.blue
                         ),
                       ),
                     ),
@@ -414,7 +416,7 @@ class _CheckOutState extends State<CheckOut> {
                 width: double.infinity,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: Color(0xFFFCC050),
+                  color: Colors.blue,
                   boxShadow: [
                     BoxShadow(
                       blurRadius: 4,
@@ -462,7 +464,7 @@ class _CheckOutState extends State<CheckOut> {
     for (var x in dataList) {
       var user = {
         'user_id': x.id,
-        'name': x.nama,
+        'name': x.name,
         'email': x.email,
         'telp': x.telp,
       };

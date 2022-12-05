@@ -40,7 +40,10 @@ class _DaftarWahanaUserState extends State<DaftarWahanaUser> {
                     'Subtotal',
                     style: subtitle1,
                   ),
-                  Text("Rp. ${getTotal()}", style: title2),
+                  Text("Rp. ${getTotal()}",
+                      style: title2.copyWith(
+                        color: Colors.red
+                      )),
                 ],
               ),
             ),
@@ -328,7 +331,7 @@ class _TiketMasukState extends State<TiketMasuk> {
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFCC050),
+                                  color: Colors.red,
                                 ),
                               ),
                             ),
