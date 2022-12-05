@@ -360,7 +360,7 @@ class _TiketMasukState extends State<TiketMasuk> {
                                           10, 5, 5, 0),
                                       child: ElevatedButton(
                                           onPressed: () {
-                                            if (total > 1) {
+                                            if (total >= 1) {
                                               setState(() {
                                                 total--;
                                                 widget.refresh();
@@ -605,7 +605,7 @@ class _dataWidgetState extends State<dataWidget> {
                                 Row(children: [
                                   ElevatedButton(
                                       onPressed: () {
-                                        if (total > 1) {
+                                        if (total >= 1) {
                                           setState(() {
                                             total--;
                                             widget.refresh();
