@@ -1,13 +1,13 @@
 import 'package:desa_wisata/theme.dart';
-import 'package:desa_wisata/user/daftar_event_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/event/daftar_event_user.dart';
 import 'package:flutter/material.dart';
-import 'package:desa_wisata/user/daftar_kuliner_user.dart';
-import 'package:desa_wisata/user/resto_kuliner.dart';
+import 'package:desa_wisata/user/menu%20pilihan/kuliner/daftar_kuliner_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/kuliner/resto_kuliner.dart';
 import 'package:desa_wisata/user/daftar_lainnya_user%20.dart';
-import 'package:desa_wisata/user/daftar_penginapan_user%20.dart';
-import 'package:desa_wisata/user/wisata_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/penginapan/daftar_penginapan_user%20.dart';
+import 'package:desa_wisata/user/menu%20pilihan/wisata/wisata_user.dart';
 import 'dart:convert';
-import 'package:desa_wisata/user/daftar_wahana_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/wisata/daftar_wahana_user.dart';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -937,14 +937,7 @@ class _HomeUserState extends State<HomeUser> {
                                               } else {
                                                 return Center(
                                                   child:
-<<<<<<< HEAD:lib/user/dashboard/home_user.dart
                                                       CircularProgressIndicator(),
-=======
-                                                    Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                                                      child: CircularProgressIndicator(),
-                                                    )
->>>>>>> 79a06b2aa68dc2089d3adb3366e5f0945190cd5a:lib/user/home_user.dart
                                                 );
                                               }
 
