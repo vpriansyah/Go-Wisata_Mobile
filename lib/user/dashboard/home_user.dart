@@ -937,7 +937,14 @@ class _HomeUserState extends State<HomeUser> {
                                               } else {
                                                 return Center(
                                                   child:
+<<<<<<< HEAD:lib/user/dashboard/home_user.dart
                                                       CircularProgressIndicator(),
+=======
+                                                    Padding(
+                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                                                      child: CircularProgressIndicator(),
+                                                    )
+>>>>>>> 79a06b2aa68dc2089d3adb3366e5f0945190cd5a:lib/user/home_user.dart
                                                 );
                                               }
 
