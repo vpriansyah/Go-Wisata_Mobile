@@ -144,7 +144,7 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                                         ),
                                         Flexible(
                                             child:
-                                            AutoSizeText(
+                                            Text(
                                                 snapshot.data[index]['lokasi'],
                                                 style: GoogleFonts.montserrat(
                                                   fontWeight: FontWeight.normal),
@@ -171,55 +171,8 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                 child: CircularProgressIndicator(),
               );
             }
-
             // return Text('Data Error');
           }),
-      floatingActionButton: Container(
-        width: MediaQuery.of(context).size.width * 0.9,
-        height: 100,
-        child: Card(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Total",
-                      style: bodyText1.copyWith(
-                        color: Colors.red,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      "Rp. " + getTotal().toString(),
-                    ),
-                  ],
-                ),
-              ),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: FloatingActionButton.extended(
-                  onPressed: () {
-                    // Add your onPressed code here!
-                    Navigator.pushNamed(context, '/checkout');
-                  },
-                  label: Text('Cart'),
-                  backgroundColor: Colors.blue,
-                  icon: const Icon(Icons.shopping_cart),
-                  // child: const Icon(Icons.shopping_cart),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 
