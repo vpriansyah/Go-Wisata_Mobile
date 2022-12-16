@@ -125,11 +125,13 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                                           4, 0, 3, 4),
                                       child: Text(
                                         snapshot.data[index]['nama'],
-                                        style: title3.copyWith(
-                                          color: Color(0xFF101213),
+                                        style: TextStyle(
+                                            fontSize:20,
+                                            color : Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                        ),
                                         ),
                                       ),
-                                    ),
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -140,11 +142,14 @@ class _DaftarPenginapanUserState extends State<DaftarPenginapanUser> {
                                           child:
                                               Icon(Icons.location_on_outlined),
                                         ),
-                                        AutoSizeText(
-                                          snapshot.data[index]['lokasi'],
-                                          style: GoogleFonts.montserrat(
-                                            fontWeight: FontWeight.normal,
-                                          ),
+                                        Flexible(
+                                            child:
+                                            AutoSizeText(
+                                                snapshot.data[index]['lokasi'],
+                                                style: GoogleFonts.montserrat(
+                                                  fontWeight: FontWeight.normal),
+                                              maxLines: 2,
+                                            )
                                         ),
                                       ],
                                     ),
