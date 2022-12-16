@@ -1124,16 +1124,16 @@ class _dataWidgetState extends State<dataWidget> {
                                 child: TextButton(
                                   onPressed: () async {
                                     // print(widget.snapshot.data[widget.index]['id']);
-                                    // await Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //     builder: (context) => DaftarWahanaUser(
-                                    //       idWahana: widget.snapshot.data[widget.index]['id']
-                                    //           .toString(),
-                                    //       indexWahana: widget.index,
-                                    //     ),
-                                    //   ),
-                                    // );
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DaftarWahanaUser(
+                                          idWahana: widget.snapshot.data[widget.index]['id']
+                                              .toString(),
+                                          indexWahana: widget.index,
+                                        ),
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     'Pilih',
