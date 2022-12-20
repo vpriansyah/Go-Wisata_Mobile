@@ -182,53 +182,57 @@ class _dataWidgetState extends State<dataWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            3, 0, 3, 0),
-                                        child: Text(
-                                          widget.snapshot.data[widget.index]
-                                          ['nama'] ??
-                                              '-',
-                                          style: bodyText1.copyWith(
-                                            fontFamily: 'Outfit',
-                                            color: Color(0xFF1D2429),
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
+                                  Flexible(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                              3, 0, 3, 0),
+                                          child: Text(
+                                            widget.snapshot.data[widget.index]
+                                            ['nama'] ??
+                                                '-',
+                                            style: bodyText1.copyWith(
+                                              fontFamily: 'Outfit',
+                                              color: Color(0xFF1D2429),
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 8, 0, 0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 3, 0),
-                                              child:
-                                              Icon(Icons.location_on_outlined),
-                                            ),
-                                            Text(
-                                              widget.snapshot.data[widget.index]
-                                              ['lokasi'] ??
-                                                  '-',
-                                              style: bodyText2.copyWith(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF57636C),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
+                                        Padding(
+                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                              0, 8, 0, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 3, 0),
+                                                child:
+                                                Icon(Icons.location_on_outlined),
                                               ),
-                                            ),
-                                          ],
+                                              Flexible(
+                                                child: Text(
+                                                  widget.snapshot.data[widget.index]
+                                                  ['lokasi'] ??
+                                                      '-',
+                                                  style: bodyText2.copyWith(
+                                                    fontFamily: 'Outfit',
+                                                    color: Color(0xFF57636C),
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.normal,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

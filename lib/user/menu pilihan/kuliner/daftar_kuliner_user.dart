@@ -91,7 +91,7 @@ class _Daftar_KulinerUserState extends State<Daftar_KulinerUser> {
                             Expanded(
                               flex: 1,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(24),
+                                borderRadius: BorderRadius.circular(0),
                                 child: SizedBox.fromSize(
                                   size: Size.fromRadius(38), // Image radius
                                   child: Image.network(
