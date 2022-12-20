@@ -1,9 +1,8 @@
 import 'package:desa_wisata/theme.dart';
 import 'package:desa_wisata/user/menu%20pilihan/event/daftar_event_user.dart';
+import 'package:desa_wisata/user/paketdesa/halaman_desa.dart';
 import 'package:flutter/material.dart';
-import 'package:desa_wisata/user/menu%20pilihan/kuliner/daftar_kuliner_user.dart';
 import 'package:desa_wisata/user/menu%20pilihan/kuliner/resto_kuliner.dart';
-import 'package:desa_wisata/user/daftar_lainnya_user%20.dart';
 import 'package:desa_wisata/user/menu%20pilihan/penginapan/daftar_penginapan_user%20.dart';
 import 'package:desa_wisata/user/menu%20pilihan/wisata/wisata_user.dart';
 import 'dart:convert';
@@ -995,10 +994,10 @@ class _dataWidgetState extends State<dataWidget> {
                                     await Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => DaftarWahanaUser(
-                                          idWahana: widget.snapshot.data[widget.index]['id']
-                                              .toString(),
-                                          indexWahana: widget.index,
+                                        builder: (context) => PaketDesa(
+                                          // idWahana: widget.snapshot.data[widget.index]['id']
+                                          //     .toString(),
+                                          // indexWahana: widget.index,
                                         ),
                                       ),
                                     );
