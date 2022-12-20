@@ -119,7 +119,7 @@ class _dataWidgetState extends State<dataWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
           child: ListView(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
@@ -127,7 +127,7 @@ class _dataWidgetState extends State<dataWidget> {
             physics: NeverScrollableScrollPhysics(),
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 10),
                 child: InkWell(
                   onTap: () async {
                     // print(widget.snapshot.data[widget.index]['id']);
@@ -143,93 +143,184 @@ class _dataWidgetState extends State<dataWidget> {
                     );
                   },
                   child: Container(
-                    width: double.infinity,
-                    height: 150,
+                    width: 270,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          blurRadius: 3,
-                          color: Color(0x32000000),
-                          offset: Offset(0, 1),
+                          blurRadius: 8,
+                          color: Color(0x230F1113),
+                          offset: Offset(0, 4),
                         )
                       ],
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Row(
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(8),
+                            bottomLeft: Radius.circular(0),
                             bottomRight: Radius.circular(0),
-                            topLeft: Radius.circular(8),
-                            topRight: Radius.circular(0),
+                            topLeft: Radius.circular(12),
+                            topRight: Radius.circular(12),
                           ),
                           child: Image.network(
-                              baseUrl +
-                                  'images/' +
-                                  widget.snapshot.data[widget.index]['image'],
-                              width: MediaQuery.of(context).size.width * 0.25,
-                              height: MediaQuery.of(context).size.height * 1,
-                              fit: BoxFit.cover, loadingBuilder:
-                                  (BuildContext context, Widget child,
-                                      ImageChunkEvent? loadingProgress) {
-                            if (loadingProgress == null) return child;
-                            return Center(
-                              child: CircularProgressIndicator(
-                                value: loadingProgress.expectedTotalBytes !=
-                                        null
-                                    ? loadingProgress.cumulativeBytesLoaded /
-                                        loadingProgress.expectedTotalBytes!
-                                    : null,
-                              ),
-                            );
-                          }),
+                            baseUrl +
+                                'images/' +
+                                widget.snapshot.data[widget.index]['image'],
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 5, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 10, 0, 10),
-                                  child: Text(
-                                    // 'Watu Gambir',
-                                    widget.snapshot.data[widget.index]
-                                            ['name'] ??
-                                        '-',
-                                    style: title3,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
+                        Padding(
+                          padding:
+                          EdgeInsetsDirectional.fromSTEB(16, 16, 16, 20),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 10),
+                                        3, 0, 3, 0),
                                     child: Text(
-                                      // 'Desa wisata dengan beragam akomodasi yang tersedia. Setiap wahana dapat dimainkan oleh segala usia',
                                       widget.snapshot.data[widget.index]
-                                              ['alamat'] ??
+                                      ['name'] ??
                                           '-',
-                                      maxLines: 4,
                                       style: bodyText1.copyWith(
-                                        fontWeight: FontWeight.normal,
+                                        fontFamily: 'Outfit',
+                                        color: Color(0xFF1D2429),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 8, 0, 0),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 3, 0),
+                                          child:
+                                          Icon(Icons.location_on_outlined),
+                                        ),
+                                        Text(
+                                          widget.snapshot.data[widget.index]
+                                          ['alamat'] ??
+                                              '-',
+                                          style: bodyText2.copyWith(
+                                            fontFamily: 'Outfit',
+                                            color: Color(0xFF57636C),
+                                            fontSize: 10.5,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
                   ),
+                  // child: Container(
+                  //   width: 270,
+                  //   height: 150,
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.white,
+                  //     boxShadow: [
+                  //       BoxShadow(
+                  //         blurRadius: 8,
+                  //         color: Color(0x32000000),
+                  //         offset: Offset(0, 4),
+                  //       )
+                  //     ],
+                  //     borderRadius: BorderRadius.circular(12),
+                  //   ),
+                  //   child: Column(
+                  //     mainAxisSize: MainAxisSize.max,
+                  //     children: [
+                  //       ClipRRect(
+                  //         borderRadius: BorderRadius.only(
+                  //           bottomLeft: Radius.circular(),
+                  //           bottomRight: Radius.circular(0),
+                  //           topLeft: Radius.circular(8),
+                  //           topRight: Radius.circular(0),
+                  //         ),
+                  //         child: Image.network(
+                  //             baseUrl +
+                  //                 'images/' +
+                  //                 widget.snapshot.data[widget.index]['image'],
+                  //             width: MediaQuery.of(context).size.width * 0.25,
+                  //             height: MediaQuery.of(context).size.height * 1,
+                  //             fit: BoxFit.cover, loadingBuilder:
+                  //                 (BuildContext context, Widget child,
+                  //                     ImageChunkEvent? loadingProgress) {
+                  //           if (loadingProgress == null) return child;
+                  //           return Center(
+                  //             child: CircularProgressIndicator(
+                  //               value: loadingProgress.expectedTotalBytes !=
+                  //                       null
+                  //                   ? loadingProgress.cumulativeBytesLoaded /
+                  //                       loadingProgress.expectedTotalBytes!
+                  //                   : null,
+                  //             ),
+                  //           );
+                  //         }),
+                  //       ),
+                  //       Expanded(
+                  //         child: Padding(
+                  //           padding:
+                  //               EdgeInsetsDirectional.fromSTEB(12, 0, 5, 0),
+                  //           child: Column(
+                  //             mainAxisSize: MainAxisSize.max,
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             crossAxisAlignment: CrossAxisAlignment.start,
+                  //             children: [
+                  //               Padding(
+                  //                 padding: EdgeInsetsDirectional.fromSTEB(
+                  //                     0, 10, 0, 10),
+                  //                 child: Text(
+                  //                   // 'Watu Gambir',
+                  //                   widget.snapshot.data[widget.index]
+                  //                           ['name'] ??
+                  //                       '-',
+                  //                   style: title3,
+                  //                 ),
+                  //               ),
+                  //               Expanded(
+                  //                 child: Padding(
+                  //                   padding: EdgeInsetsDirectional.fromSTEB(
+                  //                       0, 0, 0, 10),
+                  //                   child: Text(
+                  //                     widget.snapshot.data[widget.index]
+                  //                             ['alamat'] ??
+                  //                         '-',
+                  //                     maxLines: 4,
+                  //                     style: bodyText1.copyWith(
+                  //                       fontWeight: FontWeight.normal,
+                  //                     ),
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ),
               ),
             ],

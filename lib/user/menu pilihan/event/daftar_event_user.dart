@@ -177,7 +177,7 @@ class _dataWidgetState extends State<dataWidget> {
                             ),
                             Padding(
                               padding:
-                              EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12),
+                              EdgeInsetsDirectional.fromSTEB(16, 16, 16, 20),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
