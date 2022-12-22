@@ -49,3 +49,7 @@ var cartList = [
   //     image: 'zTCijV8Ma0ztU5pyyS3vnANFy6SsTVhV4LjMKjpu.jpg'),
 ];
 
+var cartListKuliner = [
+
+];
+

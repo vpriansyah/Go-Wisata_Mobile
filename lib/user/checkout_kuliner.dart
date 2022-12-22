@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-class CheckOut extends StatefulWidget {
-  const CheckOut({Key? key}) : super(key: key);
+class CheckOut_Kuliner extends StatefulWidget {
+  const CheckOut_Kuliner({Key? key}) : super(key: key);
 
   @override
-  _CheckOutState createState() => _CheckOutState();
+  _CheckOut_KulinerState createState() => _CheckOut_KulinerState();
 }
 
-class _CheckOutState extends State<CheckOut> {
+class _CheckOut_KulinerState extends State<CheckOut_Kuliner> {
   DateTime? datePicked;
   bool checkoutIsProcessing = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -94,10 +94,10 @@ class _CheckOutState extends State<CheckOut> {
             Expanded(
               child: ListView.builder(
                   padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
-                  itemCount: cartList.length,
+                  itemCount: cartListKuliner.length,
                   itemBuilder: (context, index) {
-                    final Cart cart = cartList[index];
-                    if (cartList.isEmpty) {
+                    final CartKuliner cart = cartListKuliner[index];
+                    if (cartListKuliner.isEmpty) {
                       return Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -130,7 +130,7 @@ class _CheckOutState extends State<CheckOut> {
                               child: TextButton(
                                 onPressed: () {
                                   Navigator.pushNamedAndRemoveUntil(context,
-                                      '/DaftarWahanaUser', (route) => false);
+                                      '/Daftar_KulinerUser', (route) => false);
                                 },
                                 style: TextButton.styleFrom(
                                   backgroundColor: primaryColor,
@@ -264,7 +264,7 @@ class _CheckOutState extends State<CheckOut> {
                                   if (cart.qty > 1) {
                                     cart.qty -= 1;
                                     if(cart.qty == 0){
-                                      cartList.remove(cart);
+                                      cartListKuliner.remove(cart);
                                     }
                                   }
                                 });
@@ -279,7 +279,7 @@ class _CheckOutState extends State<CheckOut> {
                               onPressed: () {
                                 print('delete item');
                                 setState(() {
-                                  cartList.remove(cart);
+                                  cartListKuliner.remove(cart);
                                 });
                               },
                             ),
@@ -382,7 +382,7 @@ class _CheckOutState extends State<CheckOut> {
                   ),
                   Text(
                     // 'Rp. 20.000',
-                    getTotal().toString(),
+                    getTotalKuliner().toString(),
                     style: GoogleFonts.montserrat(
                       color: Color(0xFF1D2429),
                       fontSize: 32,
@@ -394,7 +394,7 @@ class _CheckOutState extends State<CheckOut> {
             ),
             GestureDetector(
               onTap: () {
-                if (cartList.isEmpty) {
+                if (cartListKuliner.isEmpty) {
                   SnackBar snackBar = SnackBar(
                     content: Text('Tambahkan tiket terlebih dahulu'),
                     backgroundColor: Colors.red,
@@ -435,7 +435,7 @@ class _CheckOutState extends State<CheckOut> {
                 child: checkoutIsProcessing
                     ? const CircularProgressIndicator()
                     :Text(
-                  'Pay (Rp. ' + getTotal().toString() + ')',
+                  'Pay (Rp. ' + getTotalKuliner().toString() + ')',
                   style: title1,
                 ),
               ),
@@ -450,7 +450,7 @@ class _CheckOutState extends State<CheckOut> {
     var response;
     var dataproduk = [];
     var datauser = [];
-    for (var x in cartList) {
+    for (var x in cartListKuliner) {
       var tmp = {
         'id': x.id,
         'tempat_id':x.idtempat,
@@ -508,7 +508,7 @@ class _CheckOutState extends State<CheckOut> {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
       // clear cart  
-      cartList.clear();
+      cartListKuliner.clear();
        Navigator.pushNamedAndRemoveUntil(context, '/home-user', (route) => false);
 
       // Navigator.pushNamed(context, '/DaftarPesananUser');
@@ -517,19 +517,19 @@ class _CheckOutState extends State<CheckOut> {
 }
 
 int getQty() {
-  var qty = cartList[0];
+  var qty = cartListKuliner[0];
   print(qty);
   return qty.qty;
-  // for (var x in cartList) {
+  // for (var x in cartListKuliner) {
   // if (x.id == index) {
   //   return x.qty;
   // }
   // }
 }
 
-int getTotal() {
+int getTotalKuliner() {
   int total = 0;
-  for (var x in cartList) {
+  for (var x in cartListKuliner) {
     int y = x.qty * x.harga;
     total += y;
   }

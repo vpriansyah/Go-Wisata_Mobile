@@ -64,7 +64,7 @@ class _DaftarWahanaUserState extends State<DaftarWahanaUser> {
               ),
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/checkout');
+                  Navigator.pushNamed(context, '/checkout_wisata');
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.blue,

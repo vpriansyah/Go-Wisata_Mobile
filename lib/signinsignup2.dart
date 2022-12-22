@@ -1,3 +1,4 @@
+import 'package:desa_wisata/auth.config.dart';
 import 'package:desa_wisata/data.dart';
 import 'package:desa_wisata/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,6 +7,8 @@ import 'package:email_auth/email_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:smart_auth/smart_auth.dart';
+import 'dart:math';
 
 class SignInSignUp2 extends StatefulWidget {
   const SignInSignUp2({Key? key}) : super(key: key);
@@ -13,6 +16,7 @@ class SignInSignUp2 extends StatefulWidget {
   @override
   _SignInSignUp2State createState() => _SignInSignUp2State();
 }
+
 
 var isLoading = false;
 
@@ -29,7 +33,25 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
   // final _formregKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formregKey = GlobalKey<FormState>();
   final _passwordVisible = false;
-  EmailAuth emailAuth =  new EmailAuth(sessionName: "Sample session");
+  EmailAuth emailAuth = new EmailAuth(sessionName: "Sample session");
+  bool verified = false;
+  final smartAuth = SmartAuth();
+  Random random = new Random();
+
+  var otp = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the package
+    emailAuth = new EmailAuth(
+      sessionName: "Sample session",
+    );
+
+    /// Configuring the remote server
+    emailAuth.config(remoteServerConfiguration);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -715,7 +737,7 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                                   .fromSTEB(20, 24, 20, 24),
                                               suffixIcon: TextButton(
                                                 child: Text("Send OTP"),
-                                                onPressed: sendOtp,
+                                                onPressed: randomOtp,
                                               )
                                             ),
                                             style: bodyText1.copyWith(
@@ -737,7 +759,15 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
                                             child: TextButton(
                                               onPressed: () {
                                                 if (emailValidation(emailSignUpController.text)) {
-                                                  register();
+                                                  verifyOtp();
+                                                  if (verified){
+                                                    register();
+                                                  } else {
+                                                    const snackBar = SnackBar(
+                                                      content: Text('OTP Salah!'),
+                                                      backgroundColor: Colors.red,
+                                                    );
+                                                  }
                                                   setState(() {
                                                     isLoading =
                                                     true;
@@ -891,8 +921,45 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
     return data;
     // return json.decode(response.body);
   }
+
+  void randomOtp() async {
+    setState(() {
+      otp = random.nextInt(10000);
+    });
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    http.Response res = await http.post(
+      Uri.parse("http://127.0.0.1:8000/api/sendEmail"),
+      headers: <String, String>{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, String>{
+        'email': emailSignUpController.toString(),
+        'name' : usernameController.toString(),
+        'code': otp.toString()
+      }),
+    );
+    if (res.statusCode != 200) {
+      print("otp send failed");
+    } else {
+      print("otp sent");
+    }
+  }
+
+  void verifyOtp() {
+    var code = int.parse(otpController.text);
+    if (otp == code) {
+      setState(() {
+        verified = true;
+      });
+      print("otp benar");
+    } else {
+      print("otp salah");
+    }
+  }
+
   void sendOtp() async {
-    emailAuth.sessionName= "Test Session";
+    emailAuth.sessionName= "Sample Session";
     var res = await emailAuth.sendOtp(recipientMail: emailSignUpController.text, otpLength: 6);
     if (res) {
       print("OTP Sent");
@@ -901,14 +968,20 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
     }
   }
 
-  void verifyOtp() {
-    var res = emailAuth.validateOtp(recipientMail: emailSignUpController.text, userOtp: otpController.text);
-    if (res) {
-      print("OTP Verified");
-    } else {
-      print("OTP not verified");
-    }
-  }
+  // void verifyOtp() {
+  //   var res = emailAuth.validateOtp(recipientMail: emailSignUpController.text, userOtp: otpController.text);
+  //   if (res) {
+  //     print("OTP Verified");
+  //     setState(() {
+  //       verified = true;
+  //     });
+  //   } else {
+  //     print("OTP not verified");
+  //     setState(() {
+  //       verified = false;
+  //     });
+  //   }
+  // }
 
   Future register() async {
     http.Response response = await http.post(

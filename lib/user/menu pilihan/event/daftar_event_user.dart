@@ -135,13 +135,15 @@ class _dataWidgetState extends State<dataWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                     child: InkWell(
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) =>
-                        //         MainPageUser(),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Daftar_EventUser(
+                          idEvent: widget.snapshot.data[widget.index]['id']
+                              .toString(),
+                          indexEvent: widget.index,
+                          ),
+                        ));
                       },
                       child: Container(
                         width: 270,

@@ -1,6 +1,7 @@
 import 'package:desa_wisata/models/cart.dart';
 import 'package:desa_wisata/models/menu_model.dart';
 import 'package:desa_wisata/theme.dart';
+import 'package:desa_wisata/user/checkout_kuliner.dart';
 import 'dart:collection';
 import 'dart:convert';
 
@@ -13,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../checkout.dart';
+import '../../checkout_wisata.dart';
 
 class Daftar_KulinerUser extends StatefulWidget {
   const Daftar_KulinerUser(
@@ -80,7 +81,7 @@ class _Daftar_KulinerUserState extends State<Daftar_KulinerUser> {
                               // harga: int.parse(snapshot.data![index].harga ),
                               harga: snapshot.data![index].harga ?? 0,
                               image: snapshot.data![index].image);
-                          cartList.add(c1);
+                          cartListKuliner.add(c1);
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         });
                       },
@@ -145,6 +146,7 @@ class _Daftar_KulinerUserState extends State<Daftar_KulinerUser> {
                                         ),
                                       ),
                                     ),
+
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 3),
@@ -175,13 +177,59 @@ class _Daftar_KulinerUserState extends State<Daftar_KulinerUser> {
 
             // return Text('Data Error');
           }),
+      floatingActionButton: Container(
+        width: MediaQuery.of(context).size.width * 0.9,
+        height: 100,
+        child: Card(
+          color: Color(0xFFFFF8EC),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Total",
+                      style: bodyText1.copyWith(
+                        color: Colors.blue,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Text(
+                      "Rp. " + getTotalKuliner().toString(),
+                    ),
+                  ],
+                ),
+              ),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: FloatingActionButton.extended(
+                  onPressed: () {
+                    // Add your onPressed code here!
+                    Navigator.pushNamed(context, '/checkout_kuliner');
+                  },
+                  label: Text('Cart'),
+                  backgroundColor: Colors.blue,
+                  icon: const Icon(Icons.shopping_cart),
+                  // child: const Icon(Icons.shopping_cart),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       //
     );
   }
 
   final String baseUrl = 'http://go-wisata.id/';
 
-  final String apiUrl = 'http://go-wisata.id/api/listevent/';
+  final String apiUrl = 'http://go-wisata.id/api/kuliner/';
 
   Future<List<Map<String, dynamic>>?> fetch() async {
     http.Response response = await http
