@@ -1,4 +1,5 @@
 import 'package:desa_wisata/user/menu%20pilihan/event/daftar_event_user.dart';
+import 'package:desa_wisata/user/menu%20pilihan/penginapan/daftar_penginapan_user%20.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -38,11 +39,19 @@ class _PaketDesaState extends State<PaketDesa> {
                 child: ListTile(
                   title: Text("Wisata"),
                   subtitle: Text("Temukan paket wahana menarik disini"),
+                  onTap: () async {
+                    await Navigator.push(
+                    context, MaterialPageRoute(
+                    builder: (context) =>DaftarEventUser()
+                    )
+                    );
+                  },
                 ),
               ),
             ),
-            Padding(padding: EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+            Padding(padding: EdgeInsetsDirectional.fromSTEB(25, 10, 25, 0),
               child: Container(
+                // padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                 height: 80,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -57,10 +66,17 @@ class _PaketDesaState extends State<PaketDesa> {
                 child: ListTile(
                   title: Text("Event"),
                   subtitle: Text("Temukan event menarik disini"),
+                  onTap: () async {
+                    await Navigator.push(
+                        context, MaterialPageRoute(
+                        builder: (context) => DaftarPenginapanUser()
+                    )
+                    );
+                  }
                 ),
               ),
             ),
-            Padding(padding: EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+            Padding(padding: EdgeInsetsDirectional.fromSTEB(25, 10, 25, 0),
               child: Container(
                 height: 80,
                 decoration: BoxDecoration(
@@ -76,10 +92,17 @@ class _PaketDesaState extends State<PaketDesa> {
                 child: ListTile(
                   title: Text("Kuliner"),
                   subtitle: Text("Temukan paket kuliner menarik disini"),
+                  onTap: () async {
+                await Navigator.push(
+                context, MaterialPageRoute(
+                builder: (context) =>DaftarEventUser()
+                )
+                );
+                }
                 ),
               ),
             ),
-            Padding(padding: EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+            Padding(padding: EdgeInsetsDirectional.fromSTEB(25, 10, 25, 0),
               child: Container(
                 height: 80,
                 decoration: BoxDecoration(
@@ -95,6 +118,13 @@ class _PaketDesaState extends State<PaketDesa> {
                 child: ListTile(
                   title: Text("Penginapan"),
                   subtitle: Text("Temukan penginapan ternyaman"),
+                  onTap: () async {
+                  await Navigator.push(
+                  context, MaterialPageRoute(
+                  builder: (context) =>DaftarPenginapanUser()
+                  )
+                  );
+                  }
                 ),
               ),
             )
