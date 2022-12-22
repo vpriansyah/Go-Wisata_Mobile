@@ -134,12 +134,6 @@ class _Daftar_KulinerUserState extends State<Daftar_KulinerUser> {
                                         color: Color(0xFF101213),
                                       ),
                                     ),
-                                    // AutoSizeText(
-                                    //   snapshot.data[index]['alamat'],
-                                    //   style: GoogleFonts.montserrat(
-                                    //     fontWeight: FontWeight.normal,
-                                    //   ),
-                                    // ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 3),
@@ -154,14 +148,6 @@ class _Daftar_KulinerUserState extends State<Daftar_KulinerUser> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 3),
-                                      // child: Text(
-                                      //   'per porsi',
-                                      //   // snapshot.data[index]['deskripsi_harga'],
-                                      //   style: GoogleFonts.montserrat(
-                                      //     color: Colors.red,
-                                      //     fontSize: 16,
-                                      //   ),
-                                      // ),
                                     ),
                                   ],
                                 ),
@@ -173,121 +159,6 @@ class _Daftar_KulinerUserState extends State<Daftar_KulinerUser> {
                         margin: EdgeInsets.all(10),
                       ),
                     );
-
-                    ///---
-                    // final List place = fetch();
-                    // return InkWell(
-                    //   onTap: () {
-                    //     var get = fetch();
-                    //     get.then((value) {});
-                    //     final snackBar = SnackBar(
-                    //       content: Text(
-                    //           snapshot.data[index]['name'] + ' added to cart'),
-                    //     );
-                    //     setState(() {
-                    //       CartKuliner c1 = CartKuliner(
-                    //           id: snapshot.data[index]['id'],
-                    //           idtempat: snapshot.data[index]['id'],
-                    //           nama: snapshot.data[index]['name'],
-                    //           kategori: 'kuliner',
-                    //           alamat: snapshot.data[index]['alamat'],
-                    //           qty: 1,
-                    //           harga: int.parse(snapshot.data[index]['htm']),
-                    //           image: snapshot.data[index]['image']);
-                    //       cartList.add(c1);
-                    //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    //     });
-                    //   },
-                    //   child: Card(
-                    //     child: Row(
-                    //       crossAxisAlignment: CrossAxisAlignment.start,
-                    //       children: <Widget>[
-                    //         Expanded(
-                    //           flex: 1,
-                    //           child: ClipRRect(
-                    //             borderRadius: BorderRadius.circular(24),
-                    //             child: SizedBox.fromSize(
-                    //               size: Size.fromRadius(38), // Image radius
-                    //               child: Image.network(
-                    //                 baseUrl +
-                    //                     'images/' +
-                    //                     snapshot.data[index]['image'],
-                    //                 fit: BoxFit.cover,
-                    //                 loadingBuilder: (BuildContext context,
-                    //                     Widget child,
-                    //                     ImageChunkEvent? loadingProgress) {
-                    //                   if (loadingProgress == null) return child;
-                    //                   return Center(
-                    //                     child: CircularProgressIndicator(
-                    //                       value: loadingProgress
-                    //                           .expectedTotalBytes !=
-                    //                           null
-                    //                           ? loadingProgress
-                    //                           .cumulativeBytesLoaded /
-                    //                           loadingProgress
-                    //                               .expectedTotalBytes!
-                    //                           : null,
-                    //                     ),
-                    //                   );
-                    //                 },
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         Expanded(
-                    //           flex: 3,
-                    //           child: Padding(
-                    //             padding: const EdgeInsets.all(8.0),
-                    //             child: Column(
-                    //               crossAxisAlignment: CrossAxisAlignment.start,
-                    //               mainAxisSize: MainAxisSize.min,
-                    //               children: <Widget>[
-                    //                 Text(
-                    //                   snapshot.data[index]['name'],
-                    //                   style: title3.copyWith(
-                    //                     color: Color(0xFF101213),
-                    //                   ),
-                    //                 ),
-                    //                 AutoSizeText(
-                    //                   snapshot.data[index]['alamat'],
-                    //                   style: GoogleFonts.montserrat(
-                    //                     fontWeight: FontWeight.normal,
-                    //                   ),
-                    //                 ),
-                    //                 // Padding(
-                    //                 //   padding: EdgeInsetsDirectional.fromSTEB(
-                    //                 //       0, 0, 0, 3),
-                    //                 //   child: Text(
-                    //                 //     'Rp ' +
-                    //                 //     snapshot.data[index]['harga'],
-                    //                 //     style: GoogleFonts.montserrat(
-                    //                 //       color: Colors.red,
-                    //                 //       fontSize: 16,
-                    //                 //     ),
-                    //                 //   ),
-                    //                 // ),
-                    //                 Padding(
-                    //                   padding: EdgeInsetsDirectional.fromSTEB(
-                    //                       0, 0, 0, 3),
-                    //                   // child: Text(
-                    //                   //   'per porsi',
-                    //                   //   // snapshot.data[index]['deskripsi_harga'],
-                    //                   //   style: GoogleFonts.montserrat(
-                    //                   //     color: Colors.red,
-                    //                   //     fontSize: 16,
-                    //                   //   ),
-                    //                   // ),
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //     elevation: 3,
-                    //     margin: EdgeInsets.all(10),
-                    //   ),
-                    // );
                   },
                   itemCount: snapshot.data!.length,
                 );
@@ -310,7 +181,7 @@ class _Daftar_KulinerUserState extends State<Daftar_KulinerUser> {
 
   final String baseUrl = 'http://go-wisata.id/';
 
-  final String apiUrl = 'http://go-wisata.id/api/kuliner/';
+  final String apiUrl = 'http://go-wisata.id/api/listevent/';
 
   Future<List<Map<String, dynamic>>?> fetch() async {
     http.Response response = await http

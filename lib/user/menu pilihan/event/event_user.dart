@@ -75,7 +75,7 @@ class _Daftar_EventUserState extends State<Daftar_EventUser> {
                           CartEvent c1 = CartEvent(
                               id: snapshot.data![index].id ?? 0,
                               nama: snapshot.data![index].nama,
-                              kategori: 'kuliner',
+                              kategori: 'event',
                               lokasi: snapshot.data![index].lokasi ?? "null",
                               qty: 1,
                               // harga: int.parse(snapshot.data![index].harga ),
