@@ -926,9 +926,9 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
     setState(() {
       otp = random.nextInt(10000);
     });
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
     http.Response res = await http.post(
-      Uri.parse("http://127.0.0.1:8000/api/sendEmail"),
+      Uri.parse("http://go-wisata.id/api/sendEmail"),
       headers: <String, String>{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -939,10 +939,10 @@ class _SignInSignUp2State extends State<SignInSignUp2> {
         'code': otp.toString()
       }),
     );
-    if (res.statusCode != 200) {
-      print("otp send failed");
-    } else {
+    if (res.statusCode == 201) {
       print("otp sent");
+    } else {
+      print("otp not sent");
     }
   }
 
